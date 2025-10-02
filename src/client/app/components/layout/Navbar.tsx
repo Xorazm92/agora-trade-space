@@ -21,8 +21,11 @@ import { useAppDispatch } from "@/app/store/hooks";
 import { useSignOutMutation } from "@/app/store/apis/AuthApi";
 import { logout } from "@/app/store/slices/AuthSlice";
 import { generateUserAvatar } from "@/app/utils/placeholderImage";
+import { useTranslations } from 'next-intl';
 
 const Navbar = () => {
+  const t = useTranslations('brand');
+  const tCommon = useTranslations('common');
   const pathname = usePathname();
   const dispatch = useAppDispatch();
   const [signout] = useSignOutMutation();
@@ -67,9 +70,9 @@ const Navbar = () => {
             {/* Logo */}
             <Link
               href="/"
-              className="font-medium text-lg sm:text-xl lg:text-xl text-gray-900 flex-shrink-0"
+              className="font-bold text-lg sm:text-xl lg:text-2xl text-indigo-600 flex-shrink-0 hover:text-indigo-700 transition-colors"
             >
-              Ecommerce
+              {t('name')}
             </Link>
 
             {/* Desktop Search Bar */}
@@ -151,7 +154,7 @@ const Navbar = () => {
                     href="/sign-in"
                     className="hidden sm:block px-4 py-2 text-sm font-medium text-gray-800 hover:text-indigo-600 transition-colors"
                   >
-                    Sign in
+                    {tCommon('login')}
                   </Link>
                 )
               )}
@@ -188,14 +191,14 @@ const Navbar = () => {
                       className="block px-3 py-2 text-gray-800 hover:bg-gray-100 rounded-md"
                       onClick={() => setMobileMenuOpen(false)}
                     >
-                      Sign in
+                      {tCommon('login')}
                     </Link>
                     <Link
                       href="/sign-up"
                       className="block px-3 py-2 text-gray-800 hover:bg-gray-100 rounded-md"
                       onClick={() => setMobileMenuOpen(false)}
                     >
-                      Sign up
+                      {tCommon('register')}
                     </Link>
                   </>
                 )}
@@ -204,21 +207,21 @@ const Navbar = () => {
                   className="block px-3 py-2 text-gray-800 hover:bg-gray-100 rounded-md"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  Home
+                  {tCommon('home')}
                 </Link>
                 <Link
                   href="/orders"
                   className="block px-3 py-2 text-gray-800 hover:bg-gray-100 rounded-md"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  Orders
+                  {tCommon('orders')}
                 </Link>
                 <Link
                   href="/shop"
                   className="block px-3 py-2 text-gray-800 hover:bg-gray-100 rounded-md"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  Shop
+                  {tCommon('products')}
                 </Link>
                 {user?.role === "ADMIN" && (
                   <Link
@@ -239,7 +242,7 @@ const Navbar = () => {
                     className="flex items-center w-full px-4 py-3 gap-3 text-red-600 hover:bg-red-50/80 transition-colors duration-150 text-sm"
                   >
                     <LogOut size={18} />
-                    <span>Sign out</span>
+                    <span>{tCommon('logout')}</span>
                   </button>
                 )}
               </div>

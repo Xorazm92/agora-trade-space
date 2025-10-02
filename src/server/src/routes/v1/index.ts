@@ -18,30 +18,32 @@ import logRoutes from "@/modules/logs/logs.routes";
 import sectionRoutes from "@/modules/section/section.routes";
 import { configureChatRoutes } from "@/modules/chat/chat.routes";
 import attributesRoutes from "@/modules/attribute/attribute.routes";
-import variantsRoutes from '@/modules/variant/variant.routes'
+import variantsRoutes from '@/modules/variant/variant.routes';
+// import uzbekistanPaymentRoutes from "@/modules/payment/uzbekistan/uzbekistan-payment.routes";
 
 export const configureV1Routes = (io: SocketIOServer) => {
   const router = Router();
 
   router.use("/users", usersRoutes);
   router.use("/auth", authRoutes);
-  router.use("/products", productRoutes);
-  router.use("/transactions", transactionRoutes);
-  router.use("/reviews", reviewRoutes);
+  // router.use("/products", productRoutes);
+  // router.use("/transactions", transactionRoutes);
+  // router.use("/reviews", reviewRoutes);
   router.use("/categories", categoryRoutes);
   router.use("/cart", cartRoutes);
-  router.use("/checkout", checkoutRoutes);
-  router.use("/reports", reportRoutes);
-  router.use("/analytics", analyticsRoutes);
-  router.use("/logs", logRoutes);
-  router.use("/orders", orderRoutes);
-  router.use("/shipment", shipmentRoutes);
-  router.use("/payments", paymentRoutes);
-  router.use("/addresses", addressRoutes);
-  router.use("/sections", sectionRoutes);
-  router.use("/attributes", attributesRoutes);
-  router.use("/chat", configureChatRoutes(io));
-  router.use('/variants', variantsRoutes)
+  // router.use("/checkout", checkoutRoutes);
+  // router.use("/reports", reportRoutes);
+  // router.use("/analytics", analyticsRoutes);
+  // router.use("/logs", logRoutes);
+  // router.use("/orders", orderRoutes);
+  // router.use("/shipment", shipmentRoutes);
+  // router.use("/payments", paymentRoutes);
+  // router.use("/addresses", addressRoutes);
+  // router.use("/sections", sectionRoutes);
+  // router.use("/attributes", attributesRoutes);
+  // router.use("/chat", configureChatRoutes(io));
+  // router.use('/variants', variantsRoutes);
+  // router.use("/uzbekistan-payments", uzbekistanPaymentRoutes);
 
   return router;
 };

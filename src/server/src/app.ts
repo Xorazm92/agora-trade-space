@@ -22,7 +22,7 @@ import { configureRoutes } from "./routes";
 import { configureGraphQL } from "./graphql";
 import webhookRoutes from "./modules/webhook/webhook.routes";
 import healthRoutes from "./routes/health.routes";
-// import { preflightHandler } from "./shared/middlewares/preflightHandler";
+import { preflightHandler } from "./shared/middlewares/preflightHandler";
 import { Server as HTTPServer } from "http";
 import { SocketManager } from "@/infra/socket/socket";
 import { connectDB } from "./infra/database/database.config";
@@ -50,12 +50,9 @@ export const createApp = async () => {
   // Health check routes (no middleware applied)
   app.use("/", healthRoutes);
 
-  // Basic
-  app.use(
-    "/api/v1/webhook",
-    bodyParser.raw({ type: "application/json" }),
-    webhookRoutes
-  );
+  // Webhook routes (before body parsing middleware)
+  app.use("/api/v1/webhook", bodyParser.raw({ type: "application/json" }), webhookRoutes);
+
   app.use(express.json());
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use(cookieParser(process.env.COOKIE_SECRET, cookieParserOptions));
@@ -76,11 +73,10 @@ export const createApp = async () => {
       },
     })
   );
-  app.use(passport.initialize());
-  app.use(passport.session());
-  configurePassport();
+  // configurePassport(); // Temporarily disabled
 
-  // Preflight handler removed to avoid conflicts
+  // Preflight handler
+  app.use(preflightHandler);
 
   // CORS must be applied BEFORE GraphQL setup
   app.use(
@@ -120,6 +116,7 @@ export const createApp = async () => {
   );
   app.use(compression());
 
+  // Configure routes with Socket.IO
   app.use("/api", configureRoutes(io));
 
   // GraphQL setup

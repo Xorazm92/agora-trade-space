@@ -11,6 +11,12 @@ import { AuthRepository } from "./auth.repository";
 import BadRequestError from "@/shared/errors/BadRequestError";
 import NotFoundError from "@/shared/errors/NotFoundError";
 
+export interface RegisterUserWithPhoneParams {
+  phone: string;
+  name: string;
+  password?: string;
+}
+
 export class AuthService {
   constructor(private authRepository: AuthRepository) {}
 
@@ -186,5 +192,61 @@ export class AuthService {
     }
 
     return { user, newAccessToken, newRefreshToken };
+  }
+
+  async findUserByPhone(phone: string) {
+    return await this.authRepository.findUserByPhone(phone);
+  }
+
+  // TODO: Uncomment after adding phone field to Prisma schema
+  /*
+  async registerUserWithPhone({
+    phone,
+    name,
+    password,
+  }: RegisterUserWithPhoneParams): Promise<AuthResponse> {
+    const existingUser = await this.authRepository.findUserByPhone(phone);
+
+    if (existingUser) {
+      throw new AppError(
+        400,
+        "Bu telefon raqami bilan foydalanuvchi allaqachon ro'yxatdan o'tgan"
+      );
+    }
+
+    // Telefon raqami bilan yangi foydalanuvchi yaratish
+    const newUser = await this.authRepository.createUserWithPhone({
+      phone,
+      name,
+      password,
+      role: ROLE.USER,
+    });
+
+    const accessToken = tokenUtils.generateAccessToken(newUser.id);
+    const refreshToken = tokenUtils.generateRefreshToken(newUser.id);
+
+    return {
+      user: {
+        id: newUser.id,
+        name: newUser.name,
+        email: newUser.email,
+        phone: newUser.phone,
+        role: newUser.role,
+        avatar: null,
+      },
+      accessToken,
+      refreshToken,
+    };
+  }
+  */
+
+  async generateTokensForUser(user: any) {
+    const accessToken = tokenUtils.generateAccessToken(user.id);
+    const refreshToken = tokenUtils.generateRefreshToken(user.id);
+
+    return {
+      accessToken,
+      refreshToken,
+    };
   }
 }

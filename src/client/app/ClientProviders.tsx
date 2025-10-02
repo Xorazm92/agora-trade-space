@@ -5,7 +5,11 @@ import { ApolloProvider } from "@apollo/client";
 import client from "./lib/apolloClient";
 import Toast from "./components/feedback/Toast";
 import AuthProvider from "./components/HOC/AuthProvider";
-import TopLoadingBar from "./components/feedback/TopLoadingBar";
+import dynamic from "next/dynamic";
+
+const TopLoadingBar = dynamic(() => import("./components/feedback/TopLoadingBar"), {
+  ssr: false,
+});
 
 export default function ClientProviders({
   children,

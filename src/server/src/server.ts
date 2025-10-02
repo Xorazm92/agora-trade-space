@@ -13,16 +13,21 @@ import { createApp } from "./app";
 const PORT = process.env.PORT || 5000;
 
 async function bootstrap() {
-  const { httpServer } = await createApp();
+  try {
+    const { httpServer } = await createApp();
 
-  httpServer.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-  });
+    httpServer.listen(PORT, () => {
+      console.log(`Server is running on port ${PORT}`);
+    });
 
-  httpServer.on("error", (err) => {
-    console.error("Server error:", err);
+    httpServer.on("error", (err) => {
+      console.error("Server error:", err);
+      // Don't exit on error, just log it
+    });
+  } catch (error) {
+    console.error("Failed to start server:", error);
     process.exit(1);
-  });
+  }
 }
 
 bootstrap();

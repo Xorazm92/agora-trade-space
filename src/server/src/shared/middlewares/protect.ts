@@ -13,7 +13,8 @@ const protect = async (
     const accessToken = req?.cookies?.accessToken;
     console.log("accessToken: ", accessToken);
     if (!accessToken) {
-      return next(new AppError(401, "Unauthorized, please log in"));
+      const error = new AppError(401, "Unauthorized, please log in");
+      return next(error);
     }
 
     const decoded = jwt.verify(

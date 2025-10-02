@@ -5,6 +5,7 @@ import { cookieOptions } from "@/shared/constants";
 import { CartService } from "../cart/cart.service";
 import { CartRepository } from "../cart/cart.repository";
 import handleSocialLogin from "@/shared/utils/auth/handleSocialLogin";
+import eskizSMSService from "../sms/eskiz.service";
 
 const router = express.Router();
 const authController = makeAuthController();
@@ -321,5 +322,182 @@ router.post("/reset-password", authController.resetPassword);
  *         description: User successfully signed out.
  */
 router.get("/sign-out", authController.signout);
+
+/**
+ * @swagger
+ * /send-otp:
+ *   post:
+ *     summary: Send SMS OTP
+ *     description: Sends an OTP code to the provided phone number for verification.
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               phone:
+ *                 type: string
+ *                 description: User's phone number in +998XXXXXXXXX format.
+ *     responses:
+ *       200:
+ *         description: OTP sent successfully.
+ *       400:
+ *         description: Invalid phone number or SMS service error.
+ */
+router.post("/send-otp", async (req, res) => {
+  try {
+    const { phone } = req.body;
+    
+    if (!phone) {
+      return res.status(400).json({
+        success: false,
+        message: "Telefon raqami kiritilmagan"
+      });
+    }
+
+    const result = await eskizSMSService.sendOTP({ phone });
+    
+    if (result.success) {
+      res.json({
+        success: true,
+        message: "SMS kod yuborildi",
+        // Development muhitida kodni qaytarish (production da olib tashlash kerak)
+        ...(process.env.NODE_ENV === 'development' && { code: result.code })
+      });
+    } else {
+      res.status(400).json({
+        success: false,
+        message: result.error || "SMS yuborishda xatolik"
+      });
+    }
+  } catch (error: any) {
+    res.status(500).json({
+      success: false,
+      message: "Server xatosi",
+      error: error.message
+    });
+  }
+});
+
+/**
+ * @swagger
+ * /verify-otp:
+ *   post:
+ *     summary: Verify SMS OTP
+ *     description: Verifies the OTP code sent to the user's phone number.
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               phone:
+ *                 type: string
+ *                 description: User's phone number.
+ *               code:
+ *                 type: string
+ *                 description: OTP code received via SMS.
+ *     responses:
+ *       200:
+ *         description: OTP verified successfully.
+ *       400:
+ *         description: Invalid or expired OTP code.
+ */
+router.post("/verify-otp", async (req, res) => {
+  try {
+    const { phone, code } = req.body;
+    
+    if (!phone || !code) {
+      return res.status(400).json({
+        success: false,
+        message: "Telefon raqami va kod kiritilishi shart"
+      });
+    }
+
+    const isValid = await eskizSMSService.verifyOTP(phone, code);
+    
+    if (isValid) {
+      res.json({
+        success: true,
+        message: "Kod tasdiqlandi"
+      });
+    } else {
+      res.status(400).json({
+        success: false,
+        message: "Noto'g'ri yoki muddati tugagan kod"
+      });
+    }
+  } catch (error: any) {
+    res.status(500).json({
+      success: false,
+      message: "Server xatosi",
+      error: error.message
+    });
+  }
+});
+
+/**
+ * @swagger
+ * /phone-signup:
+ *   post:
+ *     summary: Register with phone number
+ *     description: Register a new user using phone number and OTP verification.
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               phone:
+ *                 type: string
+ *                 description: User's phone number.
+ *               code:
+ *                 type: string
+ *                 description: Verified OTP code.
+ *               fullName:
+ *                 type: string
+ *                 description: User's full name.
+ *               password:
+ *                 type: string
+ *                 description: User's password (optional for phone registration).
+ *     responses:
+ *       201:
+ *         description: User registered successfully.
+ *       400:
+ *         description: Invalid data or OTP not verified.
+ */
+// TODO: Uncomment after adding phone field to Prisma schema
+// router.post("/phone-signup", authController.phoneSignup);
+
+/**
+ * @swagger
+ * /phone-signin:
+ *   post:
+ *     summary: Sign in with phone number
+ *     description: Sign in using phone number and OTP verification.
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               phone:
+ *                 type: string
+ *                 description: User's phone number.
+ *               code:
+ *                 type: string
+ *                 description: OTP code received via SMS.
+ *     responses:
+ *       200:
+ *         description: User signed in successfully.
+ *       400:
+ *         description: Invalid phone number or OTP code.
+ */
+// TODO: Uncomment after adding phone field to Prisma schema
+// router.post("/phone-signin", authController.phoneSignin);
 
 export default router;

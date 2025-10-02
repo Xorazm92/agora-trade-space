@@ -105,15 +105,19 @@ const globalError = async (
   const start = Date.now();
   const end = Date.now();
 
-  // 🛠️ Logs Service Integration
-  await logsService.error(`Error: ${error.message}`, {
-    statusCode: error.statusCode,
-    stack: err.stack,
-    method: req.method,
-    url: req.originalUrl,
-    userId: (req as any)?.user?.id || null,
-    timePeriod: end - start,
-  });
+  // 🛠️ Logs Service Integration - temporarily disabled
+  // try {
+  //   await logsService.error(`Error: ${error.message}`, {
+  //     statusCode: error.statusCode,
+  //     stack: err.stack,
+  //     method: req.method,
+  //     url: req.originalUrl,
+  //     userId: (req as any)?.user?.id || null,
+  //     timePeriod: end - start,
+  //   });
+  // } catch (logError) {
+  //   console.error("Failed to log error:", logError);
+  // }
 
   // 📤 Error Response
   res.status(error.statusCode || 500).json({

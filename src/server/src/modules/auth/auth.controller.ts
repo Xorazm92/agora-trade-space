@@ -8,6 +8,7 @@ import { tokenUtils } from "@/shared/utils/authUtils";
 import AppError from "@/shared/errors/AppError";
 import { CartService } from "../cart/cart.service";
 import { makeLogsService } from "../logs/logs.factory";
+import eskizSMSService from "../sms/eskiz.service";
 
 const { ...clearCookieOptions } = cookieOptions;
 
@@ -189,4 +190,112 @@ export class AuthController {
       });
     }
   );
+
+  // TODO: Uncomment after adding phone field to Prisma schema
+  /*
+  phoneSignup = asyncHandler(async (req: Request, res: Response): Promise<void> => {
+    const start = Date.now();
+    const { phone, code, fullName, password } = req.body;
+
+    // OTP kodni tekshirish
+    const isValidOTP = await eskizSMSService.verifyOTP(phone, code);
+    if (!isValidOTP) {
+      throw new AppError(400, "Noto'g'ri yoki muddati tugagan kod");
+    }
+
+    // Telefon raqami bilan foydalanuvchi mavjudligini tekshirish
+    const existingUser = await this.authService.findUserByPhone(phone);
+    if (existingUser) {
+      throw new AppError(400, "Bu telefon raqami bilan foydalanuvchi allaqachon ro'yxatdan o'tgan");
+    }
+
+    // Yangi foydalanuvchi yaratish
+    const { user, accessToken, refreshToken } = await this.authService.registerUserWithPhone({
+      phone,
+      name: fullName,
+      password: password || undefined, // Parol ixtiyoriy
+    });
+
+    res.cookie("refreshToken", refreshToken, cookieOptions);
+    res.cookie("accessToken", accessToken, cookieOptions);
+
+    const userId = user.id;
+    const sessionId = req.session.id;
+
+    await this.cartService?.mergeCartsOnLogin(sessionId, userId);
+
+    sendResponse(res, 201, {
+      message: "Foydalanuvchi muvaffaqiyatli ro'yxatdan o'tdi",
+      data: {
+        user: {
+          id: user.id,
+          name: user.name,
+          phone: user.phone,
+          role: user.role,
+          avatar: user.avatar || null,
+        },
+      },
+    });
+
+    const end = Date.now();
+    this.logsService.info("Phone Signup", {
+      userId: user.id,
+      phone: phone,
+      sessionId: req.session.id,
+      timePeriod: end - start,
+    });
+  });
+  */
+
+  // TODO: Uncomment after adding phone field to Prisma schema
+  /*
+  phoneSignin = asyncHandler(async (req: Request, res: Response): Promise<void> => {
+    const start = Date.now();
+    const { phone, code } = req.body;
+
+    // OTP kodni tekshirish
+    const isValidOTP = await eskizSMSService.verifyOTP(phone, code);
+    if (!isValidOTP) {
+      throw new AppError(400, "Noto'g'ri yoki muddati tugagan kod");
+    }
+
+    // Telefon raqami bilan foydalanuvchini topish
+    const user = await this.authService.findUserByPhone(phone);
+    if (!user) {
+      throw new AppError(404, "Bu telefon raqami bilan foydalanuvchi topilmadi");
+    }
+
+    // Token yaratish
+    const { accessToken, refreshToken } = await this.authService.generateTokensForUser(user);
+
+    res.cookie("refreshToken", refreshToken, cookieOptions);
+    res.cookie("accessToken", accessToken, cookieOptions);
+
+    const userId = user.id;
+    const sessionId = req.session.id;
+
+    await this.cartService?.mergeCartsOnLogin(sessionId, userId);
+
+    sendResponse(res, 200, {
+      message: "Muvaffaqiyatli tizimga kirildi",
+      data: {
+        user: {
+          id: user.id,
+          name: user.name,
+          phone: user.phone,
+          role: user.role,
+          avatar: user.avatar || null,
+        },
+      },
+    });
+
+    const end = Date.now();
+    this.logsService.info("Phone Signin", {
+      userId: user.id,
+      phone: phone,
+      sessionId: req.session.id,
+      timePeriod: end - start,
+    });
+  });
+  */
 }

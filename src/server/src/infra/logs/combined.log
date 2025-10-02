@@ -1001,3 +1001,735 @@
 [2025-10-02T16:07:07.214Z] [32MINFO[39M: ::1 - - [02/Oct/2025:16:07:07 +0000] "POST /api/v1/graphql HTTP/1.1" 200 778 "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
 [2025-10-02T16:07:07.225Z] [32MINFO[39M: ::1 - - [02/Oct/2025:16:07:07 +0000] "GET /api/v1/cart/count HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
 [2025-10-02T16:07:07.533Z] [32MINFO[39M: ::1 - - [02/Oct/2025:16:07:07 +0000] "GET /api/v1/categories HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T18:34:26.271Z] [32MINFO[39M: ::1 - - [02/Oct/2025:18:34:26 +0000] "GET /api/v1/users/me HTTP/1.1" 404 154 "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T18:42:48.858Z] [31MERROR[39M: Unauthorized, please log in
+[2025-10-02T19:22:48.970Z] [31MERROR[39M: Unauthorized, please log in
+[2025-10-02T19:52:39.487Z] [31MERROR[39M: Unauthorized, please log in
+[2025-10-02T20:10:11.088Z] [32MINFO[39M: ::1 - - [02/Oct/2025:20:10:11 +0000] "POST /api/v1/graphql HTTP/1.1" 200 32 "-" "curl/8.5.0"
+[2025-10-02T20:10:39.110Z] [31MERROR[39M: Unauthorized, please log in
+[2025-10-02T20:38:03.388Z] [32MINFO[39M: ::1 - - [02/Oct/2025:20:38:03 +0000] "POST /api/v1/graphql HTTP/1.1" 200 32 "-" "curl/8.5.0"
+[2025-10-02T20:40:57.872Z] [31MERROR[39M: Unauthorized, please log in
+[2025-10-02T20:49:33.652Z] [32MINFO[39M: ::1 - - [02/Oct/2025:20:49:33 +0000] "POST /api/v1/graphql HTTP/1.1" 200 32 "-" "curl/8.5.0"
+[2025-10-02T20:49:53.172Z] [31MERROR[39M: Unauthorized, please log in
+[2025-10-02T20:49:53.175Z] [32MINFO[39M: ::1 - - [02/Oct/2025:20:49:53 +0000] "GET /api/v1/users/me HTTP/1.1" 401 1058 "-" "curl/8.5.0"
+[2025-10-02T20:50:20.316Z] [31MERROR[39M: Unauthorized, please log in
+[2025-10-02T20:50:20.325Z] [32MINFO[39M: ::1 - - [02/Oct/2025:20:50:20 +0000] "GET /api/v1/users/me HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T20:50:20.334Z] [31MERROR[39M: Refresh token not found
+[2025-10-02T20:50:20.340Z] [32MINFO[39M: ::1 - - [02/Oct/2025:20:50:20 +0000] "POST /api/v1/auth/refresh-token HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T20:50:20.418Z] [32MINFO[39M: ::1 - - [02/Oct/2025:20:50:20 +0000] "POST /api/v1/graphql HTTP/1.1" 200 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T20:50:20.520Z] [32MINFO[39M: ::1 - - [02/Oct/2025:20:50:20 +0000] "POST /api/v1/graphql HTTP/1.1" 200 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T20:50:20.523Z] [31MERROR[39M: Prisma error: 
+Invalid `prisma.cart.findUnique()` invocation in
+/home/ctrl/ecommerce-main/src/server/src/modules/cart/cart.repository.ts:30:36
+
+  27 console.log("🔍 [CART REPOSITORY] getCartBySessionId called");
+  28 console.log("🔍 [CART REPOSITORY] sessionId:", sessionId);
+  29 
+→ 30 const cart = await prisma.cart.findUnique(
+The table `public.Cart` does not exist in the current database.
+[2025-10-02T20:50:20.528Z] [32MINFO[39M: ::1 - - [02/Oct/2025:20:50:20 +0000] "GET /api/v1/cart/count HTTP/1.1" 400 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T20:50:20.795Z] [31MERROR[39M: Prisma error: 
+Invalid `prisma.category.findMany()` invocation in
+/home/ctrl/ecommerce-main/src/server/src/modules/category/category.repository.ts:12:28
+
+   9   includeProducts?: boolean;
+  10 }) {
+  11   const { where, orderBy, skip, take, includeProducts } = params;
+→ 12   return prisma.category.findMany(
+The table `public.Category` does not exist in the current database.
+[2025-10-02T20:50:20.798Z] [32MINFO[39M: ::1 - - [02/Oct/2025:20:50:20 +0000] "GET /api/v1/categories HTTP/1.1" 400 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T20:53:07.864Z] [31MERROR[39M: Prisma error: 
+Invalid `prisma.cart.findUnique()` invocation in
+/home/ctrl/ecommerce-main/src/server/src/modules/cart/cart.repository.ts:30:36
+
+  27 console.log("🔍 [CART REPOSITORY] getCartBySessionId called");
+  28 console.log("🔍 [CART REPOSITORY] sessionId:", sessionId);
+  29 
+→ 30 const cart = await prisma.cart.findUnique(
+The table `public.Cart` does not exist in the current database.
+[2025-10-02T20:53:07.888Z] [31MERROR[39M: Prisma error: 
+Invalid `prisma.cart.findUnique()` invocation in
+/home/ctrl/ecommerce-main/src/server/src/modules/cart/cart.repository.ts:30:36
+
+  27 console.log("🔍 [CART REPOSITORY] getCartBySessionId called");
+  28 console.log("🔍 [CART REPOSITORY] sessionId:", sessionId);
+  29 
+→ 30 const cart = await prisma.cart.findUnique(
+The table `public.Cart` does not exist in the current database.
+[2025-10-02T20:53:07.890Z] [32MINFO[39M: ::1 - - [02/Oct/2025:20:53:07 +0000] "GET /api/v1/cart/count HTTP/1.1" 400 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T20:53:07.898Z] [32MINFO[39M: ::1 - - [02/Oct/2025:20:53:07 +0000] "GET /api/v1/cart/count HTTP/1.1" 400 - "http://127.0.0.1:40469/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T20:53:07.905Z] [31MERROR[39M: Prisma error: 
+Invalid `prisma.cart.findUnique()` invocation in
+/home/ctrl/ecommerce-main/src/server/src/modules/cart/cart.repository.ts:30:36
+
+  27 console.log("🔍 [CART REPOSITORY] getCartBySessionId called");
+  28 console.log("🔍 [CART REPOSITORY] sessionId:", sessionId);
+  29 
+→ 30 const cart = await prisma.cart.findUnique(
+The table `public.Cart` does not exist in the current database.
+[2025-10-02T20:53:07.918Z] [32MINFO[39M: ::1 - - [02/Oct/2025:20:53:07 +0000] "GET /api/v1/cart/count HTTP/1.1" 400 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T20:53:07.921Z] [31MERROR[39M: Prisma error: 
+Invalid `prisma.cart.findUnique()` invocation in
+/home/ctrl/ecommerce-main/src/server/src/modules/cart/cart.repository.ts:30:36
+
+  27 console.log("🔍 [CART REPOSITORY] getCartBySessionId called");
+  28 console.log("🔍 [CART REPOSITORY] sessionId:", sessionId);
+  29 
+→ 30 const cart = await prisma.cart.findUnique(
+The table `public.Cart` does not exist in the current database.
+[2025-10-02T20:53:07.929Z] [32MINFO[39M: ::1 - - [02/Oct/2025:20:53:07 +0000] "GET /api/v1/cart/count HTTP/1.1" 400 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T20:53:14.036Z] [31MERROR[39M: Prisma error: 
+Invalid `prisma.cart.findUnique()` invocation in
+/home/ctrl/ecommerce-main/src/server/src/modules/cart/cart.repository.ts:30:36
+
+  27 console.log("🔍 [CART REPOSITORY] getCartBySessionId called");
+  28 console.log("🔍 [CART REPOSITORY] sessionId:", sessionId);
+  29 
+→ 30 const cart = await prisma.cart.findUnique(
+The table `public.Cart` does not exist in the current database.
+[2025-10-02T20:53:14.057Z] [31MERROR[39M: Prisma error: 
+Invalid `prisma.cart.findUnique()` invocation in
+/home/ctrl/ecommerce-main/src/server/src/modules/cart/cart.repository.ts:30:36
+
+  27 console.log("🔍 [CART REPOSITORY] getCartBySessionId called");
+  28 console.log("🔍 [CART REPOSITORY] sessionId:", sessionId);
+  29 
+→ 30 const cart = await prisma.cart.findUnique(
+The table `public.Cart` does not exist in the current database.
+[2025-10-02T20:53:14.068Z] [32MINFO[39M: ::1 - - [02/Oct/2025:20:53:14 +0000] "GET /api/v1/cart/count HTTP/1.1" 400 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T20:53:14.088Z] [32MINFO[39M: ::1 - - [02/Oct/2025:20:53:14 +0000] "GET /api/v1/cart/count HTTP/1.1" 400 - "http://127.0.0.1:40469/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T20:53:14.116Z] [31MERROR[39M: Prisma error: 
+Invalid `prisma.cart.findUnique()` invocation in
+/home/ctrl/ecommerce-main/src/server/src/modules/cart/cart.repository.ts:30:36
+
+  27 console.log("🔍 [CART REPOSITORY] getCartBySessionId called");
+  28 console.log("🔍 [CART REPOSITORY] sessionId:", sessionId);
+  29 
+→ 30 const cart = await prisma.cart.findUnique(
+The table `public.Cart` does not exist in the current database.
+[2025-10-02T20:53:14.136Z] [31MERROR[39M: Prisma error: 
+Invalid `prisma.cart.findUnique()` invocation in
+/home/ctrl/ecommerce-main/src/server/src/modules/cart/cart.repository.ts:30:36
+
+  27 console.log("🔍 [CART REPOSITORY] getCartBySessionId called");
+  28 console.log("🔍 [CART REPOSITORY] sessionId:", sessionId);
+  29 
+→ 30 const cart = await prisma.cart.findUnique(
+The table `public.Cart` does not exist in the current database.
+[2025-10-02T20:53:14.161Z] [32MINFO[39M: ::1 - - [02/Oct/2025:20:53:14 +0000] "GET /api/v1/cart/count HTTP/1.1" 400 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T20:53:14.163Z] [32MINFO[39M: ::1 - - [02/Oct/2025:20:53:14 +0000] "GET /api/v1/cart/count HTTP/1.1" 400 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T20:53:22.189Z] [31MERROR[39M: Prisma error: 
+Invalid `prisma.cart.findUnique()` invocation in
+/home/ctrl/ecommerce-main/src/server/src/modules/cart/cart.repository.ts:30:36
+
+  27 console.log("🔍 [CART REPOSITORY] getCartBySessionId called");
+  28 console.log("🔍 [CART REPOSITORY] sessionId:", sessionId);
+  29 
+→ 30 const cart = await prisma.cart.findUnique(
+The table `public.Cart` does not exist in the current database.
+[2025-10-02T20:53:22.195Z] [32MINFO[39M: ::1 - - [02/Oct/2025:20:53:22 +0000] "GET /api/v1/cart/count HTTP/1.1" 400 - "http://127.0.0.1:40469/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T20:53:22.237Z] [31MERROR[39M: Prisma error: 
+Invalid `prisma.cart.findUnique()` invocation in
+/home/ctrl/ecommerce-main/src/server/src/modules/cart/cart.repository.ts:30:36
+
+  27 console.log("🔍 [CART REPOSITORY] getCartBySessionId called");
+  28 console.log("🔍 [CART REPOSITORY] sessionId:", sessionId);
+  29 
+→ 30 const cart = await prisma.cart.findUnique(
+The table `public.Cart` does not exist in the current database.
+[2025-10-02T20:53:22.242Z] [32MINFO[39M: ::1 - - [02/Oct/2025:20:53:22 +0000] "GET /api/v1/cart/count HTTP/1.1" 400 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T20:53:22.246Z] [31MERROR[39M: Prisma error: 
+Invalid `prisma.cart.findUnique()` invocation in
+/home/ctrl/ecommerce-main/src/server/src/modules/cart/cart.repository.ts:30:36
+
+  27 console.log("🔍 [CART REPOSITORY] getCartBySessionId called");
+  28 console.log("🔍 [CART REPOSITORY] sessionId:", sessionId);
+  29 
+→ 30 const cart = await prisma.cart.findUnique(
+The table `public.Cart` does not exist in the current database.
+[2025-10-02T20:53:22.263Z] [32MINFO[39M: ::1 - - [02/Oct/2025:20:53:22 +0000] "GET /api/v1/cart/count HTTP/1.1" 400 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T20:53:22.347Z] [31MERROR[39M: Prisma error: 
+Invalid `prisma.cart.findUnique()` invocation in
+/home/ctrl/ecommerce-main/src/server/src/modules/cart/cart.repository.ts:30:36
+
+  27 console.log("🔍 [CART REPOSITORY] getCartBySessionId called");
+  28 console.log("🔍 [CART REPOSITORY] sessionId:", sessionId);
+  29 
+→ 30 const cart = await prisma.cart.findUnique(
+The table `public.Cart` does not exist in the current database.
+[2025-10-02T20:53:22.377Z] [32MINFO[39M: ::1 - - [02/Oct/2025:20:53:22 +0000] "GET /api/v1/cart/count HTTP/1.1" 400 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T20:53:33.860Z] [31MERROR[39M: Prisma error: 
+Invalid `prisma.cart.findUnique()` invocation in
+/home/ctrl/ecommerce-main/src/server/src/modules/cart/cart.repository.ts:30:36
+
+  27 console.log("🔍 [CART REPOSITORY] getCartBySessionId called");
+  28 console.log("🔍 [CART REPOSITORY] sessionId:", sessionId);
+  29 
+→ 30 const cart = await prisma.cart.findUnique(
+The table `public.Cart` does not exist in the current database.
+[2025-10-02T20:53:33.874Z] [32MINFO[39M: ::1 - - [02/Oct/2025:20:53:33 +0000] "GET /api/v1/cart/count HTTP/1.1" 400 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T20:53:33.875Z] [31MERROR[39M: Prisma error: 
+Invalid `prisma.cart.findUnique()` invocation in
+/home/ctrl/ecommerce-main/src/server/src/modules/cart/cart.repository.ts:30:36
+
+  27 console.log("🔍 [CART REPOSITORY] getCartBySessionId called");
+  28 console.log("🔍 [CART REPOSITORY] sessionId:", sessionId);
+  29 
+→ 30 const cart = await prisma.cart.findUnique(
+The table `public.Cart` does not exist in the current database.
+[2025-10-02T20:53:33.878Z] [32MINFO[39M: ::1 - - [02/Oct/2025:20:53:33 +0000] "GET /api/v1/cart/count HTTP/1.1" 400 - "http://127.0.0.1:40469/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T20:53:33.897Z] [31MERROR[39M: Prisma error: 
+Invalid `prisma.cart.findUnique()` invocation in
+/home/ctrl/ecommerce-main/src/server/src/modules/cart/cart.repository.ts:30:36
+
+  27 console.log("🔍 [CART REPOSITORY] getCartBySessionId called");
+  28 console.log("🔍 [CART REPOSITORY] sessionId:", sessionId);
+  29 
+→ 30 const cart = await prisma.cart.findUnique(
+The table `public.Cart` does not exist in the current database.
+[2025-10-02T20:53:33.904Z] [32MINFO[39M: ::1 - - [02/Oct/2025:20:53:33 +0000] "GET /api/v1/cart/count HTTP/1.1" 400 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T20:53:33.929Z] [31MERROR[39M: Prisma error: 
+Invalid `prisma.cart.findUnique()` invocation in
+/home/ctrl/ecommerce-main/src/server/src/modules/cart/cart.repository.ts:30:36
+
+  27 console.log("🔍 [CART REPOSITORY] getCartBySessionId called");
+  28 console.log("🔍 [CART REPOSITORY] sessionId:", sessionId);
+  29 
+→ 30 const cart = await prisma.cart.findUnique(
+The table `public.Cart` does not exist in the current database.
+[2025-10-02T20:53:33.936Z] [32MINFO[39M: ::1 - - [02/Oct/2025:20:53:33 +0000] "GET /api/v1/cart/count HTTP/1.1" 400 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T20:53:43.360Z] [31MERROR[39M: Prisma error: 
+Invalid `prisma.cart.findUnique()` invocation in
+/home/ctrl/ecommerce-main/src/server/src/modules/cart/cart.repository.ts:30:36
+
+  27 console.log("🔍 [CART REPOSITORY] getCartBySessionId called");
+  28 console.log("🔍 [CART REPOSITORY] sessionId:", sessionId);
+  29 
+→ 30 const cart = await prisma.cart.findUnique(
+The table `public.Cart` does not exist in the current database.
+[2025-10-02T20:53:43.362Z] [32MINFO[39M: ::1 - - [02/Oct/2025:20:53:43 +0000] "GET /api/v1/cart/count HTTP/1.1" 400 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T20:53:43.379Z] [31MERROR[39M: Prisma error: 
+Invalid `prisma.cart.findUnique()` invocation in
+/home/ctrl/ecommerce-main/src/server/src/modules/cart/cart.repository.ts:30:36
+
+  27 console.log("🔍 [CART REPOSITORY] getCartBySessionId called");
+  28 console.log("🔍 [CART REPOSITORY] sessionId:", sessionId);
+  29 
+→ 30 const cart = await prisma.cart.findUnique(
+The table `public.Cart` does not exist in the current database.
+[2025-10-02T20:53:43.382Z] [32MINFO[39M: ::1 - - [02/Oct/2025:20:53:43 +0000] "GET /api/v1/cart/count HTTP/1.1" 400 - "http://127.0.0.1:40469/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T20:53:43.404Z] [31MERROR[39M: Prisma error: 
+Invalid `prisma.cart.findUnique()` invocation in
+/home/ctrl/ecommerce-main/src/server/src/modules/cart/cart.repository.ts:30:36
+
+  27 console.log("🔍 [CART REPOSITORY] getCartBySessionId called");
+  28 console.log("🔍 [CART REPOSITORY] sessionId:", sessionId);
+  29 
+→ 30 const cart = await prisma.cart.findUnique(
+The table `public.Cart` does not exist in the current database.
+[2025-10-02T20:53:43.412Z] [32MINFO[39M: ::1 - - [02/Oct/2025:20:53:43 +0000] "GET /api/v1/cart/count HTTP/1.1" 400 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T20:53:43.427Z] [31MERROR[39M: Prisma error: 
+Invalid `prisma.cart.findUnique()` invocation in
+/home/ctrl/ecommerce-main/src/server/src/modules/cart/cart.repository.ts:30:36
+
+  27 console.log("🔍 [CART REPOSITORY] getCartBySessionId called");
+  28 console.log("🔍 [CART REPOSITORY] sessionId:", sessionId);
+  29 
+→ 30 const cart = await prisma.cart.findUnique(
+The table `public.Cart` does not exist in the current database.
+[2025-10-02T20:53:43.430Z] [32MINFO[39M: ::1 - - [02/Oct/2025:20:53:43 +0000] "GET /api/v1/cart/count HTTP/1.1" 400 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T20:53:51.045Z] [31MERROR[39M: Prisma error: 
+Invalid `prisma.cart.findUnique()` invocation in
+/home/ctrl/ecommerce-main/src/server/src/modules/cart/cart.repository.ts:30:36
+
+  27 console.log("🔍 [CART REPOSITORY] getCartBySessionId called");
+  28 console.log("🔍 [CART REPOSITORY] sessionId:", sessionId);
+  29 
+→ 30 const cart = await prisma.cart.findUnique(
+The table `public.Cart` does not exist in the current database.
+[2025-10-02T20:53:51.090Z] [32MINFO[39M: ::1 - - [02/Oct/2025:20:53:51 +0000] "GET /api/v1/cart/count HTTP/1.1" 400 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T20:53:51.093Z] [31MERROR[39M: Prisma error: 
+Invalid `prisma.cart.findUnique()` invocation in
+/home/ctrl/ecommerce-main/src/server/src/modules/cart/cart.repository.ts:30:36
+
+  27 console.log("🔍 [CART REPOSITORY] getCartBySessionId called");
+  28 console.log("🔍 [CART REPOSITORY] sessionId:", sessionId);
+  29 
+→ 30 const cart = await prisma.cart.findUnique(
+The table `public.Cart` does not exist in the current database.
+[2025-10-02T20:53:51.106Z] [31MERROR[39M: Prisma error: 
+Invalid `prisma.cart.findUnique()` invocation in
+/home/ctrl/ecommerce-main/src/server/src/modules/cart/cart.repository.ts:30:36
+
+  27 console.log("🔍 [CART REPOSITORY] getCartBySessionId called");
+  28 console.log("🔍 [CART REPOSITORY] sessionId:", sessionId);
+  29 
+→ 30 const cart = await prisma.cart.findUnique(
+The table `public.Cart` does not exist in the current database.
+[2025-10-02T20:53:51.109Z] [32MINFO[39M: ::1 - - [02/Oct/2025:20:53:51 +0000] "GET /api/v1/cart/count HTTP/1.1" 400 - "http://127.0.0.1:40469/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T20:53:51.111Z] [31MERROR[39M: Prisma error: 
+Invalid `prisma.cart.findUnique()` invocation in
+/home/ctrl/ecommerce-main/src/server/src/modules/cart/cart.repository.ts:30:36
+
+  27 console.log("🔍 [CART REPOSITORY] getCartBySessionId called");
+  28 console.log("🔍 [CART REPOSITORY] sessionId:", sessionId);
+  29 
+→ 30 const cart = await prisma.cart.findUnique(
+The table `public.Cart` does not exist in the current database.
+[2025-10-02T20:53:51.115Z] [32MINFO[39M: ::1 - - [02/Oct/2025:20:53:51 +0000] "GET /api/v1/cart/count HTTP/1.1" 400 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T20:53:51.118Z] [32MINFO[39M: ::1 - - [02/Oct/2025:20:53:51 +0000] "GET /api/v1/cart/count HTTP/1.1" 400 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T20:54:02.745Z] [31MERROR[39M: Prisma error: 
+Invalid `prisma.cart.findUnique()` invocation in
+/home/ctrl/ecommerce-main/src/server/src/modules/cart/cart.repository.ts:30:36
+
+  27 console.log("🔍 [CART REPOSITORY] getCartBySessionId called");
+  28 console.log("🔍 [CART REPOSITORY] sessionId:", sessionId);
+  29 
+→ 30 const cart = await prisma.cart.findUnique(
+The table `public.Cart` does not exist in the current database.
+[2025-10-02T20:54:02.747Z] [32MINFO[39M: ::1 - - [02/Oct/2025:20:54:02 +0000] "GET /api/v1/cart/count HTTP/1.1" 400 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T20:54:02.792Z] [31MERROR[39M: Prisma error: 
+Invalid `prisma.cart.findUnique()` invocation in
+/home/ctrl/ecommerce-main/src/server/src/modules/cart/cart.repository.ts:30:36
+
+  27 console.log("🔍 [CART REPOSITORY] getCartBySessionId called");
+  28 console.log("🔍 [CART REPOSITORY] sessionId:", sessionId);
+  29 
+→ 30 const cart = await prisma.cart.findUnique(
+The table `public.Cart` does not exist in the current database.
+[2025-10-02T20:54:02.797Z] [32MINFO[39M: ::1 - - [02/Oct/2025:20:54:02 +0000] "GET /api/v1/cart/count HTTP/1.1" 400 - "http://127.0.0.1:40469/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T20:54:02.805Z] [31MERROR[39M: Prisma error: 
+Invalid `prisma.cart.findUnique()` invocation in
+/home/ctrl/ecommerce-main/src/server/src/modules/cart/cart.repository.ts:30:36
+
+  27 console.log("🔍 [CART REPOSITORY] getCartBySessionId called");
+  28 console.log("🔍 [CART REPOSITORY] sessionId:", sessionId);
+  29 
+→ 30 const cart = await prisma.cart.findUnique(
+The table `public.Cart` does not exist in the current database.
+[2025-10-02T20:54:02.813Z] [32MINFO[39M: ::1 - - [02/Oct/2025:20:54:02 +0000] "GET /api/v1/cart/count HTTP/1.1" 400 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T20:54:02.815Z] [31MERROR[39M: Prisma error: 
+Invalid `prisma.cart.findUnique()` invocation in
+/home/ctrl/ecommerce-main/src/server/src/modules/cart/cart.repository.ts:30:36
+
+  27 console.log("🔍 [CART REPOSITORY] getCartBySessionId called");
+  28 console.log("🔍 [CART REPOSITORY] sessionId:", sessionId);
+  29 
+→ 30 const cart = await prisma.cart.findUnique(
+The table `public.Cart` does not exist in the current database.
+[2025-10-02T20:54:02.818Z] [32MINFO[39M: ::1 - - [02/Oct/2025:20:54:02 +0000] "GET /api/v1/cart/count HTTP/1.1" 400 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T20:54:18.979Z] [31MERROR[39M: Prisma error: 
+Invalid `prisma.cart.findUnique()` invocation in
+/home/ctrl/ecommerce-main/src/server/src/modules/cart/cart.repository.ts:30:36
+
+  27 console.log("🔍 [CART REPOSITORY] getCartBySessionId called");
+  28 console.log("🔍 [CART REPOSITORY] sessionId:", sessionId);
+  29 
+→ 30 const cart = await prisma.cart.findUnique(
+The table `public.Cart` does not exist in the current database.
+[2025-10-02T20:54:18.986Z] [31MERROR[39M: Prisma error: 
+Invalid `prisma.cart.findUnique()` invocation in
+/home/ctrl/ecommerce-main/src/server/src/modules/cart/cart.repository.ts:30:36
+
+  27 console.log("🔍 [CART REPOSITORY] getCartBySessionId called");
+  28 console.log("🔍 [CART REPOSITORY] sessionId:", sessionId);
+  29 
+→ 30 const cart = await prisma.cart.findUnique(
+The table `public.Cart` does not exist in the current database.
+[2025-10-02T20:54:18.995Z] [32MINFO[39M: ::1 - - [02/Oct/2025:20:54:18 +0000] "GET /api/v1/cart/count HTTP/1.1" 400 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T20:54:18.996Z] [32MINFO[39M: ::1 - - [02/Oct/2025:20:54:18 +0000] "GET /api/v1/cart/count HTTP/1.1" 400 - "http://127.0.0.1:40469/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T20:54:19.013Z] [31MERROR[39M: Prisma error: 
+Invalid `prisma.cart.findUnique()` invocation in
+/home/ctrl/ecommerce-main/src/server/src/modules/cart/cart.repository.ts:30:36
+
+  27 console.log("🔍 [CART REPOSITORY] getCartBySessionId called");
+  28 console.log("🔍 [CART REPOSITORY] sessionId:", sessionId);
+  29 
+→ 30 const cart = await prisma.cart.findUnique(
+The table `public.Cart` does not exist in the current database.
+[2025-10-02T20:54:19.017Z] [32MINFO[39M: ::1 - - [02/Oct/2025:20:54:19 +0000] "GET /api/v1/cart/count HTTP/1.1" 400 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T20:54:19.028Z] [31MERROR[39M: Prisma error: 
+Invalid `prisma.cart.findUnique()` invocation in
+/home/ctrl/ecommerce-main/src/server/src/modules/cart/cart.repository.ts:30:36
+
+  27 console.log("🔍 [CART REPOSITORY] getCartBySessionId called");
+  28 console.log("🔍 [CART REPOSITORY] sessionId:", sessionId);
+  29 
+→ 30 const cart = await prisma.cart.findUnique(
+The table `public.Cart` does not exist in the current database.
+[2025-10-02T20:54:19.030Z] [32MINFO[39M: ::1 - - [02/Oct/2025:20:54:19 +0000] "GET /api/v1/cart/count HTTP/1.1" 400 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T20:54:50.959Z] [32MINFO[39M: ::1 - - [02/Oct/2025:20:54:50 +0000] "POST /api/v1/graphql HTTP/1.1" 200 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T20:54:50.994Z] [32MINFO[39M: ::1 - - [02/Oct/2025:20:54:50 +0000] "POST /api/v1/graphql HTTP/1.1" 200 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T20:54:50.994Z] [32MINFO[39M: ::1 - - [02/Oct/2025:20:54:50 +0000] "POST /api/v1/graphql HTTP/1.1" 200 - "http://127.0.0.1:40469/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T20:54:51.021Z] [32MINFO[39M: ::1 - - [02/Oct/2025:20:54:51 +0000] "POST /api/v1/graphql HTTP/1.1" 200 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T20:57:23.399Z] [31MERROR[39M: Prisma error: 
+Invalid `prisma.category.findMany()` invocation in
+/home/ctrl/ecommerce-main/src/server/src/modules/category/category.repository.ts:12:28
+
+   9   includeProducts?: boolean;
+  10 }) {
+  11   const { where, orderBy, skip, take, includeProducts } = params;
+→ 12   return prisma.category.findMany(
+The table `public.Category` does not exist in the current database.
+[2025-10-02T20:57:23.430Z] [32MINFO[39M: ::1 - - [02/Oct/2025:20:57:23 +0000] "GET /api/v1/categories HTTP/1.1" 400 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T20:57:31.517Z] [31MERROR[39M: Prisma error: 
+Invalid `prisma.category.findMany()` invocation in
+/home/ctrl/ecommerce-main/src/server/src/modules/category/category.repository.ts:12:28
+
+   9   includeProducts?: boolean;
+  10 }) {
+  11   const { where, orderBy, skip, take, includeProducts } = params;
+→ 12   return prisma.category.findMany(
+The table `public.Category` does not exist in the current database.
+[2025-10-02T20:57:31.523Z] [31MERROR[39M: Prisma error: 
+Invalid `prisma.category.findMany()` invocation in
+/home/ctrl/ecommerce-main/src/server/src/modules/category/category.repository.ts:12:28
+
+   9   includeProducts?: boolean;
+  10 }) {
+  11   const { where, orderBy, skip, take, includeProducts } = params;
+→ 12   return prisma.category.findMany(
+The table `public.Category` does not exist in the current database.
+[2025-10-02T20:57:31.526Z] [32MINFO[39M: ::1 - - [02/Oct/2025:20:57:31 +0000] "GET /api/v1/categories HTTP/1.1" 400 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T20:57:31.532Z] [32MINFO[39M: ::1 - - [02/Oct/2025:20:57:31 +0000] "GET /api/v1/categories HTTP/1.1" 400 - "http://127.0.0.1:40469/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T20:57:31.578Z] [31MERROR[39M: Prisma error: 
+Invalid `prisma.category.findMany()` invocation in
+/home/ctrl/ecommerce-main/src/server/src/modules/category/category.repository.ts:12:28
+
+   9   includeProducts?: boolean;
+  10 }) {
+  11   const { where, orderBy, skip, take, includeProducts } = params;
+→ 12   return prisma.category.findMany(
+The table `public.Category` does not exist in the current database.
+[2025-10-02T20:57:31.581Z] [32MINFO[39M: ::1 - - [02/Oct/2025:20:57:31 +0000] "GET /api/v1/categories HTTP/1.1" 400 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T20:57:31.682Z] [31MERROR[39M: Prisma error: 
+Invalid `prisma.category.findMany()` invocation in
+/home/ctrl/ecommerce-main/src/server/src/modules/category/category.repository.ts:12:28
+
+   9   includeProducts?: boolean;
+  10 }) {
+  11   const { where, orderBy, skip, take, includeProducts } = params;
+→ 12   return prisma.category.findMany(
+The table `public.Category` does not exist in the current database.
+[2025-10-02T20:57:31.684Z] [32MINFO[39M: ::1 - - [02/Oct/2025:20:57:31 +0000] "GET /api/v1/categories HTTP/1.1" 400 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T20:57:32.297Z] [31MERROR[39M: Prisma error: 
+Invalid `prisma.category.findMany()` invocation in
+/home/ctrl/ecommerce-main/src/server/src/modules/category/category.repository.ts:12:28
+
+   9   includeProducts?: boolean;
+  10 }) {
+  11   const { where, orderBy, skip, take, includeProducts } = params;
+→ 12   return prisma.category.findMany(
+The table `public.Category` does not exist in the current database.
+[2025-10-02T20:57:32.313Z] [32MINFO[39M: ::1 - - [02/Oct/2025:20:57:32 +0000] "GET /api/v1/categories HTTP/1.1" 400 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T20:57:32.330Z] [31MERROR[39M: Prisma error: 
+Invalid `prisma.category.findMany()` invocation in
+/home/ctrl/ecommerce-main/src/server/src/modules/category/category.repository.ts:12:28
+
+   9   includeProducts?: boolean;
+  10 }) {
+  11   const { where, orderBy, skip, take, includeProducts } = params;
+→ 12   return prisma.category.findMany(
+The table `public.Category` does not exist in the current database.
+[2025-10-02T20:57:32.356Z] [32MINFO[39M: ::1 - - [02/Oct/2025:20:57:32 +0000] "GET /api/v1/categories HTTP/1.1" 400 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T20:57:32.391Z] [31MERROR[39M: Prisma error: 
+Invalid `prisma.category.findMany()` invocation in
+/home/ctrl/ecommerce-main/src/server/src/modules/category/category.repository.ts:12:28
+
+   9   includeProducts?: boolean;
+  10 }) {
+  11   const { where, orderBy, skip, take, includeProducts } = params;
+→ 12   return prisma.category.findMany(
+The table `public.Category` does not exist in the current database.
+[2025-10-02T20:57:32.409Z] [32MINFO[39M: ::1 - - [02/Oct/2025:20:57:32 +0000] "GET /api/v1/categories HTTP/1.1" 400 - "http://127.0.0.1:40469/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T20:57:32.515Z] [31MERROR[39M: Prisma error: 
+Invalid `prisma.category.findMany()` invocation in
+/home/ctrl/ecommerce-main/src/server/src/modules/category/category.repository.ts:12:28
+
+   9   includeProducts?: boolean;
+  10 }) {
+  11   const { where, orderBy, skip, take, includeProducts } = params;
+→ 12   return prisma.category.findMany(
+The table `public.Category` does not exist in the current database.
+[2025-10-02T20:57:32.523Z] [32MINFO[39M: ::1 - - [02/Oct/2025:20:57:32 +0000] "GET /api/v1/categories HTTP/1.1" 400 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T21:08:55.748Z] [31MERROR[39M: Unauthorized, please log in
+[2025-10-02T21:08:55.750Z] [32MINFO[39M: ::1 - - [02/Oct/2025:21:08:55 +0000] "GET /api/v1/users/me HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T21:08:55.764Z] [32MINFO[39M: ::1 - - [02/Oct/2025:21:08:55 +0000] "POST /api/v1/graphql HTTP/1.1" 200 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T21:08:55.764Z] [32MINFO[39M: ::1 - - [02/Oct/2025:21:08:55 +0000] "POST /api/v1/graphql HTTP/1.1" 200 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T21:08:55.770Z] [31MERROR[39M: Prisma error: 
+Invalid `prisma.cart.findUnique()` invocation in
+/home/ctrl/ecommerce-main/src/server/src/modules/cart/cart.repository.ts:30:36
+
+  27 console.log("🔍 [CART REPOSITORY] getCartBySessionId called");
+  28 console.log("🔍 [CART REPOSITORY] sessionId:", sessionId);
+  29 
+→ 30 const cart = await prisma.cart.findUnique(
+The table `public.Cart` does not exist in the current database.
+[2025-10-02T21:08:55.774Z] [31MERROR[39M: Refresh token not found
+[2025-10-02T21:08:55.780Z] [32MINFO[39M: ::1 - - [02/Oct/2025:21:08:55 +0000] "GET /api/v1/cart/count HTTP/1.1" 400 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T21:08:55.783Z] [32MINFO[39M: ::1 - - [02/Oct/2025:21:08:55 +0000] "POST /api/v1/auth/refresh-token HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T21:08:55.843Z] [31MERROR[39M: Prisma error: 
+Invalid `prisma.category.findMany()` invocation in
+/home/ctrl/ecommerce-main/src/server/src/modules/category/category.repository.ts:12:28
+
+   9   includeProducts?: boolean;
+  10 }) {
+  11   const { where, orderBy, skip, take, includeProducts } = params;
+→ 12   return prisma.category.findMany(
+The table `public.Category` does not exist in the current database.
+[2025-10-02T21:08:55.846Z] [32MINFO[39M: ::1 - - [02/Oct/2025:21:08:55 +0000] "GET /api/v1/categories HTTP/1.1" 400 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T21:09:07.757Z] [32MINFO[39M: ::1 - - [02/Oct/2025:21:09:07 +0000] "POST /api/v1/graphql HTTP/1.1" 200 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T21:09:07.761Z] [32MINFO[39M: ::1 - - [02/Oct/2025:21:09:07 +0000] "POST /api/v1/graphql HTTP/1.1" 200 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T21:09:07.807Z] [31MERROR[39M: Unauthorized, please log in
+[2025-10-02T21:09:07.809Z] [31MERROR[39M: Prisma error: 
+Invalid `prisma.cart.findUnique()` invocation in
+/home/ctrl/ecommerce-main/src/server/src/modules/cart/cart.repository.ts:30:36
+
+  27 console.log("🔍 [CART REPOSITORY] getCartBySessionId called");
+  28 console.log("🔍 [CART REPOSITORY] sessionId:", sessionId);
+  29 
+→ 30 const cart = await prisma.cart.findUnique(
+The table `public.Cart` does not exist in the current database.
+[2025-10-02T21:09:07.810Z] [32MINFO[39M: ::1 - - [02/Oct/2025:21:09:07 +0000] "GET /api/v1/users/me HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T21:09:07.811Z] [32MINFO[39M: ::1 - - [02/Oct/2025:21:09:07 +0000] "GET /api/v1/cart/count HTTP/1.1" 400 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T21:09:07.899Z] [31MERROR[39M: Refresh token not found
+[2025-10-02T21:09:07.902Z] [32MINFO[39M: ::1 - - [02/Oct/2025:21:09:07 +0000] "POST /api/v1/auth/refresh-token HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T21:09:08.001Z] [31MERROR[39M: Prisma error: 
+Invalid `prisma.category.findMany()` invocation in
+/home/ctrl/ecommerce-main/src/server/src/modules/category/category.repository.ts:12:28
+
+   9   includeProducts?: boolean;
+  10 }) {
+  11   const { where, orderBy, skip, take, includeProducts } = params;
+→ 12   return prisma.category.findMany(
+The table `public.Category` does not exist in the current database.
+[2025-10-02T21:09:08.006Z] [32MINFO[39M: ::1 - - [02/Oct/2025:21:09:08 +0000] "GET /api/v1/categories HTTP/1.1" 400 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T21:09:11.645Z] [32MINFO[39M: ::1 - - [02/Oct/2025:21:09:11 +0000] "POST /api/v1/graphql HTTP/1.1" 200 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T21:09:11.652Z] [32MINFO[39M: ::1 - - [02/Oct/2025:21:09:11 +0000] "POST /api/v1/graphql HTTP/1.1" 200 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T21:09:11.685Z] [31MERROR[39M: Unauthorized, please log in
+[2025-10-02T21:09:11.689Z] [31MERROR[39M: Prisma error: 
+Invalid `prisma.cart.findUnique()` invocation in
+/home/ctrl/ecommerce-main/src/server/src/modules/cart/cart.repository.ts:30:36
+
+  27 console.log("🔍 [CART REPOSITORY] getCartBySessionId called");
+  28 console.log("🔍 [CART REPOSITORY] sessionId:", sessionId);
+  29 
+→ 30 const cart = await prisma.cart.findUnique(
+The table `public.Cart` does not exist in the current database.
+[2025-10-02T21:09:11.693Z] [32MINFO[39M: ::1 - - [02/Oct/2025:21:09:11 +0000] "GET /api/v1/users/me HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T21:09:11.694Z] [32MINFO[39M: ::1 - - [02/Oct/2025:21:09:11 +0000] "GET /api/v1/cart/count HTTP/1.1" 400 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T21:09:11.761Z] [31MERROR[39M: Refresh token not found
+[2025-10-02T21:09:11.763Z] [32MINFO[39M: ::1 - - [02/Oct/2025:21:09:11 +0000] "POST /api/v1/auth/refresh-token HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T21:09:11.895Z] [31MERROR[39M: Prisma error: 
+Invalid `prisma.category.findMany()` invocation in
+/home/ctrl/ecommerce-main/src/server/src/modules/category/category.repository.ts:12:28
+
+   9   includeProducts?: boolean;
+  10 }) {
+  11   const { where, orderBy, skip, take, includeProducts } = params;
+→ 12   return prisma.category.findMany(
+The table `public.Category` does not exist in the current database.
+[2025-10-02T21:09:11.908Z] [32MINFO[39M: ::1 - - [02/Oct/2025:21:09:11 +0000] "GET /api/v1/categories HTTP/1.1" 400 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T21:09:14.821Z] [32MINFO[39M: ::1 - - [02/Oct/2025:21:09:14 +0000] "POST /api/v1/graphql HTTP/1.1" 200 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T21:09:14.833Z] [32MINFO[39M: ::1 - - [02/Oct/2025:21:09:14 +0000] "POST /api/v1/graphql HTTP/1.1" 200 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T21:09:14.857Z] [31MERROR[39M: Unauthorized, please log in
+[2025-10-02T21:09:14.860Z] [31MERROR[39M: Prisma error: 
+Invalid `prisma.cart.findUnique()` invocation in
+/home/ctrl/ecommerce-main/src/server/src/modules/cart/cart.repository.ts:30:36
+
+  27 console.log("🔍 [CART REPOSITORY] getCartBySessionId called");
+  28 console.log("🔍 [CART REPOSITORY] sessionId:", sessionId);
+  29 
+→ 30 const cart = await prisma.cart.findUnique(
+The table `public.Cart` does not exist in the current database.
+[2025-10-02T21:09:14.864Z] [32MINFO[39M: ::1 - - [02/Oct/2025:21:09:14 +0000] "GET /api/v1/users/me HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T21:09:14.865Z] [32MINFO[39M: ::1 - - [02/Oct/2025:21:09:14 +0000] "GET /api/v1/cart/count HTTP/1.1" 400 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T21:09:14.936Z] [31MERROR[39M: Refresh token not found
+[2025-10-02T21:09:14.941Z] [32MINFO[39M: ::1 - - [02/Oct/2025:21:09:14 +0000] "POST /api/v1/auth/refresh-token HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T21:09:15.021Z] [31MERROR[39M: Prisma error: 
+Invalid `prisma.category.findMany()` invocation in
+/home/ctrl/ecommerce-main/src/server/src/modules/category/category.repository.ts:12:28
+
+   9   includeProducts?: boolean;
+  10 }) {
+  11   const { where, orderBy, skip, take, includeProducts } = params;
+→ 12   return prisma.category.findMany(
+The table `public.Category` does not exist in the current database.
+[2025-10-02T21:09:15.040Z] [32MINFO[39M: ::1 - - [02/Oct/2025:21:09:15 +0000] "GET /api/v1/categories HTTP/1.1" 400 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T21:09:18.190Z] [32MINFO[39M: ::1 - - [02/Oct/2025:21:09:18 +0000] "POST /api/v1/graphql HTTP/1.1" 200 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T21:09:18.195Z] [32MINFO[39M: ::1 - - [02/Oct/2025:21:09:18 +0000] "POST /api/v1/graphql HTTP/1.1" 200 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T21:09:18.218Z] [31MERROR[39M: Unauthorized, please log in
+[2025-10-02T21:09:18.222Z] [31MERROR[39M: Prisma error: 
+Invalid `prisma.cart.findUnique()` invocation in
+/home/ctrl/ecommerce-main/src/server/src/modules/cart/cart.repository.ts:30:36
+
+  27 console.log("🔍 [CART REPOSITORY] getCartBySessionId called");
+  28 console.log("🔍 [CART REPOSITORY] sessionId:", sessionId);
+  29 
+→ 30 const cart = await prisma.cart.findUnique(
+The table `public.Cart` does not exist in the current database.
+[2025-10-02T21:09:18.225Z] [32MINFO[39M: ::1 - - [02/Oct/2025:21:09:18 +0000] "GET /api/v1/users/me HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T21:09:18.226Z] [32MINFO[39M: ::1 - - [02/Oct/2025:21:09:18 +0000] "GET /api/v1/cart/count HTTP/1.1" 400 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T21:09:18.275Z] [31MERROR[39M: Refresh token not found
+[2025-10-02T21:09:18.277Z] [32MINFO[39M: ::1 - - [02/Oct/2025:21:09:18 +0000] "POST /api/v1/auth/refresh-token HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T21:09:18.333Z] [31MERROR[39M: Prisma error: 
+Invalid `prisma.category.findMany()` invocation in
+/home/ctrl/ecommerce-main/src/server/src/modules/category/category.repository.ts:12:28
+
+   9   includeProducts?: boolean;
+  10 }) {
+  11   const { where, orderBy, skip, take, includeProducts } = params;
+→ 12   return prisma.category.findMany(
+The table `public.Category` does not exist in the current database.
+[2025-10-02T21:09:18.336Z] [32MINFO[39M: ::1 - - [02/Oct/2025:21:09:18 +0000] "GET /api/v1/categories HTTP/1.1" 400 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T21:09:23.626Z] [32MINFO[39M: ::1 - - [02/Oct/2025:21:09:23 +0000] "POST /api/v1/graphql HTTP/1.1" 200 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T21:09:23.630Z] [32MINFO[39M: ::1 - - [02/Oct/2025:21:09:23 +0000] "POST /api/v1/graphql HTTP/1.1" 200 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T21:09:23.656Z] [31MERROR[39M: Unauthorized, please log in
+[2025-10-02T21:09:23.662Z] [31MERROR[39M: Prisma error: 
+Invalid `prisma.cart.findUnique()` invocation in
+/home/ctrl/ecommerce-main/src/server/src/modules/cart/cart.repository.ts:30:36
+
+  27 console.log("🔍 [CART REPOSITORY] getCartBySessionId called");
+  28 console.log("🔍 [CART REPOSITORY] sessionId:", sessionId);
+  29 
+→ 30 const cart = await prisma.cart.findUnique(
+The table `public.Cart` does not exist in the current database.
+[2025-10-02T21:09:23.666Z] [32MINFO[39M: ::1 - - [02/Oct/2025:21:09:23 +0000] "GET /api/v1/users/me HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T21:09:23.667Z] [32MINFO[39M: ::1 - - [02/Oct/2025:21:09:23 +0000] "GET /api/v1/cart/count HTTP/1.1" 400 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T21:09:23.789Z] [31MERROR[39M: Prisma error: 
+Invalid `prisma.category.findMany()` invocation in
+/home/ctrl/ecommerce-main/src/server/src/modules/category/category.repository.ts:12:28
+
+   9   includeProducts?: boolean;
+  10 }) {
+  11   const { where, orderBy, skip, take, includeProducts } = params;
+→ 12   return prisma.category.findMany(
+The table `public.Category` does not exist in the current database.
+[2025-10-02T21:09:23.793Z] [32MINFO[39M: ::1 - - [02/Oct/2025:21:09:23 +0000] "GET /api/v1/categories HTTP/1.1" 400 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T21:09:23.807Z] [31MERROR[39M: Refresh token not found
+[2025-10-02T21:09:23.810Z] [32MINFO[39M: ::1 - - [02/Oct/2025:21:09:23 +0000] "POST /api/v1/auth/refresh-token HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T21:09:27.476Z] [32MINFO[39M: ::1 - - [02/Oct/2025:21:09:27 +0000] "POST /api/v1/graphql HTTP/1.1" 200 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T21:09:27.480Z] [32MINFO[39M: ::1 - - [02/Oct/2025:21:09:27 +0000] "POST /api/v1/graphql HTTP/1.1" 200 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T21:09:27.512Z] [31MERROR[39M: Unauthorized, please log in
+[2025-10-02T21:09:27.514Z] [31MERROR[39M: Prisma error: 
+Invalid `prisma.cart.findUnique()` invocation in
+/home/ctrl/ecommerce-main/src/server/src/modules/cart/cart.repository.ts:30:36
+
+  27 console.log("🔍 [CART REPOSITORY] getCartBySessionId called");
+  28 console.log("🔍 [CART REPOSITORY] sessionId:", sessionId);
+  29 
+→ 30 const cart = await prisma.cart.findUnique(
+The table `public.Cart` does not exist in the current database.
+[2025-10-02T21:09:27.516Z] [32MINFO[39M: ::1 - - [02/Oct/2025:21:09:27 +0000] "GET /api/v1/users/me HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T21:09:27.517Z] [32MINFO[39M: ::1 - - [02/Oct/2025:21:09:27 +0000] "GET /api/v1/cart/count HTTP/1.1" 400 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T21:09:27.579Z] [31MERROR[39M: Refresh token not found
+[2025-10-02T21:09:27.580Z] [32MINFO[39M: ::1 - - [02/Oct/2025:21:09:27 +0000] "POST /api/v1/auth/refresh-token HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T21:09:27.650Z] [31MERROR[39M: Prisma error: 
+Invalid `prisma.category.findMany()` invocation in
+/home/ctrl/ecommerce-main/src/server/src/modules/category/category.repository.ts:12:28
+
+   9   includeProducts?: boolean;
+  10 }) {
+  11   const { where, orderBy, skip, take, includeProducts } = params;
+→ 12   return prisma.category.findMany(
+The table `public.Category` does not exist in the current database.
+[2025-10-02T21:09:27.657Z] [32MINFO[39M: ::1 - - [02/Oct/2025:21:09:27 +0000] "GET /api/v1/categories HTTP/1.1" 400 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T21:09:30.695Z] [32MINFO[39M: ::1 - - [02/Oct/2025:21:09:30 +0000] "POST /api/v1/graphql HTTP/1.1" 200 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T21:09:30.703Z] [32MINFO[39M: ::1 - - [02/Oct/2025:21:09:30 +0000] "POST /api/v1/graphql HTTP/1.1" 200 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T21:09:30.738Z] [31MERROR[39M: Unauthorized, please log in
+[2025-10-02T21:09:30.741Z] [31MERROR[39M: Prisma error: 
+Invalid `prisma.cart.findUnique()` invocation in
+/home/ctrl/ecommerce-main/src/server/src/modules/cart/cart.repository.ts:30:36
+
+  27 console.log("🔍 [CART REPOSITORY] getCartBySessionId called");
+  28 console.log("🔍 [CART REPOSITORY] sessionId:", sessionId);
+  29 
+→ 30 const cart = await prisma.cart.findUnique(
+The table `public.Cart` does not exist in the current database.
+[2025-10-02T21:09:30.744Z] [32MINFO[39M: ::1 - - [02/Oct/2025:21:09:30 +0000] "GET /api/v1/users/me HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T21:09:30.744Z] [32MINFO[39M: ::1 - - [02/Oct/2025:21:09:30 +0000] "GET /api/v1/cart/count HTTP/1.1" 400 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T21:09:30.795Z] [31MERROR[39M: Refresh token not found
+[2025-10-02T21:09:30.797Z] [32MINFO[39M: ::1 - - [02/Oct/2025:21:09:30 +0000] "POST /api/v1/auth/refresh-token HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T21:09:30.862Z] [31MERROR[39M: Prisma error: 
+Invalid `prisma.category.findMany()` invocation in
+/home/ctrl/ecommerce-main/src/server/src/modules/category/category.repository.ts:12:28
+
+   9   includeProducts?: boolean;
+  10 }) {
+  11   const { where, orderBy, skip, take, includeProducts } = params;
+→ 12   return prisma.category.findMany(
+The table `public.Category` does not exist in the current database.
+[2025-10-02T21:09:30.867Z] [32MINFO[39M: ::1 - - [02/Oct/2025:21:09:30 +0000] "GET /api/v1/categories HTTP/1.1" 400 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T21:09:33.700Z] [32MINFO[39M: ::1 - - [02/Oct/2025:21:09:33 +0000] "POST /api/v1/graphql HTTP/1.1" 200 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T21:09:33.705Z] [32MINFO[39M: ::1 - - [02/Oct/2025:21:09:33 +0000] "POST /api/v1/graphql HTTP/1.1" 200 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T21:09:33.734Z] [31MERROR[39M: Unauthorized, please log in
+[2025-10-02T21:09:33.736Z] [31MERROR[39M: Prisma error: 
+Invalid `prisma.cart.findUnique()` invocation in
+/home/ctrl/ecommerce-main/src/server/src/modules/cart/cart.repository.ts:30:36
+
+  27 console.log("🔍 [CART REPOSITORY] getCartBySessionId called");
+  28 console.log("🔍 [CART REPOSITORY] sessionId:", sessionId);
+  29 
+→ 30 const cart = await prisma.cart.findUnique(
+The table `public.Cart` does not exist in the current database.
+[2025-10-02T21:09:33.739Z] [32MINFO[39M: ::1 - - [02/Oct/2025:21:09:33 +0000] "GET /api/v1/users/me HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T21:09:33.740Z] [32MINFO[39M: ::1 - - [02/Oct/2025:21:09:33 +0000] "GET /api/v1/cart/count HTTP/1.1" 400 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T21:09:33.809Z] [31MERROR[39M: Refresh token not found
+[2025-10-02T21:09:33.811Z] [32MINFO[39M: ::1 - - [02/Oct/2025:21:09:33 +0000] "POST /api/v1/auth/refresh-token HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T21:09:33.889Z] [31MERROR[39M: Prisma error: 
+Invalid `prisma.category.findMany()` invocation in
+/home/ctrl/ecommerce-main/src/server/src/modules/category/category.repository.ts:12:28
+
+   9   includeProducts?: boolean;
+  10 }) {
+  11   const { where, orderBy, skip, take, includeProducts } = params;
+→ 12   return prisma.category.findMany(
+The table `public.Category` does not exist in the current database.
+[2025-10-02T21:09:33.893Z] [32MINFO[39M: ::1 - - [02/Oct/2025:21:09:33 +0000] "GET /api/v1/categories HTTP/1.1" 400 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T21:09:36.762Z] [32MINFO[39M: ::1 - - [02/Oct/2025:21:09:36 +0000] "POST /api/v1/graphql HTTP/1.1" 200 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T21:09:36.766Z] [32MINFO[39M: ::1 - - [02/Oct/2025:21:09:36 +0000] "POST /api/v1/graphql HTTP/1.1" 200 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T21:09:36.804Z] [31MERROR[39M: Unauthorized, please log in
+[2025-10-02T21:09:36.810Z] [31MERROR[39M: Prisma error: 
+Invalid `prisma.cart.findUnique()` invocation in
+/home/ctrl/ecommerce-main/src/server/src/modules/cart/cart.repository.ts:30:36
+
+  27 console.log("🔍 [CART REPOSITORY] getCartBySessionId called");
+  28 console.log("🔍 [CART REPOSITORY] sessionId:", sessionId);
+  29 
+→ 30 const cart = await prisma.cart.findUnique(
+The table `public.Cart` does not exist in the current database.
+[2025-10-02T21:09:36.817Z] [32MINFO[39M: ::1 - - [02/Oct/2025:21:09:36 +0000] "GET /api/v1/users/me HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T21:09:36.818Z] [32MINFO[39M: ::1 - - [02/Oct/2025:21:09:36 +0000] "GET /api/v1/cart/count HTTP/1.1" 400 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T21:09:37.028Z] [31MERROR[39M: Prisma error: 
+Invalid `prisma.category.findMany()` invocation in
+/home/ctrl/ecommerce-main/src/server/src/modules/category/category.repository.ts:12:28
+
+   9   includeProducts?: boolean;
+  10 }) {
+  11   const { where, orderBy, skip, take, includeProducts } = params;
+→ 12   return prisma.category.findMany(
+The table `public.Category` does not exist in the current database.
+[2025-10-02T21:09:37.035Z] [31MERROR[39M: Refresh token not found
+[2025-10-02T21:09:37.039Z] [32MINFO[39M: ::1 - - [02/Oct/2025:21:09:37 +0000] "GET /api/v1/categories HTTP/1.1" 400 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T21:09:37.041Z] [32MINFO[39M: ::1 - - [02/Oct/2025:21:09:37 +0000] "POST /api/v1/auth/refresh-token HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T21:12:38.570Z] [31MERROR[39M: Prisma error: 
+Invalid `prisma.category.findMany()` invocation in
+/home/ctrl/ecommerce-main/src/server/src/modules/category/category.repository.ts:12:28
+
+   9   includeProducts?: boolean;
+  10 }) {
+  11   const { where, orderBy, skip, take, includeProducts } = params;
+→ 12   return prisma.category.findMany(
+The table `public.Category` does not exist in the current database.
+[2025-10-02T21:12:38.577Z] [32MINFO[39M: ::1 - - [02/Oct/2025:21:12:38 +0000] "GET /api/v1/categories HTTP/1.1" 400 1742 "-" "curl/8.5.0"
+[2025-10-02T21:15:20.507Z] [32MINFO[39M: ::1 - - [02/Oct/2025:21:15:20 +0000] "GET /api/v1/categories HTTP/1.1" 200 76 "-" "curl/8.5.0"
+[2025-10-02T21:15:44.956Z] [32MINFO[39M: ::1 - - [02/Oct/2025:21:15:44 +0000] "GET /api/v1/categories HTTP/1.1" 200 25437 "-" "curl/8.5.0"
+[2025-10-02T21:16:57.929Z] [31MERROR[39M: Unauthorized, please log in
+[2025-10-02T21:16:57.934Z] [32MINFO[39M: ::1 - - [02/Oct/2025:21:16:57 +0000] "GET /api/v1/users/me HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T21:16:57.949Z] [31MERROR[39M: Refresh token not found
+[2025-10-02T21:16:57.958Z] [32MINFO[39M: ::1 - - [02/Oct/2025:21:16:57 +0000] "POST /api/v1/auth/refresh-token HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T21:16:57.959Z] [32MINFO[39M: ::1 - - [02/Oct/2025:21:16:57 +0000] "POST /api/v1/graphql HTTP/1.1" 200 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T21:16:58.485Z] [32MINFO[39M: ::1 - - [02/Oct/2025:21:16:58 +0000] "POST /api/v1/graphql HTTP/1.1" 200 778 "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T21:16:58.548Z] [32MINFO[39M: ::1 - - [02/Oct/2025:21:16:58 +0000] "GET /api/v1/categories HTTP/1.1" 200 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T21:16:58.595Z] [32MINFO[39M: ::1 - - [02/Oct/2025:21:16:58 +0000] "GET /api/v1/cart/count HTTP/1.1" 200 74 "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-02T21:17:28.417Z] [32MINFO[39M: ::1 - - [02/Oct/2025:21:17:28 +0000] "POST /api/v1/graphql HTTP/1.1" 200 353 "-" "curl/8.5.0"
