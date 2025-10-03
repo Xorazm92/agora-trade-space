@@ -889,3 +889,5 @@ The table `public.Category` does not exist in the current database.
 [2025-10-03T06:15:23.371Z] [31MERROR[39M: Refresh token not found
 [2025-10-03T06:17:27.512Z] [31MERROR[39M: Unauthorized, please log in
 [2025-10-03T06:17:27.540Z] [31MERROR[39M: Refresh token not found
+[2025-10-03T06:31:46.574Z] [31MERROR[39M: Unauthorized, please log in
+[2025-10-03T06:31:46.627Z] [31MERROR[39M: Refresh token not found
