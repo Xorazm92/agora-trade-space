@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 
 const NotFoundPage = () => {
@@ -26,17 +27,17 @@ const NotFoundPage = () => {
   };
 
   const popularCategories = [
-    { name: "Electronics", href: "/shop?categoryId=electronics" },
-    { name: "Clothing", href: "/shop?categoryId=clothing" },
-    { name: "Footwear", href: "/shop?categoryId=footwear" },
-    { name: "Furniture", href: "/shop?categoryId=furniture" },
+    { name: "Elektronika", href: "/shop?categoryId=electronics" },
+    { name: "Kiyimlar", href: "/shop?categoryId=clothing" },
+    { name: "Poyabzallar", href: "/shop?categoryId=footwear" },
+    { name: "Mebel", href: "/shop?categoryId=furniture" },
   ];
 
   const quickLinks = [
-    { name: "Home", href: "/", icon: Home },
-    { name: "Shop", href: "/shop", icon: ShoppingBag },
-    { name: "Categories", href: "/shop", icon: Package },
-    { name: "Contact", href: "/contact", icon: MapPin },
+    { name: "Bosh sahifa", href: "/", icon: Home },
+    { name: "Do'kon", href: "/shop", icon: ShoppingBag },
+    { name: "Kategoriyalar", href: "/shop", icon: Package },
+    { name: "Aloqa", href: "/contact", icon: MapPin },
   ];
 
   return (
@@ -91,7 +92,7 @@ const NotFoundPage = () => {
         transition={{ duration: 0.6, ease: "easeOut" }}
         className="relative z-10 max-w-2xl w-full text-center"
       >
-        {/* 404 Number with animation */}
+        {/* 404 Image with animation */}
         <motion.div
           initial={{ scale: 0, rotate: -180 }}
           animate={{ scale: 1, rotate: 0 }}
@@ -110,9 +111,15 @@ const NotFoundPage = () => {
               className="absolute inset-0 bg-indigo-500 rounded-full opacity-20"
             />
             <div className="relative bg-white rounded-full p-8 shadow-lg border border-indigo-100 inline-block">
-              <span className="text-6xl md:text-8xl font-bold text-indigo-600">
-                404
-              </span>
+              <div className="w-32 h-32 md:w-40 md:h-40">
+                <Image
+                  src="/not-found.png"
+                  alt="404 - Sahifa topilmadi"
+                  width={160}
+                  height={160}
+                  className="w-full h-full object-contain"
+                />
+              </div>
             </div>
           </div>
         </motion.div>
@@ -125,11 +132,10 @@ const NotFoundPage = () => {
           className="mb-8"
         >
           <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
-            Page Not Found
+            Sahifa topilmadi
           </h1>
           <p className="text-gray-600 text-lg leading-relaxed max-w-md mx-auto">
-            The page you&apos;re looking for doesn&apos;t exist. Let&apos;s help
-            you find what you need.
+            Siz qidirayotgan sahifa mavjud emas. Keling, sizga kerakli narsani topishda yordam beramiz.
           </p>
         </motion.div>
 
@@ -144,7 +150,7 @@ const NotFoundPage = () => {
             <div className="relative">
               <input
                 type="text"
-                placeholder="Search for products..."
+                placeholder="Mahsulotlarni qidiring..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full bg-white border border-gray-200 rounded-xl p-4 pl-12 pr-4 text-gray-700 focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all duration-200 shadow-sm"
@@ -154,7 +160,7 @@ const NotFoundPage = () => {
                 type="submit"
                 className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg transition-colors duration-200"
               >
-                Search
+                Qidirish
               </button>
             </div>
           </form>
@@ -168,7 +174,7 @@ const NotFoundPage = () => {
           className="mb-8"
         >
           <h3 className="text-lg font-semibold text-gray-700 mb-4">
-            Popular Categories
+            Mashhur kategoriyalar
           </h3>
           <div className="flex flex-wrap justify-center gap-3">
             {popularCategories.map((category, index) => (
@@ -202,7 +208,7 @@ const NotFoundPage = () => {
               className="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-6 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200 flex items-center justify-center gap-2"
             >
               <ArrowLeft className="w-5 h-5" />
-              Go Back
+              Orqaga
             </button>
 
             <Link
@@ -210,7 +216,7 @@ const NotFoundPage = () => {
               className="bg-white hover:bg-gray-50 text-gray-700 font-medium py-3 px-6 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 shadow-sm hover:shadow-md border border-gray-200"
             >
               <Home className="w-5 h-5" />
-              Go Home
+              Bosh sahifa
             </Link>
           </div>
         </motion.div>
@@ -224,7 +230,7 @@ const NotFoundPage = () => {
         >
           <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-sm border border-indigo-100">
             <h3 className="text-lg font-semibold text-gray-700 mb-4">
-              Quick Navigation
+              Tezkor navigatsiya
             </h3>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
               {quickLinks.map((link, index) => (
@@ -262,11 +268,11 @@ const NotFoundPage = () => {
             <div className="flex items-center justify-center gap-2 mb-2">
               <Zap className="w-4 h-4 text-indigo-500" />
               <span className="text-sm font-medium text-gray-700">
-                Need help?
+                Yordam kerakmi?
               </span>
             </div>
             <p className="text-xs text-gray-500 leading-relaxed">
-              Contact our support team or check our help center for assistance
+              Yordam uchun qo'llab-quvvatlash xizmatiga murojaat qiling
             </p>
           </div>
         </motion.div>

@@ -22,6 +22,7 @@ import { useSignOutMutation } from "@/app/store/apis/AuthApi";
 import { logout } from "@/app/store/slices/AuthSlice";
 import { generateUserAvatar } from "@/app/utils/placeholderImage";
 import { useTranslations } from 'next-intl';
+import LanguageSwitcher from '../molecules/LanguageSwitcher';
 
 const Navbar = () => {
   const t = useTranslations('brand');
@@ -70,9 +71,18 @@ const Navbar = () => {
             {/* Logo */}
             <Link
               href="/"
-              className="font-bold text-lg sm:text-xl lg:text-2xl text-indigo-600 flex-shrink-0 hover:text-indigo-700 transition-colors"
+              className="flex items-center space-x-2 flex-shrink-0 hover:opacity-80 transition-opacity"
             >
-              {t('name')}
+              <Image
+                src="/logo.png"
+                alt={t('name')}
+                width={40}
+                height={40}
+                className="w-8 h-8 sm:w-10 sm:h-10"
+              />
+              <span className="font-bold text-lg sm:text-xl lg:text-2xl text-indigo-600">
+                {t('name')}
+              </span>
             </Link>
 
             {/* Desktop Search Bar */}
@@ -82,6 +92,9 @@ const Navbar = () => {
 
             {/* Right section */}
             <div className="flex items-center space-x-2 sm:space-x-4">
+              {/* Language Switcher */}
+              <LanguageSwitcher />
+
               {/* Mobile Search Button */}
               <button
                 onClick={() => setMobileSearchOpen(!mobileSearchOpen)}

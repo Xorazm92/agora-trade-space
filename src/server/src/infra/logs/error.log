@@ -798,3 +798,17 @@ Invalid `prisma.category.findMany()` invocation in
 The table `public.Category` does not exist in the current database.
 [2025-10-02T21:16:57.929Z] [31MERROR[39M: Unauthorized, please log in
 [2025-10-02T21:16:57.949Z] [31MERROR[39M: Refresh token not found
+[2025-10-03T04:49:26.397Z] [31MERROR[39M: Unauthorized, please log in
+[2025-10-03T04:49:26.442Z] [31MERROR[39M: Refresh token not found
+[2025-10-03T04:50:08.759Z] [31MERROR[39M: Unauthorized, please log in
+[2025-10-03T04:50:08.777Z] [31MERROR[39M: Refresh token not found
+[2025-10-03T04:52:40.673Z] [31MERROR[39M: Unauthorized, please log in
+[2025-10-03T04:52:40.692Z] [31MERROR[39M: Refresh token not found
+[2025-10-03T04:53:25.132Z] [31MERROR[39M: Unauthorized, please log in
+[2025-10-03T04:53:25.157Z] [31MERROR[39M: Refresh token not found
+[2025-10-03T04:53:57.588Z] [31MERROR[39M: Unauthorized, please log in
+[2025-10-03T04:53:57.613Z] [31MERROR[39M: Refresh token not found
+[2025-10-03T04:59:04.796Z] [31MERROR[39M: Unauthorized, please log in
+[2025-10-03T04:59:04.812Z] [31MERROR[39M: Refresh token not found
+[2025-10-03T05:02:38.291Z] [31MERROR[39M: Unauthorized, please log in
+[2025-10-03T05:02:38.311Z] [31MERROR[39M: Refresh token not found

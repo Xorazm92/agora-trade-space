@@ -77,7 +77,15 @@ const Cart = () => {
           <CartSkeletonLoader />
         ) : cartItems.length === 0 ? (
           <div className="text-center py-10">
-            <ShoppingCart size={40} className="mx-auto text-gray-400 mb-3" />
+            <div className="w-32 h-32 mx-auto mb-4">
+              <Image
+                src="/empty-cart.png"
+                alt="Empty cart"
+                width={128}
+                height={128}
+                className="w-full h-full object-contain"
+              />
+            </div>
             <p className="text-base sm:text-lg text-gray-600">
               {t('empty_cart')}
             </p>
