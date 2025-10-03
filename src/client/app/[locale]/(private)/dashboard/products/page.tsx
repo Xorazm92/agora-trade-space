@@ -15,9 +15,11 @@ import ProductFileUpload from "./ProductFileUpload";
 import { usePathname } from "next/navigation";
 import { ProductFormData } from "./product.types";
 import { withAuth } from "@/app/components/HOC/WithAuth";
+import { useTranslations } from "next-intl";
 
 const ProductsDashboard = () => {
   const { showToast } = useToast();
+  const t = useTranslations("products");
   const [createProduct, { isLoading: isCreating, error: createError }] =
     useCreateProductMutation();
   const [updateProduct, { isLoading: isUpdating, error: updateError }] =
@@ -27,7 +29,7 @@ const ProductsDashboard = () => {
   const pathname = usePathname();
   const shouldFetchProducts = pathname === "/dashboard/products";
 
-  const { data, isLoading } = useGetAllProductsQuery(
+  const { data, isLoading, refetch } = useGetAllProductsQuery(
     { select: { variants: true } }, // Ensure variants are included
     { skip: !shouldFetchProducts }
   );
@@ -99,10 +101,12 @@ const ProductsDashboard = () => {
     try {
       await createProduct(payload).unwrap();
       setIsModalOpen(false);
-      showToast("Product created successfully", "success");
+      showToast(t("product_created_successfully"), "success");
+      // Force refetch to update the product list
+      refetch();
     } catch (err) {
       console.error("Failed to create product:", err);
-      showToast("Failed to create product", "error");
+      showToast(t("failed_to_create_product"), "error");
     }
   };
 
@@ -126,10 +130,10 @@ const ProductsDashboard = () => {
       }).unwrap();
       setIsModalOpen(false);
       setEditingProduct(null);
-      showToast("Product updated successfully", "success");
+      showToast(t("product_updated_successfully"), "success");
     } catch (err) {
       console.error("Failed to update product:", err);
-      showToast("Failed to update product", "error");
+      showToast(t("failed_to_update_product"), "error");
     }
   };
 
@@ -144,10 +148,10 @@ const ProductsDashboard = () => {
       await deleteProduct(productToDelete).unwrap();
       setIsConfirmModalOpen(false);
       setProductToDelete(null);
-      showToast("Product deleted successfully", "success");
+      showToast(t("product_deleted_successfully"), "success");
     } catch (err) {
       console.error("Failed to delete product:", err);
-      showToast("Failed to delete product", "error");
+      showToast(t("failed_to_delete_product"), "error");
     }
   };
 
@@ -161,7 +165,7 @@ const ProductsDashboard = () => {
   const columns = [
     {
       key: "name",
-      label: "Name",
+      label: t("product_name"),
       sortable: true,
       render: (row: any) => (
         <div className="flex items-center space-x-2">
@@ -171,7 +175,7 @@ const ProductsDashboard = () => {
     },
     {
       key: "variants",
-      label: "Variants",
+      label: t("variants"),
       sortable: false,
       render: (row: any) => (
         <div>
@@ -185,20 +189,20 @@ const ProductsDashboard = () => {
               </span>
             ))
           ) : (
-            <span className="text-gray-500">No variants</span>
+            <span className="text-gray-500">{t("no_variants")}</span>
           )}
         </div>
       ),
     },
     {
       key: "salesCount",
-      label: "Sales Count",
+      label: t("sales_count"),
       sortable: true,
       render: (row: any) => row.salesCount,
     },
     {
       key: "actions",
-      label: "Actions",
+      label: t("actions"),
       render: (row: any) => (
         <div className="flex space-x-2">
           <button
@@ -219,7 +223,7 @@ const ProductsDashboard = () => {
             className="text-blue-600 hover:text-blue-800 flex items-center gap-1"
           >
             <Edit size={16} />
-            Edit
+            {t("edit")}
           </button>
           <button
             onClick={() => handleDeleteProduct(row.id)}
@@ -228,8 +232,8 @@ const ProductsDashboard = () => {
           >
             <Trash2 size={16} />
             {isDeleting && productToDelete === row.id
-              ? "Deleting..."
-              : "Delete"}
+              ? t("deleting")
+              : t("delete")}
           </button>
         </div>
       ),
@@ -240,8 +244,8 @@ const ProductsDashboard = () => {
     <div className="p-6">
       <div className="flex justify-between items-center mb-4">
         <div>
-          <h1 className="text-xl font-semibold">Product List</h1>
-          <p className="text-sm text-gray-500">Manage and view your products</p>
+          <h1 className="text-xl font-semibold">{t("product_list")}</h1>
+          <p className="text-sm text-gray-500">{t("manage_products")}</p>
         </div>
         <div className="flex space-x-3">
           <button
@@ -249,7 +253,7 @@ const ProductsDashboard = () => {
             className="px-4 py-2 bg-[#5d8a02] text-white rounded-md flex items-center"
           >
             <Upload className="mr-2 h-4 w-4" />
-            Excel Sheet
+            {t("excel_sheet")}
           </button>
           <button
             onClick={() => {
@@ -258,7 +262,7 @@ const ProductsDashboard = () => {
             }}
             className="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700"
           >
-            Create Product
+            {t("create_product")}
           </button>
         </div>
       </div>
@@ -266,7 +270,7 @@ const ProductsDashboard = () => {
       {isFileUploadOpen && (
         <div className="mb-6 bg-white p-5 rounded-lg shadow-sm border border-gray-200">
           <div className="flex justify-between items-center mb-3">
-            <h2 className="text-lg font-medium">Import Products</h2>
+            <h2 className="text-lg font-medium">{t("import_products")}</h2>
             <button
               onClick={() => setIsFileUploadOpen(false)}
               className="text-gray-500 hover:text-gray-700"
@@ -282,7 +286,7 @@ const ProductsDashboard = () => {
         data={products}
         columns={columns}
         isLoading={isLoading}
-        emptyMessage="No products available"
+        emptyMessage={t("no_products_available")}
         onRefresh={() => console.log("refreshed")}
         totalPages={data?.totalPages}
         totalResults={data?.totalResults}
@@ -304,7 +308,7 @@ const ProductsDashboard = () => {
 
       <ConfirmModal
         isOpen={isConfirmModalOpen}
-        message="Are you sure you want to delete this product? This action cannot be undone."
+        message={t("confirm_delete_product")}
         onConfirm={confirmDelete}
         onCancel={cancelDelete}
       />

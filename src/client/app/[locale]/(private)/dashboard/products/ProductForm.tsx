@@ -1,6 +1,7 @@
 "use client";
 import { Controller, UseFormReturn } from "react-hook-form";
 import { Tag } from "lucide-react";
+import { useTranslations } from "next-intl";
 import Dropdown from "@/app/components/molecules/Dropdown";
 import { ProductFormData } from "./product.types";
 import CheckBox from "@/app/components/atoms/CheckBox";
@@ -30,6 +31,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
   error,
   submitLabel = "Save",
 }) => {
+  const t = useTranslations("products");
   const {
     control,
     handleSubmit,
@@ -46,19 +48,19 @@ const ProductForm: React.FC<ProductFormProps> = ({
       <div className="grid grid-cols-2 gap-4">
         <div className="relative">
           <label className="block text-sm font-medium text-gray-700 mb-1">
-            Product Name
+            {t("product_name")}
           </label>
           <div className="relative">
             <Controller
               name="name"
               control={control}
-              rules={{ required: "Name is required" }}
+              rules={{ required: t("required_field") }}
               render={({ field }) => (
                 <input
                   {...field}
                   type="text"
                   className="pl-10 pr-4 py-3 w-full border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 focus:outline-none transition-all duration-200"
-                  placeholder="Amazing Product"
+                  placeholder={t("enter_product_name")}
                 />
               )}
             />
@@ -73,12 +75,12 @@ const ProductForm: React.FC<ProductFormProps> = ({
 
         <div className="relative">
           <label className="block text-sm font-medium text-gray-700 mb-1">
-            Category
+            {t("product_category")}
           </label>
           <Controller
             name="categoryId"
             control={control}
-            rules={{ required: "Category is required" }}
+            rules={{ required: t("required_field") }}
             render={({ field }) => (
               <Dropdown
                 onChange={(value) => {
@@ -87,7 +89,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
                 }}
                 options={categories}
                 value={field.value}
-                label="e.g. Clothing"
+                label={t("select_category")}
                 className="py-[14px]"
               />
             )}
@@ -102,31 +104,31 @@ const ProductForm: React.FC<ProductFormProps> = ({
 
       <div>
         <label className="block text-sm font-medium text-gray-700 mb-2">
-          Product Flags
+          {t("product_flags")}
         </label>
         <div className="grid grid-cols-2 gap-4">
           <CheckBox
             name="isNew"
             control={control}
-            label="New Product"
+            label={t("is_new")}
             defaultValue={false}
           />
           <CheckBox
             name="isBestSeller"
             control={control}
-            label="Best Seller"
+            label={t("is_bestseller")}
             defaultValue={false}
           />
           <CheckBox
             name="isFeatured"
             control={control}
-            label="Featured"
+            label={t("is_featured")}
             defaultValue={false}
           />
           <CheckBox
             name="isTrending"
             control={control}
-            label="Trending"
+            label={t("is_trending")}
             defaultValue={false}
           />
         </div>
@@ -134,7 +136,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
 
       <div>
         <label className="block text-sm font-medium text-gray-700 mb-1">
-          Description
+          {t("product_description")}
         </label>
         <Controller
           name="description"
@@ -143,7 +145,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
             <textarea
               {...field}
               className="px-4 py-3 w-full border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 focus:outline-none transition-all duration-200"
-              placeholder="Describe your amazing product here..."
+              placeholder={t("enter_description")}
               rows={3}
             />
           )}
@@ -170,7 +172,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
               : "bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700"
           } transition-all duration-200`}
         >
-          {isLoading ? "Saving..." : submitLabel}
+          {isLoading ? t("saving") : submitLabel}
         </button>
       </div>
     </form>

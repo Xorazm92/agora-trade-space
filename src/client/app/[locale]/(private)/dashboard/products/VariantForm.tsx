@@ -1,6 +1,7 @@
 "use client";
 import { Controller, useFieldArray, UseFormReturn } from "react-hook-form";
 import { Trash2, Plus } from "lucide-react";
+import { useTranslations } from "next-intl";
 import Dropdown from "@/app/components/molecules/Dropdown";
 import ImageUploader from "@/app/components/molecules/ImageUploader";
 import { ProductFormData } from "./product.types";
@@ -19,6 +20,7 @@ const VariantForm: React.FC<VariantFormProps> = ({
   form,
   categoryAttributes,
 }) => {
+  const t = useTranslations("products");
   const {
     control,
     formState: { errors },
@@ -36,7 +38,7 @@ const VariantForm: React.FC<VariantFormProps> = ({
     <div className="space-y-6 p-6 bg-white rounded-xl shadow-sm">
       <div className="flex justify-between items-center">
         <h2 className="text-lg font-semibold text-gray-900">
-          Product Variants
+          {t("variants")}
         </h2>
         <button
           type="button"
@@ -57,7 +59,7 @@ const VariantForm: React.FC<VariantFormProps> = ({
           }
           className="flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium"
         >
-          <Plus size={20} /> Add Variant
+          <Plus size={20} /> {t("add_variant")}
         </button>
       </div>
 
@@ -68,7 +70,7 @@ const VariantForm: React.FC<VariantFormProps> = ({
         >
           <div className="flex justify-between items-center">
             <h3 className="text-base font-medium text-gray-800">
-              Variant {index + 1}
+              {t("variant")} {index + 1}
             </h3>
             <button
               type="button"

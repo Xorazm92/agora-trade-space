@@ -16,6 +16,8 @@ import {
 import Link from "next/link";
 import PlaceholderImage from '../atoms/PlaceholderImage';
 import { useTranslations } from 'next-intl';
+import { categories } from '@/app/data/categories';
+import Image from 'next/image';
 
 const Footer = () => {
   let t, tBrand, tCategories;
@@ -49,15 +51,8 @@ const Footer = () => {
   }
   const currentYear = new Date().getFullYear();
 
-  // Static categories for footer
-  const footerCategories = [
-    { id: '1', name: 'O\'yinchoqlar', slug: 'toys' },
-    { id: '2', name: 'Kiyimlar', slug: 'clothes' },
-    { id: '3', name: 'Poyabzallar', slug: 'shoes' },
-    { id: '4', name: 'Kitoblar', slug: 'books' },
-    { id: '5', name: 'Elektronika', slug: 'electronics' },
-    { id: '6', name: 'Sport', slug: 'sports' }
-  ];
+  // Use categories from data file
+  const footerCategories = categories;
 
   return (
     <footer className="bg-gradient-to-br from-gray-800 to-gray-950 text-white pt-16 pb-8 relative overflow-hidden">
@@ -71,20 +66,23 @@ const Footer = () => {
           {/* Logo and description */}
           <div className="col-span-1 lg:col-span-2">
             <div className="flex items-center">
-              <div className="text-white mr-4">
-                <PlaceholderImage
+              <div className="w-12 h-12 relative mr-4">
+                <Image
                   src="/logo.png"
-                  alt={tBrand('name')}
-                  width={40}
-                  height={40}
-                  className="w-10 h-10 rounded"
-                  fallbackText="Logo"
+                  alt="Inbola Logo"
+                  width={48}
+                  height={48}
+                  className="w-full h-full object-contain"
                 />
               </div>
-              <div className="h-6 w-1 rounded-full bg-gradient-to-b from-indigo-500 to-purple-600"></div>
-              <span className="ml-2 text-sm font-medium tracking-wider text-gray-400 uppercase">
-                {tBrand('tagline')}
-              </span>
+              <div className="flex flex-col">
+                <span className="text-xl font-bold bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent">
+                  Inbola
+                </span>
+                <span className="text-xs text-gray-400 mt-1">
+                  Bolalar uchun eng yaxshi tanlov
+                </span>
+              </div>
             </div>
 
             <p className="text-gray-400 mt-6 text-sm leading-relaxed">

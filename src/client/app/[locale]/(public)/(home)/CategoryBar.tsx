@@ -28,10 +28,35 @@ import {
   Wifi,
   Bluetooth,
   Package,
+  Baby,
+  Shirt,
+  ShirtIcon,
+  Footprints,
+  Heart,
+  Gift,
+  Star,
+  Sparkles,
 } from "lucide-react";
 
 // Category icon mapping for fallback
 const categoryIcons: Record<string, React.ElementType> = {
+  // Bolalar mahsulotlari
+  "sport va faollik": Heart,
+  "bolalar kitoblari": Package,
+  "chaqaloq mahsulotlari": Baby,
+  "bolalar poyabzallari": Footprints,
+  "bolalar kiyimlari": Shirt,
+  "o'yinchoqlar": Gift,
+  
+  // Inglizcha variantlar
+  "sports and activities": Heart,
+  "children's books": Package,
+  "baby products": Baby,
+  "children's footwear": Footprints,
+  "children's clothing": Shirt,
+  "toys": Gift,
+  
+  // Umumiy kategoriyalar
   electronics: Monitor,
   smartphones: Smartphone,
   laptops: Laptop,
@@ -52,9 +77,9 @@ const categoryIcons: Record<string, React.ElementType> = {
   memory: MemoryStick,
   input: Mouse,
   printing: Printer,
-  clothing: Package,
-  footwear: Package,
-  shoes: Package,
+  clothing: Shirt,
+  footwear: Footprints,
+  shoes: Footprints,
   furniture: Package,
   books: Package,
   watches: Watch,
@@ -65,7 +90,7 @@ const categoryIcons: Record<string, React.ElementType> = {
 };
 
 // Default icon for categories without specific mapping
-const DefaultIcon = Package;
+const DefaultIcon = Sparkles;
 
 const CategoryBar = () => {
   const t = useTranslations('common');
@@ -74,11 +99,17 @@ const CategoryBar = () => {
 
   // Get icon for category (fallback)
   const getCategoryIcon = (categoryName: string) => {
-    const normalizedName = categoryName.toLowerCase().replace(/\s+/g, "");
+    const normalizedName = categoryName.toLowerCase();
 
-    // Try exact match first
+    // Try exact match first (with spaces)
     if (categoryIcons[normalizedName]) {
       return categoryIcons[normalizedName];
+    }
+
+    // Try without spaces
+    const noSpaceName = normalizedName.replace(/\s+/g, "");
+    if (categoryIcons[noSpaceName]) {
+      return categoryIcons[noSpaceName];
     }
 
     // Try partial matches
@@ -133,8 +164,8 @@ const CategoryBar = () => {
           </h2>
         </motion.div>
 
-        {/* Categories Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 max-w-7xl mx-auto">
+        {/* Categories Row */}
+        <div className="flex gap-4 pb-4 max-w-7xl mx-auto">
           {categories.map((category, index) => {
             const hasImages = category.images && category.images.length > 0;
             const imageSrc = hasImages ? category.images[0] : null;
@@ -147,7 +178,7 @@ const CategoryBar = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: index * 0.05 }}
                 whileHover={{ y: -5, scale: 1.05 }}
-                className="group"
+                className="group flex-1"
               >
                 <Link
                   href={`/shop?categoryId=${category.id}`}
@@ -161,27 +192,13 @@ const CategoryBar = () => {
                         transition={{ duration: 0.3 }}
                         className="w-full h-24 bg-gray-100 rounded-lg overflow-hidden group-hover:shadow-lg transition-all duration-300 flex items-center justify-center"
                       >
-                        {hasImages && imageSrc ? (
-                          <>
-                            <Image
-                              src={imageSrc}
-                              alt={category.name}
-                              fill
-                              className="object-cover group-hover:scale-110 transition-transform duration-300"
-                              sizes="(max-width: 768px) 100px, (max-width: 1200px) 150px, 200px"
-                            />
-                            {/* Overlay */}
-                            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
-                          </>
-                        ) : (
-                          <motion.div
-                            whileHover={{ rotate: 360 }}
-                            transition={{ duration: 0.6 }}
-                            className="w-12 h-12 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-lg flex items-center justify-center group-hover:shadow-lg transition-all duration-300"
-                          >
-                            <Icon className="w-6 h-6 text-white" />
-                          </motion.div>
-                        )}
+                        <motion.div
+                          whileHover={{ rotate: 360 }}
+                          transition={{ duration: 0.6 }}
+                          className="w-12 h-12 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-lg flex items-center justify-center group-hover:shadow-lg transition-all duration-300"
+                        >
+                          <Icon className="w-6 h-6 text-white" />
+                        </motion.div>
                       </motion.div>
 
                       {/* Hover effect */}

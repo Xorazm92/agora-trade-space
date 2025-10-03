@@ -10,7 +10,8 @@
     "build": "tsc",
     "start": "node dist/server.js",
     "prisma": "prisma",
-    "seed": "ts-node seeds/seed.ts"
+    "seed": "ts-node seeds/seed.ts",
+    "seed:children": "ts-node seeds/children-seed.ts"
   },
   "keywords": [],
   "author": "",

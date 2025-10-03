@@ -3,6 +3,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useTranslations } from 'next-intl';
+import { categories } from '@/app/data/categories';
 import { 
   ChevronDown, 
   ShoppingBag,
@@ -44,95 +45,52 @@ const NavigationMenu = () => {
         </button>
 
         {openDropdown === 'categories' && (
-          <div className="absolute top-full left-0 mt-2 w-80 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50">
-            <Link
-              href="/shop?category=toys"
-              className="flex items-start gap-3 px-4 py-3 hover:bg-gray-50 transition-colors"
-              onClick={() => setOpenDropdown(null)}
-            >
-              <div className="text-indigo-600 mt-0.5">
-                <ShoppingBag className="w-4 h-4" />
+          <div className="absolute top-full left-0 mt-2 w-96 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50 max-h-96 overflow-y-auto">
+            {categories.map((category) => (
+              <div key={category.id} className="border-b border-gray-100 last:border-b-0">
+                <Link
+                  href={`/shop?category=${category.slug}`}
+                  className="flex items-start gap-3 px-4 py-3 hover:bg-gray-50 transition-colors"
+                  onClick={() => setOpenDropdown(null)}
+                >
+                  <div className="text-indigo-600 mt-0.5">
+                    <span className="text-lg">{category.icon}</span>
+                  </div>
+                  <div className="flex-1">
+                    <div className="font-medium text-gray-900 text-sm">
+                      {category.name}
+                    </div>
+                    <div className="text-xs text-gray-500 mt-0.5">
+                      {category.description}
+                    </div>
+                    {/* Subcategories */}
+                    <div className="mt-2 grid grid-cols-2 gap-1">
+                      {category.subcategories.slice(0, 4).map((sub) => (
+                        <button
+                          key={sub.id}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            window.location.href = `/shop?category=${category.slug}&subcategory=${sub.slug}`;
+                            setOpenDropdown(null);
+                          }}
+                          className="text-xs text-gray-400 hover:text-indigo-600 transition-colors block truncate text-left"
+                        >
+                          {sub.name}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                </Link>
               </div>
-              <div>
-                <div className="font-medium text-gray-900 text-sm">
-                  O'yinchoqlar
-                </div>
-                <div className="text-xs text-gray-500 mt-0.5">
-                  Bolalar uchun o'yinchoqlar
-                </div>
-              </div>
-            </Link>
+            ))}
             
+            {/* View All Categories */}
             <Link
-              href="/shop?category=clothes"
-              className="flex items-start gap-3 px-4 py-3 hover:bg-gray-50 transition-colors"
+              href="/categories"
+              className="block px-4 py-3 text-center text-indigo-600 hover:bg-gray-50 transition-colors font-medium text-sm"
               onClick={() => setOpenDropdown(null)}
             >
-              <div className="text-indigo-600 mt-0.5">
-                <Shirt className="w-4 h-4" />
-              </div>
-              <div>
-                <div className="font-medium text-gray-900 text-sm">
-                  Kiyimlar
-                </div>
-                <div className="text-xs text-gray-500 mt-0.5">
-                  Bolalar kiyimlari
-                </div>
-              </div>
-            </Link>
-
-            <Link
-              href="/shop?category=shoes"
-              className="flex items-start gap-3 px-4 py-3 hover:bg-gray-50 transition-colors"
-              onClick={() => setOpenDropdown(null)}
-            >
-              <div className="text-indigo-600 mt-0.5">
-                <Users className="w-4 h-4" />
-              </div>
-              <div>
-                <div className="font-medium text-gray-900 text-sm">
-                  Poyabzallar
-                </div>
-                <div className="text-xs text-gray-500 mt-0.5">
-                  Bolalar poyabzallari
-                </div>
-              </div>
-            </Link>
-
-            <Link
-              href="/shop?category=books"
-              className="flex items-start gap-3 px-4 py-3 hover:bg-gray-50 transition-colors"
-              onClick={() => setOpenDropdown(null)}
-            >
-              <div className="text-indigo-600 mt-0.5">
-                <FileText className="w-4 h-4" />
-              </div>
-              <div>
-                <div className="font-medium text-gray-900 text-sm">
-                  Kitoblar
-                </div>
-                <div className="text-xs text-gray-500 mt-0.5">
-                  Bolalar kitoblari
-                </div>
-              </div>
-            </Link>
-
-            <Link
-              href="/shop?category=electronics"
-              className="flex items-start gap-3 px-4 py-3 hover:bg-gray-50 transition-colors"
-              onClick={() => setOpenDropdown(null)}
-            >
-              <div className="text-indigo-600 mt-0.5">
-                <Briefcase className="w-4 h-4" />
-              </div>
-              <div>
-                <div className="font-medium text-gray-900 text-sm">
-                  Elektronika
-                </div>
-                <div className="text-xs text-gray-500 mt-0.5">
-                  Bolalar elektronikasi
-                </div>
-              </div>
+              Barcha kategoriyalarni ko'rish
             </Link>
           </div>
         )}

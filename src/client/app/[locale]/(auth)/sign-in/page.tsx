@@ -70,17 +70,23 @@ const SignIn = () => {
 
           {error && (
             <div className="bg-red-50 border border-red-300 text-red-600 text-center text-sm p-3 rounded mb-4">
-              Kutilmagan xatolik yuz berdi
+              {(error as any)?.data?.message || "Email yoki parol noto'g'ri"}
             </div>
           )}
 
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
             <Input
               name="email"
-              type="text"
+              type="email"
               placeholder={t('email')}
               control={control}
-              validation={{ required: "Email majburiy" }}
+              validation={{ 
+                required: "Email majburiy",
+                pattern: {
+                  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                  message: "Noto'g'ri email format"
+                }
+              }}
               error={errors.email?.message}
               className="py-2.5 text-sm"
             />

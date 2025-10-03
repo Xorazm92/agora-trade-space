@@ -68,12 +68,16 @@ export const createApp = async () => {
       cookie: {
         httpOnly: true,
         secure: process.env.NODE_ENV === "production", // true in prod
-        sameSite: "none", // Required for cross-site cookies
+        sameSite: process.env.NODE_ENV === "production" ? "none" : "lax", // none for prod, lax for dev
         maxAge: 1000 * 60 * 60 * 24 * 7, // 7 days
       },
     })
   );
-  // configurePassport(); // Temporarily disabled
+  configurePassport(); // Enable Google OAuth
+  
+  // Initialize Passport middleware
+  app.use(passport.initialize());
+  app.use(passport.session());
 
   // Preflight handler
   app.use(preflightHandler);
@@ -84,7 +88,7 @@ export const createApp = async () => {
       origin:
         process.env.NODE_ENV === "production"
           ? ["https://ecommerce-nu-rosy.vercel.app"]
-          : ["http://localhost:3000", "http://localhost:5173"],
+          : ["http://localhost:3000", "http://localhost:3001", "http://localhost:5173", "http://127.0.0.1:38899"],
       credentials: true,
       methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
       allowedHeaders: [
@@ -92,11 +96,17 @@ export const createApp = async () => {
         "Authorization",
         "X-Requested-With",
         "Apollo-Require-Preflight", // For GraphQL
+        "Access-Control-Allow-Origin",
+        "Access-Control-Allow-Credentials",
       ],
+      exposedHeaders: ["Set-Cookie"],
     })
   );
 
-  app.use(helmet());
+  app.use(helmet({
+    crossOriginResourcePolicy: { policy: "cross-origin" },
+    contentSecurityPolicy: process.env.NODE_ENV === "production" ? undefined : false,
+  }));
   app.use(helmet.frameguard({ action: "deny" }));
 
   // Extra Security

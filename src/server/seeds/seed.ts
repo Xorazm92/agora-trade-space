@@ -1,5 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcryptjs";
+import { seedChildrenCategories } from "./children-categories";
 
 const prisma = new PrismaClient();
 
@@ -77,68 +78,49 @@ async function main() {
     },
   });
 
-  // 2. Create categories
-  const electronicsCategory = await prisma.category.upsert({
-    where: { slug: "electronics" },
+  // 2. Create children categories using the dedicated seed function
+  await seedChildrenCategories();
+
+  // Get the created children categories for use in attributes
+  const toysCategory = await prisma.category.findUnique({
+    where: { slug: "oyinchoqlar" },
+  });
+  
+  const childrenClothingCategory = await prisma.category.findUnique({
+    where: { slug: "bolalar-kiyimlari" },
+  });
+  
+  const childrenShoesCategory = await prisma.category.findUnique({
+    where: { slug: "bolalar-poyabzallari" },
+  });
+  
+  const babyProductsCategory = await prisma.category.findUnique({
+    where: { slug: "chaqaloq-mahsulotlari" },
+  });
+
+  const childrenBooksCategory = await prisma.category.findUnique({
+    where: { slug: "bolalar-kitoblari" },
+  });
+
+  if (!toysCategory || !childrenClothingCategory || !childrenShoesCategory || !babyProductsCategory || !childrenBooksCategory) {
+    throw new Error("Failed to create children categories");
+  }
+
+  // 3. Create attributes for children products
+  const ageAttribute = await prisma.attribute.upsert({
+    where: { slug: "age" },
     update: {},
     create: {
-      name: "Electronics",
-      slug: "electronics",
-      description: "Electronic devices and gadgets",
-      images: [],
+      name: "Yosh",
+      slug: "age",
     },
   });
 
-  const clothingCategory = await prisma.category.upsert({
-    where: { slug: "clothing" },
-    update: {},
-    create: {
-      name: "Clothing",
-      slug: "clothing",
-      description: "Fashion and apparel",
-      images: [],
-    },
-  });
-
-  const footwearCategory = await prisma.category.upsert({
-    where: { slug: "footwear" },
-    update: {},
-    create: {
-      name: "Footwear",
-      slug: "footwear",
-      description: "Shoes and sneakers",
-      images: [],
-    },
-  });
-
-  const furnitureCategory = await prisma.category.upsert({
-    where: { slug: "furniture" },
-    update: {},
-    create: {
-      name: "Furniture",
-      slug: "furniture",
-      description: "Home and office furniture",
-      images: [],
-    },
-  });
-
-  const accessoriesCategory = await prisma.category.upsert({
-    where: { slug: "accessories" },
-    update: {},
-    create: {
-      name: "Accessories",
-      slug: "accessories",
-      description: "Fashion accessories and jewelry",
-      images: [],
-    },
-  });
-
-  // 3. Create attributes
   const sizeAttribute = await prisma.attribute.upsert({
     where: { slug: "size" },
     update: {},
     create: {
-      name: "Size",
+      name: "O'lcham",
       slug: "size",
     },
   });
@@ -147,7 +129,7 @@ async function main() {
     where: { slug: "color" },
     update: {},
     create: {
-      name: "Color",
+      name: "Rang",
       slug: "color",
     },
   });
@@ -161,21 +143,21 @@ async function main() {
     },
   });
 
-  const storageAttribute = await prisma.attribute.upsert({
-    where: { slug: "storage" },
-    update: {},
-    create: {
-      name: "Storage",
-      slug: "storage",
-    },
-  });
-
   const brandAttribute = await prisma.attribute.upsert({
     where: { slug: "brand" },
     update: {},
     create: {
-      name: "Brand",
+      name: "Brend",
       slug: "brand",
+    },
+  });
+
+  const genderAttribute = await prisma.attribute.upsert({
+    where: { slug: "gender" },
+    update: {},
+    create: {
+      name: "Jins",
+      slug: "gender",
     },
   });
 

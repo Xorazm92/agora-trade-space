@@ -132,18 +132,19 @@ export default function configurePassport() {
     )
   );
 
-  // Twitter Strategy (standalone, without oauthUtils)
-  passport.use(
-    new TwitterStrategy(
-      {
-        consumerKey: process.env.TWITTER_CONSUMER_KEY!,
-        consumerSecret: process.env.TWITTER_CONSUMER_SECRET!,
-        callbackURL:
-          process.env.NODE_ENV === "production"
-            ? process.env.TWITTER_CALLBACK_URL_PROD!
-            : process.env.TWITTER_CALLBACK_URL_DEV!,
-        includeEmail: true,
-      },
+  // Twitter Strategy (temporarily disabled - missing env vars)
+  if (process.env.TWITTER_CONSUMER_KEY && process.env.TWITTER_CONSUMER_SECRET) {
+    passport.use(
+      new TwitterStrategy(
+        {
+          consumerKey: process.env.TWITTER_CONSUMER_KEY!,
+          consumerSecret: process.env.TWITTER_CONSUMER_SECRET!,
+          callbackURL:
+            process.env.NODE_ENV === "production"
+              ? process.env.TWITTER_CALLBACK_URL_PROD!
+              : process.env.TWITTER_CALLBACK_URL_DEV!,
+          includeEmail: true,
+        },
       async (
         accessToken: string,
         refreshToken: string,
@@ -209,4 +210,5 @@ export default function configurePassport() {
       }
     )
   );
+  }
 }

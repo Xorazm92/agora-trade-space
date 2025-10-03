@@ -17,10 +17,10 @@ const NotFoundPage = () => {
   };
 
   const popularCategories = [
-    { name: "Elektronika", href: "/shop?categoryId=electronics" },
-    { name: "Kiyimlar", href: "/shop?categoryId=clothing" },
-    { name: "Poyabzallar", href: "/shop?categoryId=footwear" },
-    { name: "Mebel", href: "/shop?categoryId=furniture" },
+    { name: "O'yinchoqlar", href: "/shop?category=oyinchoqlar" },
+    { name: "Bolalar kiyimlari", href: "/shop?category=bolalar-kiyimlari" },
+    { name: "Bolalar poyabzallari", href: "/shop?category=bolalar-poyabzallari" },
+    { name: "Chaqaloq mahsulotlari", href: "/shop?category=chaqaloq-mahsulotlari" },
   ];
 
   const quickLinks = [

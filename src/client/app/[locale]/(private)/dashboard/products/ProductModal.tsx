@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTranslations } from "next-intl";
 import {
   useGetAllCategoriesQuery,
   useGetCategoryAttributesQuery,
@@ -27,6 +28,7 @@ const ProductModal: React.FC<ProductModalProps> = ({
   isLoading,
   error,
 }) => {
+  const t = useTranslations("products");
   const { data: categoriesData } = useGetAllCategoriesQuery({});
   const categories =
     categoriesData?.categories?.map((category) => ({
@@ -118,7 +120,7 @@ const ProductModal: React.FC<ProductModalProps> = ({
           >
             <div className="flex justify-between items-center mb-6 border-b border-gray-200 pb-4">
               <h2 className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text text-transparent">
-                {initialData ? "Edit Product" : "Create Product"}
+                {initialData ? t("edit_product") : t("create_product")}
               </h2>
               <button
                 onClick={onClose}
@@ -135,7 +137,7 @@ const ProductModal: React.FC<ProductModalProps> = ({
               categoryAttributes={categoryAttributes}
               isLoading={isLoading}
               error={error}
-              submitLabel={initialData ? "Update" : "Create"}
+              submitLabel={initialData ? t("updating") : t("saving")}
             />
           </motion.div>
         </motion.div>

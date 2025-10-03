@@ -891,3 +891,60 @@ The table `public.Category` does not exist in the current database.
 [2025-10-03T06:17:27.540Z] [31MERROR[39M: Refresh token not found
 [2025-10-03T06:31:46.574Z] [31MERROR[39M: Unauthorized, please log in
 [2025-10-03T06:31:46.627Z] [31MERROR[39M: Refresh token not found
+[2025-10-03T07:10:37.991Z] [31MERROR[39M: Unauthorized, please log in
+[2025-10-03T07:10:38.014Z] [31MERROR[39M: Refresh token not found
+[2025-10-03T07:13:15.856Z] [31MERROR[39M: Unauthorized, please log in
+[2025-10-03T07:13:15.880Z] [31MERROR[39M: Refresh token not found
+[2025-10-03T09:36:49.799Z] [31MERROR[39M: Invalid access token, please log in
+[2025-10-03T09:36:49.928Z] [31MERROR[39M: Invalid access token, please log in
+[2025-10-03T09:38:40.599Z] [31MERROR[39M: Invalid access token, please log in
+[2025-10-03T09:38:40.649Z] [31MERROR[39M: Invalid access token, please log in
+[2025-10-03T10:08:41.828Z] [31MERROR[39M: Invalid access token, please log in
+[2025-10-03T10:08:41.957Z] [31MERROR[39M: Invalid access token, please log in
+[2025-10-03T10:11:36.967Z] [31MERROR[39M: Unauthorized, please log in
+[2025-10-03T10:11:37.013Z] [31MERROR[39M: Refresh token not found
+[2025-10-03T10:12:07.330Z] [31MERROR[39M: Unknown authentication strategy "google"
+[2025-10-03T10:51:57.383Z] [31MERROR[39M: Unauthorized, please log in
+[2025-10-03T10:51:57.415Z] [31MERROR[39M: Refresh token not found
+[2025-10-03T11:37:28.584Z] [31MERROR[39M: Invalid access token, please log in
+[2025-10-03T11:37:28.646Z] [31MERROR[39M: Invalid access token, please log in
+[2025-10-03T12:37:58.346Z] [31MERROR[39M: Invalid access token, please log in
+[2025-10-03T12:37:58.426Z] [31MERROR[39M: Invalid access token, please log in
+[2025-10-03T12:38:14.298Z] [31MERROR[39M: Invalid access token, please log in
+[2025-10-03T12:38:14.335Z] [31MERROR[39M: Invalid access token, please log in
+[2025-10-03T13:02:16.929Z] [31MERROR[39M: Invalid access token, please log in
+[2025-10-03T13:02:16.965Z] [31MERROR[39M: Invalid access token, please log in
+[2025-10-03T13:12:07.180Z] [31MERROR[39M: Invalid access token, please log in
+[2025-10-03T13:12:07.243Z] [31MERROR[39M: User not found
+[2025-10-03T13:15:45.855Z] [31MERROR[39M: Email or password is incorrect.
+[2025-10-03T13:34:43.064Z] [31MERROR[39M: Unauthorized, please log in
+[2025-10-03T13:34:43.131Z] [31MERROR[39M: Refresh token not found
+[2025-10-03T13:43:22.932Z] [31MERROR[39M: Unauthorized, please log in
+[2025-10-03T13:43:22.958Z] [31MERROR[39M: Refresh token not found
+[2025-10-03T13:44:03.508Z] [31MERROR[39M: Email or password is incorrect.
+[2025-10-03T13:44:29.315Z] [31MERROR[39M: Email or password is incorrect.
+[2025-10-03T13:45:49.386Z] [31MERROR[39M: Email or password is incorrect.
+[2025-10-03T13:48:01.977Z] [31MERROR[39M: Invalid access token, please log in
+[2025-10-03T13:48:01.994Z] [31MERROR[39M: User not found
+[2025-10-03T13:49:40.191Z] [31MERROR[39M: Email or password is incorrect.
+[2025-10-03T13:50:20.875Z] [31MERROR[39M: Invalid access token, please log in
+[2025-10-03T13:50:20.918Z] [31MERROR[39M: User not found
+[2025-10-03T13:50:22.189Z] [31MERROR[39M: Email or password is incorrect.
+[2025-10-03T13:51:48.220Z] [31MERROR[39M: Invalid access token, please log in
+[2025-10-03T13:51:48.268Z] [31MERROR[39M: User not found
+[2025-10-03T13:51:54.797Z] [31MERROR[39M: Email or password is incorrect.
+[2025-10-03T14:01:45.458Z] [31MERROR[39M: Invalid access token, please log in
+[2025-10-03T14:01:45.495Z] [31MERROR[39M: User not found
+[2025-10-03T15:59:33.081Z] [31MERROR[39M: Email or password is incorrect.
+[2025-10-03T16:01:50.650Z] [31MERROR[39M: Unauthorized, please log in
+[2025-10-03T16:01:50.714Z] [31MERROR[39M: Refresh token not found
+[2025-10-03T16:03:13.535Z] [31MERROR[39M: Email or password is incorrect.
+[2025-10-03T16:16:48.436Z] [31MERROR[39M: Unauthorized, please log in
+[2025-10-03T16:16:58.102Z] [31MERROR[39M: Unauthorized, please log in
+[2025-10-03T16:53:24.028Z] [31MERROR[39M: Invalid access token, please log in
+[2025-10-03T16:53:24.124Z] [31MERROR[39M: Invalid access token, please log in
+[2025-10-03T16:58:46.886Z] [31MERROR[39M: Invalid access token, please log in
+[2025-10-03T16:58:46.950Z] [31MERROR[39M: Invalid access token, please log in
+[2025-10-03T17:01:55.573Z] [31MERROR[39M: Invalid access token, please log in
+[2025-10-03T17:01:55.620Z] [31MERROR[39M: Invalid access token, please log in
+[2025-10-03T17:07:52.743Z] [31MERROR[39M: Email or password is incorrect.

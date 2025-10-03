@@ -90,18 +90,20 @@ const Navbar = () => {
             {/* Logo */}
             <Link
               href="/"
-              className="flex items-center space-x-2 flex-shrink-0 hover:opacity-80 transition-opacity"
+              className="flex items-center space-x-3 flex-shrink-0 hover:opacity-80 transition-opacity"
             >
-              <PlaceholderImage
-                src="/logo.png"
-                alt={t('name')}
-                width={40}
-                height={40}
-                className="w-8 h-8 sm:w-10 sm:h-10 rounded"
-                fallbackText="Logo"
-              />
-              <span className="font-bold text-lg sm:text-xl lg:text-2xl text-indigo-600">
-                {t('name')}
+              <div className="w-8 h-8 sm:w-10 sm:h-10 relative">
+                <Image
+                  src="/logo.png"
+                  alt="Inbola Logo"
+                  width={40}
+                  height={40}
+                  className="w-full h-full object-contain"
+                  priority
+                />
+              </div>
+              <span className="font-bold text-lg sm:text-xl lg:text-2xl bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent">
+                Inbola
               </span>
             </Link>
 

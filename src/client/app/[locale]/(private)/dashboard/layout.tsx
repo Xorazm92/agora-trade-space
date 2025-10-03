@@ -1,7 +1,7 @@
 "use client";
 import { User } from "lucide-react";
 import BreadCrumb from "@/app/components/feedback/BreadCrumb";
-import Sidebar from "../../components/layout/Sidebar";
+import Sidebar from "@/app/components/layout/Sidebar";
 import DashboardSearchBar from "@/app/components/molecules/DashboardSearchbar";
 import { useAuth } from "@/app/hooks/useAuth";
 import Image from "next/image";

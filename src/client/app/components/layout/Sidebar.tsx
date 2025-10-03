@@ -3,6 +3,7 @@ import React, { useMemo } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { useRouter, usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
 import useStorage from "@/app/hooks/state/useStorage";
 import { useSignOutMutation } from "@/app/store/apis/AuthApi";
 import {
@@ -29,37 +30,38 @@ const Sidebar = () => {
   const pathname = usePathname();
   const router = useRouter();
   const [signout] = useSignOutMutation();
+  const t = useTranslations("dashboard");
 
   const sections = useMemo(
     () => [
       {
-        title: "Overview",
+        title: t("overview"),
         links: [
-          { name: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
+          { name: t("dashboard"), href: "/dashboard", icon: LayoutDashboard },
         ],
       },
       {
-        title: "E-commerce",
+        title: t("ecommerce"),
         links: [
-          { name: "Products", href: "/products", icon: Layers },
-          { name: "Inventory", href: "/inventory", icon: Section },
-          { name: "Attributes", href: "/attributes", icon: Layers },
-          { name: "Categories", href: "/categories", icon: Boxes },
-          { name: "Transactions", href: "/transactions", icon: ShoppingCart },
-          { name: "Users", href: "/users", icon: Users },
-          { name: "Chats", href: "/chats", icon: ChartArea },
+          { name: t("products"), href: "/products", icon: Layers },
+          { name: t("inventory"), href: "/inventory", icon: Section },
+          { name: t("attributes"), href: "/attributes", icon: Layers },
+          { name: t("categories"), href: "/categories", icon: Boxes },
+          { name: t("transactions"), href: "/transactions", icon: ShoppingCart },
+          { name: t("users"), href: "/users", icon: Users },
+          { name: t("chats"), href: "/chats", icon: ChartArea },
         ],
       },
       {
-        title: "Stats",
+        title: t("stats"),
         links: [
-          { name: "Analytics", href: "/analytics", icon: ChartCandlestick },
-          { name: "Reports", href: "/reports", icon: ClipboardPlus },
-          { name: "Logs", href: "/logs", icon: ClipboardCheck },
+          { name: t("analytics"), href: "/analytics", icon: ChartCandlestick },
+          { name: t("reports"), href: "/reports", icon: ClipboardPlus },
+          { name: t("logs"), href: "/logs", icon: ClipboardCheck },
         ],
       },
     ],
-    []
+    [t]
   );
 
   const prependDashboard = (href: string) =>
@@ -159,7 +161,7 @@ const Sidebar = () => {
         >
           <LogOut className="h-5 w-5 text-red-500 group-hover:text-red-600" />
           {isOpen && (
-            <span className="text-sm font-medium text-red-600">Sign Out</span>
+            <span className="text-sm font-medium text-red-600">{t("sign_out")}</span>
           )}
         </button>
       </div>
