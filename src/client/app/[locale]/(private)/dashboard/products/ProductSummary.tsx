@@ -1,16 +1,14 @@
 "use client";
-import { Archive, Loader2, Save } from "lucide-react";
+import { Product } from "@/app/types/productTypes";
+import { Star, Archive, Edit, Trash2, Loader2, Save } from "lucide-react";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { generateProductPlaceholder } from "@/app/utils/placeholderImage";
+import useFormatPrice from "@/app/hooks/ui/useFormatPrice";
 import { motion } from "framer-motion";
 
 interface ProductSummaryProps {
-  product: {
-    id: string;
-    price: number;
-    discount: number;
-    stock: number;
-    categoryId: string;
-  };
+  product: Product;
   categories: { label: string; value: string }[];
   isUpdating: boolean;
   onSave: () => void;
@@ -23,14 +21,15 @@ const ProductSummary: React.FC<ProductSummaryProps> = ({
   onSave,
 }) => {
   const router = useRouter();
-  const formattedPrice =
-    typeof product.price === "number"
-      ? `$${product.price.toFixed(2)}`
-      : "$0.00";
-  const hasDiscount = product.discount && product.discount > 0;
-  const discountedPrice = hasDiscount
-    ? `$${(product.price * (1 - product.discount / 100)).toFixed(2)}`
-    : null;
+  const formatPrice = useFormatPrice();
+  
+  // Get lowest price from variants
+  const lowestPrice = product.variants.length > 0 
+    ? Math.min(...product.variants.map(v => v.price))
+    : 0;
+  
+  // Get total stock from all variants
+  const totalStock = product.variants.reduce((sum, v) => sum + v.stock, 0);
 
   return (
     <motion.div
@@ -57,8 +56,7 @@ const ProductSummary: React.FC<ProductSummaryProps> = ({
               Category
             </label>
             <p className="font-medium text-gray-800">
-              {categories.find((c) => c.value === product.categoryId)?.label ||
-                "Uncategorized"}
+              {product.category?.name || "Uncategorized"}
             </p>
           </div>
 
@@ -68,20 +66,20 @@ const ProductSummary: React.FC<ProductSummaryProps> = ({
             </label>
             <div className="flex items-center gap-2">
               <span className="font-medium text-gray-800">
-                {product.stock} units
+                {totalStock} units
               </span>
               <span
                 className={`px-2 py-0.5 rounded-full text-xs font-medium ${
-                  product.stock > 10
+                  totalStock > 10
                     ? "bg-green-100 text-green-700"
-                    : product.stock > 0
+                    : totalStock > 0
                     ? "bg-amber-100 text-amber-700"
                     : "bg-rose-100 text-rose-700"
                 }`}
               >
-                {product.stock > 10
+                {totalStock > 10
                   ? "In Stock"
-                  : product.stock > 0
+                  : totalStock > 0
                   ? "Low Stock"
                   : "Out of Stock"}
               </span>
@@ -94,18 +92,11 @@ const ProductSummary: React.FC<ProductSummaryProps> = ({
             </label>
             <div>
               <p className="font-medium text-gray-800">
-                Base Price: {formattedPrice}
+                Starting from: {formatPrice(lowestPrice)}
               </p>
-              {hasDiscount && (
-                <>
-                  <p className="text-sm text-gray-600">
-                    Discount: {product.discount}%
-                  </p>
-                  <p className="font-medium text-indigo-600">
-                    Final Price: {discountedPrice}
-                  </p>
-                </>
-              )}
+              <p className="text-sm text-gray-600">
+                {product.variants.length} variant(s) available
+              </p>
             </div>
           </div>
         </div>

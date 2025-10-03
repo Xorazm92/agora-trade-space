@@ -165,6 +165,8 @@
     "settings": "Sozlamalar",
     "language": "Til",
     "currency": "Valyuta",
+    "currency_uzs": "so'm",
+    "price_format": "{amount} so'm",
     "update_profile": "Profilni yangilash",
     "change_password": "Parolni o'zgartirish",
     "add_address": "Manzil qo'shish",

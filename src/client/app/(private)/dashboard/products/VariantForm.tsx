@@ -1,6 +1,7 @@
 "use client";
 import { Controller, useFieldArray, UseFormReturn } from "react-hook-form";
 import { Trash2, Plus } from "lucide-react";
+import { useTranslations } from "next-intl";
 import Dropdown from "@/app/components/molecules/Dropdown";
 import ImageUploader from "@/app/components/molecules/ImageUploader";
 import { ProductFormData } from "./product.types";
@@ -19,6 +20,7 @@ const VariantForm: React.FC<VariantFormProps> = ({
   form,
   categoryAttributes,
 }) => {
+  const t = useTranslations("products");
   const {
     control,
     formState: { errors },
@@ -112,7 +114,7 @@ const VariantForm: React.FC<VariantFormProps> = ({
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
-                Price
+                {t("variant_price")} (so'm)
               </label>
               <Controller
                 name={`variants.${index}.price`}

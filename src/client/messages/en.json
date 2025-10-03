@@ -131,5 +131,10 @@
     "tax": "Tax",
     "total": "Total",
     "proceed_to_checkout": "Proceed to Checkout"
+  },
+  "currency": {
+    "uzs": "UZS",
+    "currency_uzs": "som",
+    "price_format": "{amount} som"
   }
 }

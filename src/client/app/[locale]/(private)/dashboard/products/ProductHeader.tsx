@@ -1,14 +1,12 @@
 "use client";
-import { Loader2, Package, Trash2 } from "lucide-react";
-import { motion } from "framer-motion";
+import { Product } from "@/app/types/productTypes";
+import { Star, Package, TrendingUp, Award } from "lucide-react";
+import Image from "next/image";
+import { generateProductPlaceholder } from "@/app/utils/placeholderImage";
+import useFormatPrice from "@/app/hooks/ui/useFormatPrice";
 
 interface ProductHeaderProps {
-  product: {
-    name: string;
-    price: number;
-    discount: number;
-    stock: number;
-  };
+  product: Product;
   isDeleting: boolean;
   onDelete: () => void;
 }
@@ -18,10 +16,11 @@ const ProductHeader: React.FC<ProductHeaderProps> = ({
   isDeleting,
   onDelete,
 }) => {
+  const formatPrice = useFormatPrice();
   const formattedPrice =
     typeof product.price === "number"
-      ? `$${product.price.toFixed(2)}`
-      : "$0.00";
+      ? formatPrice(product.price)
+      : formatPrice(0);
   const hasDiscount = product.discount && product.discount > 0;
   //   const discountedPrice = hasDiscount
   //     ? `$${(product.price * (1 - product.discount / 100)).toFixed(2)}`

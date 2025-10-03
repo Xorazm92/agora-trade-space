@@ -5,6 +5,7 @@ import useToast from "@/app/hooks/ui/useToast";
 import { Product } from "@/app/types/productTypes";
 import { Palette, Ruler, Info, Package, Check, X } from "lucide-react";
 import { motion } from "framer-motion";
+import useFormatPrice from "@/app/hooks/ui/useFormatPrice";
 
 interface ProductInfoProps {
   id: string;
@@ -34,6 +35,7 @@ const ProductInfo: React.FC<ProductInfoProps> = ({
 }) => {
   const { showToast } = useToast();
   const [addToCart, { isLoading }] = useAddToCartMutation();
+  const formatPrice = useFormatPrice();
 
   const handleAddToCart = async (e: React.MouseEvent) => {
     e.preventDefault();
@@ -142,7 +144,7 @@ const ProductInfo: React.FC<ProductInfoProps> = ({
 
       {/* Price */}
       <div className="text-2xl sm:text-3xl font-bold text-gray-900">
-        ${price.toFixed(2)}
+        {formatPrice(price)}
       </div>
 
       {/* Available Options */}

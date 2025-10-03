@@ -131,5 +131,10 @@
     "tax": "Налог",
     "total": "Итого",
     "proceed_to_checkout": "Перейти к оформлению"
+  },
+  "currency": {
+    "uzs": "UZS",
+    "currency_uzs": "сум",
+    "price_format": "{amount} сум"
   }
 }

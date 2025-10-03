@@ -114,7 +114,7 @@ const VariantForm: React.FC<VariantFormProps> = ({
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
-                Price
+                {t("variant_price")} (so'm)
               </label>
               <Controller
                 name={`variants.${index}.price`}

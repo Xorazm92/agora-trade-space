@@ -627,7 +627,7 @@ async function main() {
       variants: [
         {
           sku: "IPH16-PRO-128-BLACK",
-          price: 999.99,
+          price: 12499875,
           stock: 25,
           barcode: "1234567890001",
           warehouseLocation: "WH-1A",
@@ -639,7 +639,7 @@ async function main() {
         },
         {
           sku: "IPH16-PRO-256-BLUE",
-          price: 1099.99,
+          price: 13749875,
           stock: 20,
           barcode: "1234567890002",
           warehouseLocation: "WH-1B",
@@ -663,7 +663,7 @@ async function main() {
       variants: [
         {
           sku: "SAMS-S24-256-GREEN",
-          price: 899.99,
+          price: 11249875,
           stock: 30,
           barcode: "1234567890003",
           warehouseLocation: "WH-2A",
@@ -689,7 +689,7 @@ async function main() {
       variants: [
         {
           sku: "TSH-COT-RED-S",
-          price: 19.99,
+          price: 249875,
           stock: 50,
           barcode: "1234567890004",
           warehouseLocation: "WH-3A",
@@ -701,7 +701,7 @@ async function main() {
         },
         {
           sku: "TSH-COT-BLUE-M",
-          price: 19.99,
+          price: 249875,
           stock: 45,
           barcode: "1234567890005",
           warehouseLocation: "WH-3B",
@@ -713,7 +713,7 @@ async function main() {
         },
         {
           sku: "TSH-COT-BLACK-L",
-          price: 19.99,
+          price: 249875,
           stock: 40,
           barcode: "1234567890006",
           warehouseLocation: "WH-3C",
@@ -737,7 +737,7 @@ async function main() {
       variants: [
         {
           sku: "JNS-DEN-BLUE-32",
-          price: 59.99,
+          price: 749875,
           stock: 35,
           barcode: "1234567890007",
           warehouseLocation: "WH-4A",
@@ -749,7 +749,7 @@ async function main() {
         },
         {
           sku: "JNS-DEN-BLACK-34",
-          price: 59.99,
+          price: 749875,
           stock: 30,
           barcode: "1234567890008",
           warehouseLocation: "WH-4B",
@@ -775,7 +775,7 @@ async function main() {
       variants: [
         {
           sku: "NKE-AM-WHT-42",
-          price: 129.99,
+          price: 1624875,
           stock: 25,
           barcode: "1234567890009",
           warehouseLocation: "WH-5A",
@@ -791,7 +791,7 @@ async function main() {
         },
         {
           sku: "NKE-AM-BLK-44",
-          price: 129.99,
+          price: 1624875,
           stock: 20,
           barcode: "1234567890010",
           warehouseLocation: "WH-5B",
@@ -819,7 +819,7 @@ async function main() {
       variants: [
         {
           sku: "ADI-UB-RED-43",
-          price: 179.99,
+          price: 2249875,
           stock: 15,
           barcode: "1234567890011",
           warehouseLocation: "WH-6A",
@@ -849,7 +849,7 @@ async function main() {
       variants: [
         {
           sku: "CHR-WOD-BRN-1",
-          price: 149.99,
+          price: 1874875,
           stock: 10,
           barcode: "1234567890012",
           warehouseLocation: "WH-7A",
@@ -873,7 +873,7 @@ async function main() {
       variants: [
         {
           sku: "DSK-MTL-SLV-1",
-          price: 299.99,
+          price: 3749875,
           stock: 8,
           barcode: "1234567890013",
           warehouseLocation: "WH-8A",
@@ -899,7 +899,7 @@ async function main() {
       variants: [
         {
           sku: "WLT-LTH-BLK-1",
-          price: 49.99,
+          price: 624875,
           stock: 20,
           barcode: "1234567890014",
           warehouseLocation: "WH-9A",
@@ -910,7 +910,7 @@ async function main() {
         },
         {
           sku: "WLT-LTH-BRN-1",
-          price: 49.99,
+          price: 624875,
           stock: 18,
           barcode: "1234567890015",
           warehouseLocation: "WH-9B",
@@ -933,7 +933,7 @@ async function main() {
       variants: [
         {
           sku: "SGL-BLK-1",
-          price: 89.99,
+          price: 1124875,
           stock: 12,
           barcode: "1234567890016",
           warehouseLocation: "WH-10A",
@@ -944,7 +944,7 @@ async function main() {
         },
         {
           sku: "SGL-YLW-1",
-          price: 89.99,
+          price: 1124875,
           stock: 10,
           barcode: "1234567890017",
           warehouseLocation: "WH-10B",

@@ -6,6 +6,7 @@ import useToast from "@/app/hooks/ui/useToast";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { useAuth } from "@/app/hooks/useAuth";
+import useFormatPrice from "@/app/hooks/ui/useFormatPrice";
 
 interface CartSummaryProps {
   subtotal: number;
@@ -18,11 +19,12 @@ interface CartSummaryProps {
 const CartSummary: React.FC<CartSummaryProps> = ({
   subtotal,
   shippingRate = 0.01,
-  currency = "$",
+  currency = "so'm",
   totalItems,
 }) => {
   const { isAuthenticated } = useAuth();
   const { showToast } = useToast();
+  const formatPrice = useFormatPrice();
 
   const stripePromise = loadStripe(
     "pk_test_51R9gs72KGvEXtMtXXTm7UscmmHYsvk9j3ktaM8vxRb3evNJgG1dpD05YWACweIfcPtpCgOIs4HkpGrTCKE1dZD0p00sLC6iIBg"
@@ -71,22 +73,19 @@ const CartSummary: React.FC<CartSummaryProps> = ({
         <div className="flex justify-between text-gray-700">
           <span>Subtotal</span>
           <span className="font-medium text-gray-800">
-            {currency}
-            {subtotal.toFixed(2)}
+            {formatPrice(subtotal)}
           </span>
         </div>
         <div className="flex justify-between text-gray-700">
           <span>Shipping ({(shippingRate * 100).toFixed(0)}%)</span>
           <span className="font-medium text-gray-800">
-            {currency}
-            {shippingFee.toFixed(2)}
+            {formatPrice(shippingFee)}
           </span>
         </div>
         <div className="flex justify-between pt-3 border-t border-gray-200">
           <span className="font-semibold text-gray-800">Total</span>
           <span className="font-semibold text-gray-800">
-            {currency}
-            {total.toFixed(2)}
+            {formatPrice(total)}
           </span>
         </div>
       </div>
