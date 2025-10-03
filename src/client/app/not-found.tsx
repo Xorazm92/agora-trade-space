@@ -1,22 +1,12 @@
 "use client";
 
-import {
-  Search,
-  Home,
-  ArrowLeft,
-  ShoppingBag,
-  Package,
-  Zap,
-  MapPin,
-} from "lucide-react";
-import { motion } from "framer-motion";
 import Link from "next/link";
-import Image from "next/image";
+import { motion } from "framer-motion";
+import { ArrowLeft, Home, Search, Package, MapPin, Zap, ShoppingBag } from "lucide-react";
 import { useState } from "react";
 
 const NotFoundPage = () => {
   const [searchQuery, setSearchQuery] = useState("");
-
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     if (searchQuery.trim()) {
@@ -111,14 +101,10 @@ const NotFoundPage = () => {
               className="absolute inset-0 bg-indigo-500 rounded-full opacity-20"
             />
             <div className="relative bg-white rounded-full p-8 shadow-lg border border-indigo-100 inline-block">
-              <div className="w-32 h-32 md:w-40 md:h-40">
-                <Image
-                  src="/not-found.png"
-                  alt="404 - Sahifa topilmadi"
-                  width={160}
-                  height={160}
-                  className="w-full h-full object-contain"
-                />
+              <div className="w-32 h-32 md:w-40 md:h-40 flex items-center justify-center">
+                <div className="text-6xl md:text-8xl font-bold text-indigo-600">
+                  404
+                </div>
               </div>
             </div>
           </div>

@@ -42,7 +42,11 @@
     "follow_us": "Follow Us",
     "newsletter": "Newsletter",
     "subscribe": "Subscribe",
-    "copyright": " 2024 Inbola. All rights reserved"
+    "newsletter_description": "Subscribe to get special offers, new products and discounts.",
+    "newsletter_placeholder": "Your email address",
+    "newsletter_privacy": "By subscribing you agree to our Privacy Policy.",
+    "copyright": " 2024 Inbola. All rights reserved",
+    "categories": "Categories"
   },
   "products": {
     "title": "Products",
@@ -63,7 +67,12 @@
     "category": "Category",
     "brand": "Brand",
     "rating": "Rating",
-    "reviews": "Reviews"
+    "refunded": "Refunded",
+    "shop": "Shop"
+  },
+  "navigation": {
+    "help": "Help",
+    "company": "Company"
   },
   "brand": {
     "name": "Inbola",
@@ -109,5 +118,17 @@
     "boys": "For Boys",
     "girls": "For Girls",
     "unisex": "For All Children"
+  },
+  "cart": {
+    "shopping_cart": "Shopping Cart",
+    "empty_cart": "Your cart is empty",
+    "continue_shopping": "Continue Shopping",
+    "remove_item": "Remove Item",
+    "update_quantity": "Update Quantity",
+    "subtotal": "Subtotal",
+    "shipping": "Shipping",
+    "tax": "Tax",
+    "total": "Total",
+    "proceed_to_checkout": "Proceed to Checkout"
   }
 }

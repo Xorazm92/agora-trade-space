@@ -29,7 +29,12 @@
     "next": "Keyingi",
     "previous": "Oldingi",
     "submit": "Yuborish",
-    "confirm": "Tasdiqlash"
+    "confirm": "Tasdiqlash",
+    "shop": "Do'kon"
+  },
+  "navigation": {
+    "help": "Yordam",
+    "company": "Kompaniya"
   },
   "auth": {
     "sign_in": "Tizimga kirish",
@@ -176,6 +181,9 @@
     "follow_us": "Bizni kuzatib boring",
     "newsletter": "Yangiliklar",
     "subscribe": "Obuna bo'lish",
+    "newsletter_description": "Maxsus takliflar, yangi mahsulotlar va chegirmalar haqida xabar olish uchun obuna bo'ling.",
+    "newsletter_placeholder": "Elektron pochta manzilingiz",
+    "newsletter_privacy": "Obuna bo'lish orqali siz bizning Maxfiylik siyosatimizga rozilik bildirasiz.",
     "copyright": "© 2024 Inbola. Barcha huquqlar himoyalangan",
     "categories": "Kategoriyalar"
   },
@@ -183,6 +191,58 @@
     "name": "Inbola",
     "tagline": "Bolalar uchun eng yaxshi tanlov",
     "description": "0-12 yosh bolalar uchun sifatli va xavfsiz mahsulotlar"
+  },
+  "about": {
+    "title": "Biz haqimizda",
+    "subtitle": "Inbola - O'zbekistondagi eng ishonchli bolalar mahsulotlari do'koni. Bizning maqsadimiz har bir bolaning baxtli va xavfsiz o'sishiga hissa qo'shish.",
+    "our_values": "Bizning qadriyatlarimiz",
+    "our_achievements": "Bizning yutuqlarimiz",
+    "our_journey": "Bizning yo'limiz",
+    "our_team": "Bizning jamoamiz",
+    "certifications": "Sertifikatlar va litsenziyalar",
+    "customer_reviews": "Mijozlar fikri",
+    "join_family": "Bizning oilamizga qo'shiling",
+    "join_description": "Minglab baxtli oilalar bizni tanladilar. Siz ham bizning ishonchli mijozlarimizdan bo'ling."
+  },
+  "help": {
+    "title": "Yordam Markazi",
+    "subtitle": "Sizga qanday yordam bera olamiz? Quyidagi bo'limlardan kerakli ma'lumotni toping yoki biz bilan bog'laning.",
+    "popular_questions": "Tez-tez so'raladigan savollar",
+    "contact_us": "Biz bilan bog'laning",
+    "quick_help": "Tezkor yordam",
+    "quick_help_description": "Eng ko'p so'raladigan savollar va masalalar uchun tezkor yechimlar"
+  },
+  "shipping": {
+    "title": "Yetkazib berish",
+    "subtitle": "O'zbekiston bo'ylab tez va ishonchli yetkazib berish xizmati. Buyurtmangizni eng qisqa vaqtda oling.",
+    "shipping_options": "Yetkazib berish turlari",
+    "delivery_zones": "Yetkazib berish hududlari",
+    "delivery_process": "Yetkazib berish jarayoni",
+    "important_notes": "Muhim eslatmalar",
+    "shipping_questions": "Yetkazib berish bo'yicha savollar?",
+    "shipping_contact_description": "Yetkazib berish bo'yicha qo'shimcha ma'lumot olish uchun biz bilan bog'laning"
+  },
+  "returns": {
+    "title": "Qaytarish va almashtirish",
+    "subtitle": "14 kun ichida mahsulotni qaytarish yoki almashtirish imkoniyati. Bizning maqsadimiz - sizning mamnunligingiz.",
+    "return_conditions": "Qaytarish shartlari",
+    "refund_methods": "Pul qaytarish usullari",
+    "need_help": "Yordam kerakmi?",
+    "contact_description": "Qaytarish yoki almashtirish bo'yicha savollaringiz bo'lsa, biz bilan bog'laning"
+  },
+  "track": {
+    "title": "Buyurtmani kuzatish",
+    "subtitle": "Buyurtma raqami va email manzil orqali buyurtmangizning holatini kuzatib boring.",
+    "need_help": "Yordam kerakmi?",
+    "help_description": "Buyurtmangizni kuzatishda muammo bo'lsa, biz bilan bog'laning"
+  },
+  "size_guide": {
+    "title": "O'lcham bo'yicha yo'riqnoma",
+    "subtitle": "Bolangiz uchun to'g'ri o'lchamni tanlash uchun quyidagi jadvallardan foydalaning.",
+    "measurement_tips": "O'lchash bo'yicha maslahatlar",
+    "return_conditions": "Qaytarish shartlari",
+    "need_help": "O'lcham tanlashda yordam kerakmi?",
+    "help_description": "Mutaxassislarimiz sizga to'g'ri o'lchamni tanlashda yordam berishadi"
   },
   "notifications": {
     "item_added_to_cart": "Mahsulot savatchaga qo'shildi",

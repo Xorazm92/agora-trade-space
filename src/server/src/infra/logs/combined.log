@@ -1792,3 +1792,279 @@ The table `public.Category` does not exist in the current database.
 [2025-10-03T05:02:38.774Z] [32MINFO[39M: ::1 - - [03/Oct/2025:05:02:38 +0000] "POST /api/v1/graphql HTTP/1.1" 200 778 "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
 [2025-10-03T05:02:38.818Z] [32MINFO[39M: ::1 - - [03/Oct/2025:05:02:38 +0000] "GET /api/v1/categories HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
 [2025-10-03T05:02:38.821Z] [32MINFO[39M: ::1 - - [03/Oct/2025:05:02:38 +0000] "GET /api/v1/cart/count HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-03T05:05:05.940Z] [31MERROR[39M: Unauthorized, please log in
+[2025-10-03T05:05:05.945Z] [32MINFO[39M: ::1 - - [03/Oct/2025:05:05:05 +0000] "GET /api/v1/users/me HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-03T05:05:05.969Z] [31MERROR[39M: Refresh token not found
+[2025-10-03T05:05:05.978Z] [32MINFO[39M: ::1 - - [03/Oct/2025:05:05:05 +0000] "POST /api/v1/auth/refresh-token HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-03T05:05:27.275Z] [31MERROR[39M: Unauthorized, please log in
+[2025-10-03T05:05:27.277Z] [32MINFO[39M: ::1 - - [03/Oct/2025:05:05:27 +0000] "GET /api/v1/users/me HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-03T05:05:27.456Z] [31MERROR[39M: Refresh token not found
+[2025-10-03T05:05:27.465Z] [32MINFO[39M: ::1 - - [03/Oct/2025:05:05:27 +0000] "POST /api/v1/auth/refresh-token HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-03T05:05:34.828Z] [31MERROR[39M: Unauthorized, please log in
+[2025-10-03T05:05:34.832Z] [32MINFO[39M: ::1 - - [03/Oct/2025:05:05:34 +0000] "GET /api/v1/users/me HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-03T05:05:34.854Z] [31MERROR[39M: Refresh token not found
+[2025-10-03T05:05:34.856Z] [32MINFO[39M: ::1 - - [03/Oct/2025:05:05:34 +0000] "POST /api/v1/auth/refresh-token HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-03T05:05:35.206Z] [32MINFO[39M: ::1 - - [03/Oct/2025:05:05:35 +0000] "POST /api/v1/graphql HTTP/1.1" 200 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-03T05:05:35.449Z] [32MINFO[39M: ::1 - - [03/Oct/2025:05:05:35 +0000] "POST /api/v1/graphql HTTP/1.1" 200 778 "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-03T05:05:35.492Z] [32MINFO[39M: ::1 - - [03/Oct/2025:05:05:35 +0000] "GET /api/v1/cart/count HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-03T05:05:35.835Z] [32MINFO[39M: ::1 - - [03/Oct/2025:05:05:35 +0000] "GET /api/v1/categories HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-03T05:05:43.088Z] [32MINFO[39M: ::1 - - [03/Oct/2025:05:05:43 +0000] "POST /api/v1/graphql HTTP/1.1" 200 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-03T05:05:49.262Z] [31MERROR[39M: Unauthorized, please log in
+[2025-10-03T05:05:49.264Z] [32MINFO[39M: ::1 - - [03/Oct/2025:05:05:49 +0000] "GET /api/v1/users/me HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-03T05:05:49.285Z] [31MERROR[39M: Refresh token not found
+[2025-10-03T05:05:49.288Z] [32MINFO[39M: ::1 - - [03/Oct/2025:05:05:49 +0000] "POST /api/v1/auth/refresh-token HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-03T05:05:49.611Z] [32MINFO[39M: ::1 - - [03/Oct/2025:05:05:49 +0000] "POST /api/v1/graphql HTTP/1.1" 200 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-03T05:05:49.796Z] [32MINFO[39M: ::1 - - [03/Oct/2025:05:05:49 +0000] "POST /api/v1/graphql HTTP/1.1" 200 778 "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-03T05:05:49.825Z] [32MINFO[39M: ::1 - - [03/Oct/2025:05:05:49 +0000] "GET /api/v1/cart/count HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-03T05:05:50.141Z] [32MINFO[39M: ::1 - - [03/Oct/2025:05:05:50 +0000] "GET /api/v1/categories HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-03T05:06:01.030Z] [32MINFO[39M: ::1 - - [03/Oct/2025:05:06:01 +0000] "POST /api/v1/graphql HTTP/1.1" 200 992 "-" "curl/8.5.0"
+[2025-10-03T05:07:28.807Z] [32MINFO[39M: ::1 - - [03/Oct/2025:05:07:28 +0000] "GET /api/v1/categories HTTP/1.1" 200 25437 "-" "curl/8.5.0"
+[2025-10-03T05:07:40.244Z] [32MINFO[39M: ::1 - - [03/Oct/2025:05:07:40 +0000] "POST /api/v1/graphql HTTP/1.1" 200 250 "-" "curl/8.5.0"
+[2025-10-03T05:08:29.168Z] [31MERROR[39M: Unauthorized, please log in
+[2025-10-03T05:08:29.170Z] [32MINFO[39M: ::1 - - [03/Oct/2025:05:08:29 +0000] "GET /api/v1/users/me HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-03T05:08:29.180Z] [31MERROR[39M: Refresh token not found
+[2025-10-03T05:08:29.183Z] [32MINFO[39M: ::1 - - [03/Oct/2025:05:08:29 +0000] "POST /api/v1/auth/refresh-token HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-03T05:08:29.234Z] [32MINFO[39M: ::1 - - [03/Oct/2025:05:08:29 +0000] "POST /api/v1/graphql HTTP/1.1" 200 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-03T05:08:29.520Z] [32MINFO[39M: ::1 - - [03/Oct/2025:05:08:29 +0000] "POST /api/v1/graphql HTTP/1.1" 200 778 "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-03T05:08:29.548Z] [32MINFO[39M: ::1 - - [03/Oct/2025:05:08:29 +0000] "GET /api/v1/categories HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-03T05:08:29.560Z] [32MINFO[39M: ::1 - - [03/Oct/2025:05:08:29 +0000] "GET /api/v1/cart/count HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-03T05:09:00.352Z] [31MERROR[39M: Unauthorized, please log in
+[2025-10-03T05:09:00.353Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:09:00 +0000] "GET /api/v1/users/me HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:09:00.372Z] [31MERROR[39M: Refresh token not found
+[2025-10-03T05:09:00.375Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:09:00 +0000] "POST /api/v1/auth/refresh-token HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:09:00.697Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:09:00 +0000] "POST /api/v1/graphql HTTP/1.1" 200 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:09:00.837Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:09:00 +0000] "POST /api/v1/graphql HTTP/1.1" 200 778 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:09:00.894Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:09:00 +0000] "GET /api/v1/cart/count HTTP/1.1" 200 74 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:09:01.215Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:09:01 +0000] "GET /api/v1/categories HTTP/1.1" 200 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:09:07.926Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:09:07 +0000] "POST /api/v1/graphql HTTP/1.1" 200 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:15:20.783Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:15:20 +0000] "POST /api/v1/graphql HTTP/1.1" 200 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:15:20.848Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:15:20 +0000] "GET /api/v1/cart/count HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:15:20.927Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:15:20 +0000] "GET /api/v1/categories HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:17:07.899Z] [31MERROR[39M: Unknown authentication strategy "google"
+[2025-10-03T05:17:07.902Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:17:07 +0000] "GET /api/v1/auth/google HTTP/1.1" 500 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:17:07.960Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:17:07 +0000] "GET /favicon.ico HTTP/1.1" 404 150 "-" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:17:15.093Z] [31MERROR[39M: Unknown authentication strategy "google"
+[2025-10-03T05:17:15.095Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:17:15 +0000] "GET /api/v1/auth/google HTTP/1.1" 500 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:17:15.131Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:17:15 +0000] "GET /favicon.ico HTTP/1.1" 404 150 "-" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:17:35.611Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:17:35 +0000] "GET / HTTP/1.1" 404 139 "-" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:17:44.338Z] [31MERROR[39M: Unauthorized, please log in
+[2025-10-03T05:17:44.340Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:17:44 +0000] "GET /api/v1/users/me HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:17:44.374Z] [31MERROR[39M: Refresh token not found
+[2025-10-03T05:17:44.377Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:17:44 +0000] "POST /api/v1/auth/refresh-token HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:17:44.701Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:17:44 +0000] "POST /api/v1/graphql HTTP/1.1" 200 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:17:44.896Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:17:44 +0000] "POST /api/v1/graphql HTTP/1.1" 200 778 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:17:44.919Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:17:44 +0000] "GET /api/v1/cart/count HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:17:45.303Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:17:45 +0000] "GET /api/v1/categories HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:18:11.310Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:18:11 +0000] "GET /api/v1/graphql HTTP/1.1" 200 - "-" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:18:18.809Z] [31MERROR[39M: Unauthorized, please log in
+[2025-10-03T05:18:18.821Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:18:18 +0000] "GET /api/v1/users/me HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:18:18.875Z] [31MERROR[39M: Refresh token not found
+[2025-10-03T05:18:18.876Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:18:18 +0000] "POST /api/v1/auth/refresh-token HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:18:18.919Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:18:18 +0000] "POST /api/v1/graphql HTTP/1.1" 200 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:18:19.275Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:18:19 +0000] "POST /api/v1/graphql HTTP/1.1" 200 778 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:18:19.318Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:18:19 +0000] "GET /api/v1/cart/count HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:18:19.343Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:18:19 +0000] "GET /api/v1/categories HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:19:02.223Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:19:02 +0000] "POST /api/v1/graphql HTTP/1.1" 200 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:19:10.239Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:19:10 +0000] "POST /api/v1/graphql HTTP/1.1" 200 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:19:18.270Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:19:18 +0000] "POST /api/v1/graphql HTTP/1.1" 200 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:19:18.417Z] [31MERROR[39M: Unauthorized, please log in
+[2025-10-03T05:19:18.426Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:19:18 +0000] "GET /api/v1/users/me HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:19:18.484Z] [31MERROR[39M: Refresh token not found
+[2025-10-03T05:19:18.496Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:19:18 +0000] "POST /api/v1/auth/refresh-token HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:19:28.577Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:19:28 +0000] "POST /api/v1/graphql HTTP/1.1" 200 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:19:31.992Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:19:31 +0000] "POST /api/v1/graphql HTTP/1.1" 200 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:19:32.076Z] [31MERROR[39M: Unauthorized, please log in
+[2025-10-03T05:19:32.079Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:19:32 +0000] "GET /api/v1/users/me HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:19:32.119Z] [31MERROR[39M: Refresh token not found
+[2025-10-03T05:19:32.122Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:19:32 +0000] "POST /api/v1/auth/refresh-token HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:19:59.760Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:19:59 +0000] "POST /api/v1/cart HTTP/1.1" 200 303 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:19:59.817Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:19:59 +0000] "GET /api/v1/cart/count HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:20:14.480Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:20:14 +0000] "POST /api/v1/cart HTTP/1.1" 200 303 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:20:14.499Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:20:14 +0000] "GET /api/v1/cart/count HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:20:43.620Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:20:43 +0000] "POST /api/v1/graphql HTTP/1.1" 200 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:20:43.804Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:20:43 +0000] "GET /api/v1/categories HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:20:52.367Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:20:52 +0000] "POST /api/v1/graphql HTTP/1.1" 200 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:21:08.508Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:21:08 +0000] "POST /api/v1/graphql HTTP/1.1" 200 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:22:09.311Z] [31MERROR[39M: Unauthorized, please log in
+[2025-10-03T05:22:09.314Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:22:09 +0000] "GET /api/v1/users/me HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:22:09.344Z] [31MERROR[39M: Refresh token not found
+[2025-10-03T05:22:09.346Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:22:09 +0000] "POST /api/v1/auth/refresh-token HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:22:09.777Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:22:09 +0000] "POST /api/v1/graphql HTTP/1.1" 200 778 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:22:09.789Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:22:09 +0000] "POST /api/v1/graphql HTTP/1.1" 200 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:22:09.805Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:22:09 +0000] "GET /api/v1/cart/count HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:22:54.916Z] [31MERROR[39M: Unauthorized, please log in
+[2025-10-03T05:22:54.920Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:22:54 +0000] "GET /api/v1/users/me HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:22:54.956Z] [31MERROR[39M: Refresh token not found
+[2025-10-03T05:22:54.958Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:22:54 +0000] "POST /api/v1/auth/refresh-token HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:23:42.524Z] [31MERROR[39M: Unauthorized, please log in
+[2025-10-03T05:23:42.526Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:23:42 +0000] "GET /api/v1/users/me HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:23:42.584Z] [31MERROR[39M: Refresh token not found
+[2025-10-03T05:23:42.588Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:23:42 +0000] "POST /api/v1/auth/refresh-token HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:23:42.853Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:23:42 +0000] "POST /api/v1/graphql HTTP/1.1" 200 778 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:23:42.863Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:23:42 +0000] "POST /api/v1/graphql HTTP/1.1" 200 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:23:42.921Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:23:42 +0000] "GET /api/v1/cart/count HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:23:50.882Z] [31MERROR[39M: Unauthorized, please log in
+[2025-10-03T05:23:50.884Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:23:50 +0000] "GET /api/v1/users/me HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:23:50.918Z] [31MERROR[39M: Refresh token not found
+[2025-10-03T05:23:50.922Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:23:50 +0000] "POST /api/v1/auth/refresh-token HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:24:13.830Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:24:13 +0000] "POST /api/v1/graphql HTTP/1.1" 200 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:24:13.967Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:24:13 +0000] "POST /api/v1/graphql HTTP/1.1" 200 778 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:24:14.032Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:24:14 +0000] "GET /api/v1/cart/count HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:24:14.277Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:24:14 +0000] "GET /api/v1/categories HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:24:21.249Z] [31MERROR[39M: Unauthorized, please log in
+[2025-10-03T05:24:21.251Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:24:21 +0000] "GET /api/v1/users/me HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:24:21.279Z] [31MERROR[39M: Refresh token not found
+[2025-10-03T05:24:21.282Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:24:21 +0000] "POST /api/v1/auth/refresh-token HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:24:52.497Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:24:52 +0000] "POST /api/v1/graphql HTTP/1.1" 200 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:24:52.608Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:24:52 +0000] "POST /api/v1/graphql HTTP/1.1" 200 778 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:24:52.685Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:24:52 +0000] "GET /api/v1/cart/count HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:24:52.963Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:24:52 +0000] "GET /api/v1/categories HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:25:01.262Z] [31MERROR[39M: Unauthorized, please log in
+[2025-10-03T05:25:01.264Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:25:01 +0000] "GET /api/v1/users/me HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:25:01.294Z] [31MERROR[39M: Refresh token not found
+[2025-10-03T05:25:01.298Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:25:01 +0000] "POST /api/v1/auth/refresh-token HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:26:45.211Z] [31MERROR[39M: Unauthorized, please log in
+[2025-10-03T05:26:45.212Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:26:45 +0000] "GET /api/v1/users/me HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:26:45.253Z] [31MERROR[39M: Refresh token not found
+[2025-10-03T05:26:45.257Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:26:45 +0000] "POST /api/v1/auth/refresh-token HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:26:54.834Z] [31MERROR[39M: Unauthorized, please log in
+[2025-10-03T05:26:54.838Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:26:54 +0000] "GET /api/v1/users/me HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:26:54.869Z] [31MERROR[39M: Refresh token not found
+[2025-10-03T05:26:54.872Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:26:54 +0000] "POST /api/v1/auth/refresh-token HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:27:03.842Z] [31MERROR[39M: Unauthorized, please log in
+[2025-10-03T05:27:03.845Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:27:03 +0000] "GET /api/v1/users/me HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:27:03.871Z] [31MERROR[39M: Refresh token not found
+[2025-10-03T05:27:03.875Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:27:03 +0000] "POST /api/v1/auth/refresh-token HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:27:15.391Z] [31MERROR[39M: Unauthorized, please log in
+[2025-10-03T05:27:15.393Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:27:15 +0000] "GET /api/v1/users/me HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:27:15.422Z] [31MERROR[39M: Refresh token not found
+[2025-10-03T05:27:15.424Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:27:15 +0000] "POST /api/v1/auth/refresh-token HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:28:16.635Z] [31MERROR[39M: Unauthorized, please log in
+[2025-10-03T05:28:16.639Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:28:16 +0000] "GET /api/v1/users/me HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:28:16.672Z] [31MERROR[39M: Refresh token not found
+[2025-10-03T05:28:16.675Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:28:16 +0000] "POST /api/v1/auth/refresh-token HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:28:19.021Z] [31MERROR[39M: Unauthorized, please log in
+[2025-10-03T05:28:19.024Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:28:19 +0000] "GET /api/v1/users/me HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:28:19.049Z] [31MERROR[39M: Refresh token not found
+[2025-10-03T05:28:19.052Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:28:19 +0000] "POST /api/v1/auth/refresh-token HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:30:18.602Z] [31MERROR[39M: Unauthorized, please log in
+[2025-10-03T05:30:18.604Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:30:18 +0000] "GET /api/v1/users/me HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:30:18.655Z] [31MERROR[39M: Refresh token not found
+[2025-10-03T05:30:18.657Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:30:18 +0000] "POST /api/v1/auth/refresh-token HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:30:40.978Z] [31MERROR[39M: Unauthorized, please log in
+[2025-10-03T05:30:40.986Z] [32MINFO[39M: ::1 - - [03/Oct/2025:05:30:40 +0000] "GET /api/v1/users/me HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-03T05:30:41.008Z] [31MERROR[39M: Refresh token not found
+[2025-10-03T05:30:41.017Z] [32MINFO[39M: ::1 - - [03/Oct/2025:05:30:41 +0000] "POST /api/v1/auth/refresh-token HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-03T05:30:41.259Z] [31MERROR[39M: Unauthorized, please log in
+[2025-10-03T05:30:41.262Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:30:41 +0000] "GET /api/v1/users/me HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:30:41.295Z] [31MERROR[39M: Refresh token not found
+[2025-10-03T05:30:41.298Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:30:41 +0000] "POST /api/v1/auth/refresh-token HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:32:25.271Z] [31MERROR[39M: Unauthorized, please log in
+[2025-10-03T05:32:25.272Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:32:25 +0000] "GET /api/v1/users/me HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:32:25.303Z] [31MERROR[39M: Refresh token not found
+[2025-10-03T05:32:25.305Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:32:25 +0000] "POST /api/v1/auth/refresh-token HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:32:38.053Z] [31MERROR[39M: Unauthorized, please log in
+[2025-10-03T05:32:38.057Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:32:38 +0000] "GET /api/v1/users/me HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:32:38.105Z] [31MERROR[39M: Refresh token not found
+[2025-10-03T05:32:38.108Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:32:38 +0000] "POST /api/v1/auth/refresh-token HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:32:38.434Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:32:38 +0000] "POST /api/v1/graphql HTTP/1.1" 200 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:32:38.599Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:32:38 +0000] "POST /api/v1/graphql HTTP/1.1" 200 778 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:32:38.674Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:32:38 +0000] "GET /api/v1/cart/count HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:32:39.000Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:32:39 +0000] "GET /api/v1/categories HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:33:12.005Z] [31MERROR[39M: Unknown authentication strategy "google"
+[2025-10-03T05:33:12.008Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:33:12 +0000] "GET /api/v1/auth/google HTTP/1.1" 500 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:33:12.052Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:33:12 +0000] "GET /favicon.ico HTTP/1.1" 404 150 "-" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:33:16.903Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:33:16 +0000] "GET / HTTP/1.1" 404 139 "-" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:33:26.117Z] [31MERROR[39M: Unauthorized, please log in
+[2025-10-03T05:33:26.119Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:33:26 +0000] "GET /api/v1/users/me HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:33:26.149Z] [31MERROR[39M: Refresh token not found
+[2025-10-03T05:33:26.150Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:33:26 +0000] "POST /api/v1/auth/refresh-token HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:33:26.487Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:33:26 +0000] "POST /api/v1/graphql HTTP/1.1" 200 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:33:26.621Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:33:26 +0000] "POST /api/v1/graphql HTTP/1.1" 200 778 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:33:26.652Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:33:26 +0000] "GET /api/v1/cart/count HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:33:26.941Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:33:26 +0000] "GET /api/v1/categories HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:33:35.045Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:33:35 +0000] "GET /api/v1/cart HTTP/1.1" 200 279 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:33:39.651Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:33:39 +0000] "POST /api/v1/graphql HTTP/1.1" 200 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:33:47.385Z] [31MERROR[39M: Unauthorized, please log in
+[2025-10-03T05:33:47.387Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:33:47 +0000] "GET /api/v1/users/me HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:33:47.419Z] [31MERROR[39M: Refresh token not found
+[2025-10-03T05:33:47.423Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:33:47 +0000] "POST /api/v1/auth/refresh-token HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:35:06.540Z] [31MERROR[39M: Unauthorized, please log in
+[2025-10-03T05:35:06.556Z] [32MINFO[39M: ::1 - - [03/Oct/2025:05:35:06 +0000] "GET /api/v1/users/me HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-03T05:35:06.577Z] [31MERROR[39M: Refresh token not found
+[2025-10-03T05:35:06.620Z] [32MINFO[39M: ::1 - - [03/Oct/2025:05:35:06 +0000] "POST /api/v1/auth/refresh-token HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-03T05:35:06.754Z] [32MINFO[39M: ::1 - - [03/Oct/2025:05:35:06 +0000] "POST /api/v1/graphql HTTP/1.1" 200 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-03T05:35:06.832Z] [32MINFO[39M: ::1 - - [03/Oct/2025:05:35:06 +0000] "POST /api/v1/graphql HTTP/1.1" 200 778 "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-03T05:35:06.854Z] [32MINFO[39M: ::1 - - [03/Oct/2025:05:35:06 +0000] "GET /api/v1/cart/count HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-03T05:35:07.148Z] [32MINFO[39M: ::1 - - [03/Oct/2025:05:35:07 +0000] "GET /api/v1/categories HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-03T05:36:01.790Z] [31MERROR[39M: Unauthorized, please log in
+[2025-10-03T05:36:01.793Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:36:01 +0000] "GET /api/v1/users/me HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:36:01.869Z] [31MERROR[39M: Refresh token not found
+[2025-10-03T05:36:01.872Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:36:01 +0000] "POST /api/v1/auth/refresh-token HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:36:02.175Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:36:02 +0000] "POST /api/v1/graphql HTTP/1.1" 200 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:36:02.437Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:36:02 +0000] "POST /api/v1/graphql HTTP/1.1" 200 778 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:36:02.497Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:36:02 +0000] "GET /api/v1/cart/count HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:36:02.849Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:36:02 +0000] "GET /api/v1/categories HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:36:22.529Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:36:22 +0000] "GET /api/v1/cart HTTP/1.1" 200 279 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:36:51.333Z] [32MINFO[39M: ::1 - - [03/Oct/2025:05:36:51 +0000] "POST /api/v1/graphql HTTP/1.1" 200 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-03T05:40:45.894Z] [31MERROR[39M: Unauthorized, please log in
+[2025-10-03T05:40:45.897Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:40:45 +0000] "GET /api/v1/users/me HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:40:45.965Z] [31MERROR[39M: Refresh token not found
+[2025-10-03T05:40:45.968Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:40:45 +0000] "POST /api/v1/auth/refresh-token HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:40:46.354Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:40:46 +0000] "POST /api/v1/graphql HTTP/1.1" 200 778 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:40:46.445Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:40:46 +0000] "GET /api/v1/cart/count HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:40:46.459Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:40:46 +0000] "GET /api/v1/cart HTTP/1.1" 200 279 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:40:53.307Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:40:53 +0000] "POST /api/v1/graphql HTTP/1.1" 200 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:40:53.768Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:40:53 +0000] "GET /api/v1/categories HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:40:58.816Z] [31MERROR[39M: Unauthorized, please log in
+[2025-10-03T05:40:58.818Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:40:58 +0000] "GET /api/v1/users/me HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:40:58.872Z] [31MERROR[39M: Refresh token not found
+[2025-10-03T05:40:58.876Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:40:58 +0000] "POST /api/v1/auth/refresh-token HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:41:20.961Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:41:20 +0000] "POST /api/v1/graphql HTTP/1.1" 200 778 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:41:20.965Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:41:20 +0000] "POST /api/v1/graphql HTTP/1.1" 200 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:41:20.992Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:41:20 +0000] "GET /api/v1/cart/count HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:41:21.352Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:41:21 +0000] "GET /api/v1/categories HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:42:33.520Z] [31MERROR[39M: Unauthorized, please log in
+[2025-10-03T05:42:33.523Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:42:33 +0000] "GET /api/v1/users/me HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:42:33.567Z] [31MERROR[39M: Refresh token not found
+[2025-10-03T05:42:33.569Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:42:33 +0000] "POST /api/v1/auth/refresh-token HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:42:42.989Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:42:42 +0000] "POST /api/v1/graphql HTTP/1.1" 200 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:42:43.105Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:42:43 +0000] "POST /api/v1/graphql HTTP/1.1" 200 778 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:42:43.162Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:42:43 +0000] "GET /api/v1/cart/count HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:42:43.425Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:42:43 +0000] "GET /api/v1/categories HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T05:43:54.928Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:05:43:54 +0000] "POST /api/v1/graphql HTTP/1.1" 200 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T06:02:05.898Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:06:02:05 +0000] "POST /api/v1/graphql HTTP/1.1" 200 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T06:02:06.059Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:06:02:06 +0000] "GET /api/v1/categories HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T06:02:18.249Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:06:02:18 +0000] "POST /api/v1/graphql HTTP/1.1" 200 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T06:10:22.296Z] [31MERROR[39M: Unauthorized, please log in
+[2025-10-03T06:10:22.298Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:06:10:22 +0000] "GET /api/v1/users/me HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T06:10:22.333Z] [31MERROR[39M: Refresh token not found
+[2025-10-03T06:10:22.335Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:06:10:22 +0000] "POST /api/v1/auth/refresh-token HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T06:10:22.526Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:06:10:22 +0000] "POST /api/v1/graphql HTTP/1.1" 200 778 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T06:10:22.563Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:06:10:22 +0000] "GET /api/v1/cart/count HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T06:10:27.011Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:06:10:27 +0000] "POST /api/v1/graphql HTTP/1.1" 200 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T06:10:27.380Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:06:10:27 +0000] "GET /api/v1/categories HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T06:10:49.699Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:06:10:49 +0000] "POST /api/v1/graphql HTTP/1.1" 200 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T06:10:52.670Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:06:10:52 +0000] "POST /api/v1/graphql HTTP/1.1" 200 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T06:11:01.242Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:06:11:01 +0000] "POST /api/v1/graphql HTTP/1.1" 200 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T06:11:29.360Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:06:11:29 +0000] "POST /api/v1/graphql HTTP/1.1" 200 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T06:11:30.268Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:06:11:30 +0000] "POST /api/v1/graphql HTTP/1.1" 200 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T06:14:08.346Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:06:14:08 +0000] "POST /api/v1/graphql HTTP/1.1" 200 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T06:15:23.325Z] [31MERROR[39M: Unauthorized, please log in
+[2025-10-03T06:15:23.328Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:06:15:23 +0000] "GET /api/v1/users/me HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T06:15:23.371Z] [31MERROR[39M: Refresh token not found
+[2025-10-03T06:15:23.373Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:06:15:23 +0000] "POST /api/v1/auth/refresh-token HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T06:15:23.936Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:06:15:23 +0000] "POST /api/v1/graphql HTTP/1.1" 200 778 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T06:15:23.939Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:06:15:23 +0000] "POST /api/v1/graphql HTTP/1.1" 200 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T06:15:23.947Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:06:15:23 +0000] "GET /api/v1/cart/count HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T06:15:26.017Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:06:15:26 +0000] "POST /api/v1/graphql HTTP/1.1" 200 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T06:15:26.384Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:06:15:26 +0000] "GET /api/v1/categories HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T06:17:27.512Z] [31MERROR[39M: Unauthorized, please log in
+[2025-10-03T06:17:27.514Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:06:17:27 +0000] "GET /api/v1/users/me HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T06:17:27.540Z] [31MERROR[39M: Refresh token not found
+[2025-10-03T06:17:27.542Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:06:17:27 +0000] "POST /api/v1/auth/refresh-token HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T06:17:57.567Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:06:17:57 +0000] "POST /api/v1/graphql HTTP/1.1" 200 778 "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T06:17:57.585Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:06:17:57 +0000] "POST /api/v1/graphql HTTP/1.1" 200 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T06:17:57.614Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:06:17:57 +0000] "GET /api/v1/cart/count HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T06:17:58.126Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:06:17:58 +0000] "GET /api/v1/categories HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"
+[2025-10-03T06:18:42.567Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [03/Oct/2025:06:18:42 +0000] "POST /api/v1/graphql HTTP/1.1" 200 - "http://localhost:3000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0"

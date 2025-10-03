@@ -53,6 +53,17 @@ const SignIn = () => {
     <MainLayout>
       <div className="min-h-screen flex items-center justify-center p-4 sm:p-6">
         <main className="w-full max-w-md bg-white rounded-lg shadow-lg p-6 sm:p-8">
+          {/* Logo */}
+          <div className="flex justify-center mb-6">
+            <Image
+              src="/logo.png"
+              alt="Inbola"
+              width={60}
+              height={60}
+              className="h-15 w-auto"
+            />
+          </div>
+          
           <h2 className="text-2xl sm:text-3xl font-semibold text-gray-800 text-center mb-6">
             {t('sign_in')}
           </h2>

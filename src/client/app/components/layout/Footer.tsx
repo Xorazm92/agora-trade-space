@@ -7,35 +7,41 @@ import {
   Mail,
   MapPin,
   Phone,
-  Send,
   Users,
   Shield,
   Truck,
+  Send,
 } from "lucide-react";
 import Link from "next/link";
-import { useQuery } from "@apollo/client";
-import { GET_CATEGORIES } from "@/app/gql/Product";
+import Image from 'next/image';
+import PlaceholderImage from '../atoms/PlaceholderImage';
 import { useTranslations } from 'next-intl';
-
-const FooterLogo = () => (
-  <svg viewBox="0 0 120 40" className="h-10">
-    <text
-      x="0"
-      y="28"
-      fontFamily="Arial"
-      fontSize="24"
-      fontWeight="bold"
-      fill="currentColor"
-    >
-      Inbola
-    </text>
-  </svg>
-);
+import { useQuery } from '@apollo/client';
+import { GET_CATEGORIES } from "@/app/gql/Product";
 
 const Footer = () => {
-  const t = useTranslations('footer');
-  const tBrand = useTranslations('brand');
-  const tCategories = useTranslations('categories');
+  let t, tBrand, tCategories;
+  try {
+    t = useTranslations('footer');
+    tBrand = useTranslations('brand');
+    tCategories = useTranslations('categories');
+  } catch (error) {
+    // Fallback if NextIntlClientProvider context is not available
+    t = (key: string) => {
+      const fallbacks: Record<string, string> = {
+        'about_us': 'About Us',
+        'contact': 'Contact',
+        'privacy_policy': 'Privacy Policy',
+        'terms_of_service': 'Terms of Service',
+        'help': 'Help',
+        'categories': 'Categories',
+        'copyright': '© 2024 Inbola. All rights reserved'
+      };
+      return fallbacks[key] || key;
+    };
+    tBrand = (key: string) => key === 'name' ? 'Inbola' : key;
+    tCategories = (key: string) => key;
+  }
   const currentYear = new Date().getFullYear();
 
   // Fetch real categories data
@@ -52,13 +58,19 @@ const Footer = () => {
       <div className="absolute -top-32 -right-32 w-64 h-64 rounded-full bg-indigo-500/10 blur-3xl"></div>
       <div className="absolute -bottom-48 -left-48 w-96 h-96 rounded-full bg-purple-600/10 blur-3xl"></div>
 
-      <div className="max-w-8xl mx-auto px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-6 gap-12 mb-16 pb-16 border-b border-gray-800/80">
           {/* Logo and description */}
           <div className="col-span-1 lg:col-span-2">
             <div className="flex items-center">
               <div className="text-white mr-4">
-                <FooterLogo />
+                <PlaceholderImage
+                  src="/logo.png"
+                  alt={tBrand('name')}
+                  width={40}
+                  height={40}
+                  className="w-10 h-10 rounded"
+                  fallbackText="Logo"
+                />
               </div>
               <div className="h-6 w-1 rounded-full bg-gradient-to-b from-indigo-500 to-purple-600"></div>
               <span className="ml-2 text-sm font-medium tracking-wider text-gray-400 uppercase">
@@ -267,13 +279,13 @@ const Footer = () => {
               <span className="absolute -bottom-2 left-0 h-0.5 w-8 bg-indigo-500"></span>
             </h3>
             <p className="text-gray-400 text-sm leading-relaxed mb-6">
-              Maxsus takliflar, yangi mahsulotlar va chegirmalar haqida xabar olish uchun obuna bo'ling.
+              {t('newsletter_description') || 'Subscribe to get special offers, new products and discounts.'}
             </p>
             <form className="space-y-3" onSubmit={(e) => e.preventDefault()}>
               <div className="relative">
                 <input
                   type="email"
-                  placeholder="Elektron pochta manzilingiz"
+                  placeholder={t('newsletter_placeholder') || 'Your email address'}
                   className="w-full bg-gray-800/50 border border-gray-700 rounded-lg p-3 pl-4 pr-12 text-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all"
                 />
                 <button
@@ -284,7 +296,7 @@ const Footer = () => {
                 </button>
               </div>
               <p className="text-gray-500 text-xs">
-                Obuna bo'lish orqali siz bizning Maxfiylik siyosatimizga rozilik bildirasiz.
+                {t('newsletter_privacy') || 'By subscribing you agree to our Privacy Policy.'}
               </p>
             </form>
 

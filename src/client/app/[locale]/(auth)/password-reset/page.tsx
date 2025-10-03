@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import Input from "@/app/components/atoms/Input";
 import Button from "@/app/components/atoms/Button";
 import Link from "next/link";
+import Image from "next/image";
 import axiosInstance from "@/app/utils/axiosInstance";
 
 const PasswordReset = () => {
@@ -43,6 +44,16 @@ const PasswordReset = () => {
         onSubmit={handleSubmit(onSubmit)}
         className="flex flex-col items-center justify-center bg-white p-6 rounded shadow-md w-[500px]"
       >
+        {/* Logo */}
+        <div className="flex justify-center mb-6">
+          <Image
+            src="/logo.png"
+            alt="Inbola"
+            width={60}
+            height={60}
+            className="h-15 w-auto"
+          />
+        </div>
         {successMessage && (
           <div className="bg-green-100 border border-green-400 text-center text-green-700 w-full mx-auto px-4 py-[18px] rounded relative mb-4">
             <span className="block sm:inline">{successMessage}</span>

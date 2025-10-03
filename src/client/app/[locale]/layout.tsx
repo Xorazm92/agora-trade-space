@@ -1,6 +1,5 @@
 import { Poppins } from "next/font/google";
 import "../globals.css";
-import ClientProviders from "../ClientProviders";
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 
@@ -30,7 +29,7 @@ export default async function LocaleLayout({
 
   return (
     <NextIntlClientProvider messages={messages}>
-      <ClientProviders>{children}</ClientProviders>
+      {children}
     </NextIntlClientProvider>
   );
 }

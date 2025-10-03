@@ -15,7 +15,14 @@ const LanguageSwitcher = () => {
   const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
   const pathname = usePathname();
-  const locale = useLocale();
+  let locale;
+  
+  try {
+    locale = useLocale();
+  } catch (error) {
+    // Fallback if NextIntlClientProvider context is not available
+    locale = 'uz';
+  }
   const dropdownRef = useRef(null);
 
   useClickOutside(dropdownRef, () => setIsOpen(false));

@@ -23,10 +23,29 @@ import { logout } from "@/app/store/slices/AuthSlice";
 import { generateUserAvatar } from "@/app/utils/placeholderImage";
 import { useTranslations } from 'next-intl';
 import LanguageSwitcher from '../molecules/LanguageSwitcher';
+import NavigationMenu from '../molecules/NavigationMenu';
+import PlaceholderImage from '../atoms/PlaceholderImage';
 
 const Navbar = () => {
-  const t = useTranslations('brand');
-  const tCommon = useTranslations('common');
+  let t, tCommon;
+  try {
+    t = useTranslations('brand');
+    tCommon = useTranslations('common');
+  } catch (error) {
+    // Fallback if NextIntlClientProvider context is not available
+    t = (key: string) => key === 'name' ? 'Inbola' : key;
+    tCommon = (key: string) => {
+      const fallbacks: Record<string, string> = {
+        'login': 'Login',
+        'register': 'Register',
+        'logout': 'Logout',
+        'home': 'Home',
+        'orders': 'Orders',
+        'products': 'Products'
+      };
+      return fallbacks[key] || key;
+    };
+  }
   const pathname = usePathname();
   const dispatch = useAppDispatch();
   const [signout] = useSignOutMutation();
@@ -73,17 +92,21 @@ const Navbar = () => {
               href="/"
               className="flex items-center space-x-2 flex-shrink-0 hover:opacity-80 transition-opacity"
             >
-              <Image
+              <PlaceholderImage
                 src="/logo.png"
                 alt={t('name')}
                 width={40}
                 height={40}
-                className="w-8 h-8 sm:w-10 sm:h-10"
+                className="w-8 h-8 sm:w-10 sm:h-10 rounded"
+                fallbackText="Logo"
               />
               <span className="font-bold text-lg sm:text-xl lg:text-2xl text-indigo-600">
                 {t('name')}
               </span>
             </Link>
+
+            {/* Navigation Menu */}
+            <NavigationMenu />
 
             {/* Desktop Search Bar */}
             <div className="hidden md:flex flex-1 max-w-lg mx-8">
