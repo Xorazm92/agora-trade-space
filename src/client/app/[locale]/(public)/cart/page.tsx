@@ -8,6 +8,7 @@ import BreadCrumb from "@/app/components/feedback/BreadCrumb";
 import Button from "@/app/components/atoms/Button";
 import { useTranslations } from 'next-intl';
 import { useGetCartQuery, useRemoveFromCartMutation, useUpdateCartItemMutation } from "@/app/store/apis/CartApi";
+import useFormatPrice from "@/app/hooks/ui/useFormatPrice";
 
 // Helper function to format variant name from SKU
 const formatVariantName = (item: any) => {
@@ -22,6 +23,7 @@ const formatVariantName = (item: any) => {
 const Cart = () => {
   const t = useTranslations('cart');
   const tCommon = useTranslations('common');
+  const formatPrice = useFormatPrice();
   const { control } = useForm();
   const { data, isLoading } = useGetCartQuery({});
   const [removeFromCart] = useRemoveFromCartMutation();
@@ -148,7 +150,7 @@ const Cart = () => {
                         SKU: {item.variant.sku}
                       </p>
                       <p className="text-lg font-bold text-indigo-600">
-                        {item.variant.price.toLocaleString()} so'm
+                        {formatPrice(item.variant.price)}
                       </p>
                     </div>
 
@@ -197,7 +199,7 @@ const Cart = () => {
                 <div className="space-y-3 mb-6">
                   <div className="flex justify-between text-gray-600">
                     <span>Mahsulotlar ({cartItems.length})</span>
-                    <span>{subtotal.toLocaleString()} so'm</span>
+                    <span>{formatPrice(subtotal)}</span>
                   </div>
                   <div className="flex justify-between text-gray-600">
                     <span>Yetkazib berish</span>
@@ -206,7 +208,7 @@ const Cart = () => {
                   <hr className="border-gray-200" />
                   <div className="flex justify-between text-lg font-semibold text-gray-900">
                     <span>Jami</span>
-                    <span>{subtotal.toLocaleString()} so'm</span>
+                    <span>{formatPrice(subtotal)}</span>
                   </div>
                 </div>
 

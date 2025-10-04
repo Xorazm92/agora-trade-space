@@ -165,8 +165,8 @@ const CategoryBar = () => {
         </motion.div>
 
         {/* Categories Row */}
-        <div className="flex gap-4 pb-4 max-w-7xl mx-auto">
-          {categories.map((category, index) => {
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-3 sm:gap-4 pb-4 max-w-7xl mx-auto">
+          {categories.slice(0, 8).map((category, index) => {
             const hasImages = category.images && category.images.length > 0;
             const imageSrc = hasImages ? category.images[0] : null;
             const Icon = getCategoryIcon(category.name);
@@ -178,26 +178,26 @@ const CategoryBar = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: index * 0.05 }}
                 whileHover={{ y: -5, scale: 1.05 }}
-                className="group flex-1"
+                className="group"
               >
                 <Link
                   href={`/shop?categoryId=${category.id}`}
                   className="block"
                 >
-                  <div className="bg-white rounded-xl p-4 shadow-sm hover:shadow-lg border border-gray-100 hover:border-indigo-200 transition-all duration-300 group-hover:bg-gradient-to-br group-hover:from-indigo-50 group-hover:to-purple-50 overflow-hidden">
+                  <div className="bg-white rounded-xl p-2 sm:p-4 shadow-sm hover:shadow-lg border border-gray-100 hover:border-indigo-200 transition-all duration-300 group-hover:bg-gradient-to-br group-hover:from-indigo-50 group-hover:to-purple-50 overflow-hidden">
                     {/* Image or Icon */}
-                    <div className="relative mb-3">
+                    <div className="relative mb-2 sm:mb-3">
                       <motion.div
                         whileHover={{ scale: 1.1 }}
                         transition={{ duration: 0.3 }}
-                        className="w-full h-24 bg-gray-100 rounded-lg overflow-hidden group-hover:shadow-lg transition-all duration-300 flex items-center justify-center"
+                        className="w-full h-16 sm:h-20 md:h-24 bg-gray-100 rounded-lg overflow-hidden group-hover:shadow-lg transition-all duration-300 flex items-center justify-center"
                       >
                         <motion.div
                           whileHover={{ rotate: 360 }}
                           transition={{ duration: 0.6 }}
-                          className="w-12 h-12 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-lg flex items-center justify-center group-hover:shadow-lg transition-all duration-300"
+                          className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-lg flex items-center justify-center group-hover:shadow-lg transition-all duration-300"
                         >
-                          <Icon className="w-6 h-6 text-white" />
+                          <Icon className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-white" />
                         </motion.div>
                       </motion.div>
 
@@ -212,13 +212,13 @@ const CategoryBar = () => {
 
                     {/* Category name */}
                     <div className="text-center">
-                      <h3 className="font-semibold text-gray-800 text-sm group-hover:text-indigo-700 transition-colors duration-300 truncate">
+                      <h3 className="font-semibold text-gray-800 text-xs sm:text-sm group-hover:text-indigo-700 transition-colors duration-300 truncate leading-tight">
                         {category.name}
                       </h3>
 
                       {/* Product count (if available) */}
                       {category.products && (
-                        <p className="text-xs text-gray-500 mt-1">
+                        <p className="text-xs text-gray-500 mt-1 hidden sm:block">
                           {category.products.length} mahsulot
                         </p>
                       )}

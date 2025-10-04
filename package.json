@@ -1,10 +1,49 @@
 {
+  "name": "inbola-ecommerce",
+  "version": "1.0.0",
+  "description": "Inbola - Bolalar uchun eng yaxshi tanlov",
+  "private": true,
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
+  "scripts": {
+    "prepare": "husky",
+    "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
+    "dev:server": "cd src/server && npm run dev",
+    "dev:client": "cd src/client && npm run dev",
+    "build": "npm run build:server && npm run build:client",
+    "build:server": "cd src/server && npm run build",
+    "build:client": "cd src/client && npm run build",
+    "start": "npm run start:server",
+    "start:server": "cd src/server && npm run start",
+    "start:client": "cd src/client && npm run start",
+    "deploy:production": "./scripts/deploy.sh",
+    "setup:production": "./scripts/setup-production.sh",
+    "db:migrate": "cd src/server && npx prisma migrate deploy",
+    "db:seed": "cd src/server && npm run seed",
+    "test": "npm run test:server && npm run test:client",
+    "test:server": "cd src/server && npm run test",
+    "test:client": "cd src/client && npm run test",
+    "lint": "npm run lint:server && npm run lint:client",
+    "lint:server": "cd src/server && npm run lint",
+    "lint:client": "cd src/client && npm run lint"
+  },
   "devDependencies": {
     "@commitlint/cli": "^19.8.1",
     "@commitlint/config-conventional": "^19.8.1",
-    "husky": "^9.1.7"
+    "husky": "^9.1.7",
+    "concurrently": "^8.2.2"
   },
-  "scripts": {
-    "prepare": "husky"
-  }
+  "keywords": [
+    "ecommerce",
+    "children",
+    "uzbekistan",
+    "nextjs",
+    "nodejs",
+    "graphql",
+    "prisma"
+  ],
+  "author": "Inbola Team",
+  "license": "MIT"
 }
