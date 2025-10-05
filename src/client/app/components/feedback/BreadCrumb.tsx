@@ -2,10 +2,35 @@
 import React from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import { useTranslations } from 'next-intl';
 
 const BreadCrumb: React.FC = () => {
+  const t = useTranslations();
   const pathname = usePathname();
   const pathSegments = pathname.split("/").filter(Boolean);
+
+  const getSegmentLabel = (segment: string) => {
+    // Skip locale segment (uz, en, ru)
+    if (['uz', 'en', 'ru'].includes(segment)) {
+      return null;
+    }
+    
+    try {
+      const segmentTranslations: { [key: string]: string } = {
+        'cart': t('cart.shopping_cart'),
+        'shop': t('common.shop'),
+        'products': t('common.products'),
+        'dashboard': t('dashboard.dashboard'),
+        'profile': t('common.profile'),
+        'orders': t('common.orders'),
+      };
+      
+      return segmentTranslations[segment] || decodeURIComponent(segment);
+    } catch (error) {
+      // Fallback if translation fails
+      return decodeURIComponent(segment);
+    }
+  };
 
   return (
     <nav aria-label="Breadcrumb" className="mb-4">
@@ -15,11 +40,16 @@ const BreadCrumb: React.FC = () => {
             href="/"
             className="hover:text-indigo-600 font-medium transition"
           >
-            Home
+            {t('common.home')}
           </Link>
         </li>
 
         {pathSegments.map((segment, index) => {
+          const label = getSegmentLabel(segment);
+          
+          // Skip locale segments
+          if (!label) return null;
+          
           const href = "/" + pathSegments.slice(0, index + 1).join("/");
           const isLast = index === pathSegments.length - 1;
 
@@ -29,14 +59,14 @@ const BreadCrumb: React.FC = () => {
               <li>
                 {isLast ? (
                   <span className="capitalize font-semibold">
-                    {decodeURIComponent(segment)}
+                    {label}
                   </span>
                 ) : (
                   <Link
                     href={href}
                     className="capitalize hover:text-indigo-600 font-medium transition"
                   >
-                    {decodeURIComponent(segment)}
+                    {label}
                   </Link>
                 )}
               </li>

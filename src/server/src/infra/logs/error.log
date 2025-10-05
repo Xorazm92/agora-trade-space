@@ -955,3 +955,13 @@ The table `public.Category` does not exist in the current database.
 [2025-10-04T15:51:07.497Z] [31MERROR[39M: Invalid access token, please log in
 [2025-10-04T16:50:04.158Z] [31MERROR[39M: Invalid access token, please log in
 [2025-10-04T16:50:04.243Z] [31MERROR[39M: Invalid access token, please log in
+[2025-10-05T13:08:12.994Z] [31MERROR[39M: Unauthorized, please log in
+[2025-10-05T13:08:13.039Z] [31MERROR[39M: Refresh token not found
+[2025-10-05T13:09:54.040Z] [31MERROR[39M: Unauthorized, please log in
+[2025-10-05T13:09:54.055Z] [31MERROR[39M: Refresh token not found
+[2025-10-05T13:21:40.361Z] [31MERROR[39M: No orders found for this user
+[2025-10-05T13:21:56.702Z] [31MERROR[39M: No orders found for this user
+[2025-10-05T13:27:15.247Z] [31MERROR[39M: Invalid access token, please log in
+[2025-10-05T13:27:15.326Z] [31MERROR[39M: Invalid access token, please log in
+[2025-10-05T13:27:34.217Z] [31MERROR[39M: Invalid access token, please log in
+[2025-10-05T13:27:34.243Z] [31MERROR[39M: Invalid access token, please log in

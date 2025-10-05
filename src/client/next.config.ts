@@ -27,14 +27,31 @@ const nextConfig: NextConfig = {
   generateEtags: true,
   
   images: {
-    domains: [
-      'localhost', 
-      'via.placeholder.com',
-      'inbola-assets.s3.amazonaws.com',
-      'www.inbola.uz',
-      'inbola.uz'
-    ],
     remotePatterns: [
+      {
+        protocol: 'http',
+        hostname: 'localhost',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'via.placeholder.com',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.inbola.uz',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'inbola.uz',
+        port: '',
+        pathname: '/**',
+      },
       {
         protocol: 'https',
         hostname: 'inbola-assets.s3.amazonaws.com',

@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import UserMenu from "../molecules/UserMenu";
@@ -27,6 +27,8 @@ import NavigationMenu from '../molecules/NavigationMenu';
 import PlaceholderImage from '../atoms/PlaceholderImage';
 
 const Navbar = () => {
+  const [isMounted, setIsMounted] = useState(false);
+  
   let t, tCommon;
   try {
     t = useTranslations('brand');
@@ -46,8 +48,13 @@ const Navbar = () => {
       return fallbacks[key] || key;
     };
   }
+  
   const pathname = usePathname();
   const dispatch = useAppDispatch();
+  
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
   const [signout] = useSignOutMutation();
   const router = useRouter();
   const { user, isLoading, isAuthenticated } = useAuth();
@@ -144,56 +151,58 @@ const Navbar = () => {
               </Link>
 
               {/* User Menu */}
-              {!isLoading && isAuthenticated ? (
-                <div className="relative" ref={menuRef}>
-                  <button
-                    onClick={() => setMenuOpen(!menuOpen)}
-                    className="flex items-center p-1 rounded-full hover:bg-gray-100 transition-colors"
-                    aria-label="User menu"
-                  >
-                    {user?.avatar ? (
-                      <div className="w-7 h-7 rounded-full bg-gray-200 overflow-hidden border border-gray-300">
-                        <Image
-                          src={user.avatar}
-                          alt="User Profile"
-                          width={28}
-                          height={28}
-                          className="rounded-full object-cover w-full h-full"
-                          onError={(e) => {
-                            e.currentTarget.src = generateUserAvatar(user.name);
-                          }}
-                        />
-                      </div>
-                    ) : (
-                      <div className="w-[35px] h-[35px] rounded-full overflow-hidden border border-gray-300">
-                        <Image
-                          src={generateUserAvatar(user?.name || "User")}
-                          alt="User Profile"
-                          width={35}
-                          height={35}
-                          className="rounded-full object-cover w-full h-full"
-                        />
-                      </div>
-                    )}
-                  </button>
+              {isMounted && (
+                !isLoading && isAuthenticated ? (
+                  <div className="relative" ref={menuRef}>
+                    <button
+                      onClick={() => setMenuOpen(!menuOpen)}
+                      className="flex items-center p-1 rounded-full hover:bg-gray-100 transition-colors"
+                      aria-label="User menu"
+                    >
+                      {user?.avatar ? (
+                        <div className="w-7 h-7 rounded-full bg-gray-200 overflow-hidden border border-gray-300">
+                          <Image
+                            src={user.avatar}
+                            alt="User Profile"
+                            width={28}
+                            height={28}
+                            className="rounded-full object-cover w-full h-full"
+                            onError={(e) => {
+                              e.currentTarget.src = generateUserAvatar(user.name);
+                            }}
+                          />
+                        </div>
+                      ) : (
+                        <div className="w-[35px] h-[35px] rounded-full overflow-hidden border border-gray-300">
+                          <Image
+                            src={generateUserAvatar(user?.name || "User")}
+                            alt="User Profile"
+                            width={35}
+                            height={35}
+                            className="rounded-full object-cover w-full h-full"
+                          />
+                        </div>
+                      )}
+                    </button>
 
-                  {menuOpen && (
-                    <UserMenu
-                      user={user}
-                      menuOpen={menuOpen}
-                      closeMenu={() => setMenuOpen(false)}
-                    />
-                  )}
-                </div>
-              ) : (
-                pathname !== "/sign-up" &&
-                pathname !== "/sign-in" && (
-                  <Link
-                    href="/sign-in"
-                    className="hidden sm:block px-4 py-2 text-sm font-medium text-gray-800 hover:text-indigo-600 transition-colors"
-                  >
-                    {tCommon('login')}
-                  </Link>
+                    {menuOpen && (
+                      <UserMenu
+                        user={user}
+                        menuOpen={menuOpen}
+                        closeMenu={() => setMenuOpen(false)}
+                      />
+                    )}
+                  </div>
+                ) : (
+                  pathname !== "/sign-up" &&
+                  pathname !== "/sign-in" && (
+                    <Link
+                      href="/sign-in"
+                      className="hidden sm:block px-4 py-2 text-sm font-medium text-gray-800 hover:text-indigo-600 transition-colors"
+                    >
+                      {tCommon('login')}
+                    </Link>
+                  )
                 )
               )}
 
@@ -222,7 +231,7 @@ const Navbar = () => {
               className="md:hidden absolute top-full left-0 right-0 bg-white shadow-lg border-t border-gray-200"
             >
               <div className="px-4 py-2 space-y-2">
-                {!isAuthenticated && (
+                {isMounted && !isAuthenticated && (
                   <>
                     <Link
                       href="/sign-in"
@@ -261,7 +270,7 @@ const Navbar = () => {
                 >
                   {tCommon('products')}
                 </Link>
-                {user?.role === "ADMIN" && (
+                {isMounted && user?.role === "ADMIN" && (
                   <Link
                     href="/dashboard"
                     className="block px-3 py-2 text-gray-800 hover:bg-gray-100 rounded-md"
@@ -271,7 +280,7 @@ const Navbar = () => {
                   </Link>
                 )}
 
-                {isAuthenticated && (
+                {isMounted && isAuthenticated && (
                   <button
                     onClick={() => {
                       handleSignOut();

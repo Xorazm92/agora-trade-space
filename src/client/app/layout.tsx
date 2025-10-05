@@ -12,6 +12,7 @@ const poppins = Poppins({
 });
 
 export const metadata = {
+  metadataBase: new URL(process.env.NODE_ENV === 'production' ? 'https://inbola.uz' : 'http://localhost:3000'),
   title: "Inbola - Bolalar uchun eng yaxshi tanlov",
   description: "0-12 yosh bolalar uchun sifatli va xavfsiz mahsulotlar. Tez yetkazib berish, xavfsiz to'lovlar va ajoyib mijozlar xizmati. O'yinchoqlar, kiyimlar, poyabzallar va chaqaloq mahsulotlari.",
   keywords: "bolalar mahsulotlari, o'yinchoqlar, bolalar kiyimlari, chaqaloq mahsulotlari, bolalar poyabzallari, xavfsiz o'yinchoqlar, Inbola, Uzbekistan",
@@ -57,7 +58,6 @@ export const metadata = {
     shortcut: '/favicon.ico',
     apple: '/logo.png',
   },
-  manifest: '/manifest.json',
   alternates: {
     canonical: 'https://inbola.uz',
     languages: {

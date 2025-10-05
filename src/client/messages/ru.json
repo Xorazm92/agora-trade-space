@@ -29,7 +29,8 @@
     "next": "Далее",
     "previous": "Предыдущий",
     "submit": "Отправить",
-    "confirm": "Подтвердить"
+    "confirm": "Подтвердить",
+    "shop": "Магазин"
   },
   "auth": {
     "sign_in": "Вход в систему",
@@ -136,5 +137,53 @@
     "uzs": "UZS",
     "currency_uzs": "сум",
     "price_format": "{amount} сум"
+  },
+  "dashboard": {
+    "dashboard": "Панель управления",
+    "overview": "Обзор",
+    "ecommerce": "Электронная коммерция",
+    "stats": "Статистика",
+    "products": "Товары",
+    "inventory": "Инвентарь",
+    "attributes": "Атрибуты",
+    "categories": "Категории",
+    "transactions": "Транзакции",
+    "users": "Пользователи",
+    "chats": "Чаты",
+    "analytics": "Аналитика",
+    "reports": "Отчеты",
+    "logs": "Логи"
+  },
+  "profile": {
+    "my_profile": "Мой профиль",
+    "personal_info": "Личная информация",
+    "addresses": "Адреса",
+    "payment_methods": "Способы оплаты",
+    "notifications": "Уведомления",
+    "settings": "Настройки",
+    "language": "Язык",
+    "currency": "Валюта",
+    "update_profile": "Обновить профиль",
+    "change_password": "Изменить пароль",
+    "add_address": "Добавить адрес",
+    "default_address": "Адрес по умолчанию"
+  },
+  "orders": {
+    "my_orders": "Мои заказы",
+    "order_history": "История заказов",
+    "order_number": "Номер заказа",
+    "order_date": "Дата заказа",
+    "order_status": "Статус заказа",
+    "order_total": "Сумма заказа",
+    "track_order": "Отследить заказ",
+    "cancel_order": "Отменить заказ",
+    "reorder": "Повторить заказ",
+    "pending": "Ожидает",
+    "confirmed": "Подтвержден",
+    "processing": "Обрабатывается",
+    "shipped": "Отправлен",
+    "delivered": "Доставлен",
+    "cancelled": "Отменен",
+    "returned": "Возвращен"
   }
 }

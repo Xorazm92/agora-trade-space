@@ -29,7 +29,8 @@
     "next": "Next",
     "previous": "Previous",
     "submit": "Submit",
-    "confirm": "Confirm"
+    "confirm": "Confirm",
+    "shop": "Shop"
   },
   "footer": {
     "about_us": "About Us",
@@ -136,5 +137,53 @@
     "uzs": "UZS",
     "currency_uzs": "som",
     "price_format": "{amount} som"
+  },
+  "dashboard": {
+    "dashboard": "Dashboard",
+    "overview": "Overview",
+    "ecommerce": "E-commerce",
+    "stats": "Statistics",
+    "products": "Products",
+    "inventory": "Inventory",
+    "attributes": "Attributes",
+    "categories": "Categories",
+    "transactions": "Transactions",
+    "users": "Users",
+    "chats": "Chats",
+    "analytics": "Analytics",
+    "reports": "Reports",
+    "logs": "Logs"
+  },
+  "profile": {
+    "my_profile": "My Profile",
+    "personal_info": "Personal Information",
+    "addresses": "Addresses",
+    "payment_methods": "Payment Methods",
+    "notifications": "Notifications",
+    "settings": "Settings",
+    "language": "Language",
+    "currency": "Currency",
+    "update_profile": "Update Profile",
+    "change_password": "Change Password",
+    "add_address": "Add Address",
+    "default_address": "Default Address"
+  },
+  "orders": {
+    "my_orders": "My Orders",
+    "order_history": "Order History",
+    "order_number": "Order Number",
+    "order_date": "Order Date",
+    "order_status": "Order Status",
+    "order_total": "Order Total",
+    "track_order": "Track Order",
+    "cancel_order": "Cancel Order",
+    "reorder": "Reorder",
+    "pending": "Pending",
+    "confirmed": "Confirmed",
+    "processing": "Processing",
+    "shipped": "Shipped",
+    "delivered": "Delivered",
+    "cancelled": "Cancelled",
+    "returned": "Returned"
   }
 }
