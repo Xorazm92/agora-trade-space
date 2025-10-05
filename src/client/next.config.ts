@@ -19,7 +19,7 @@ const nextConfig: NextConfig = {
   },
   
   // Disable static optimization for dynamic pages
-  output: 'standalone',
+  // output: 'standalone', // Commented out to fix PM2 deployment issue
   
   // Production optimizations
   compress: true,
