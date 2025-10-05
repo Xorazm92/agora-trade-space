@@ -2,7 +2,7 @@ module.exports = {
   apps: [
     {
       name: 'inbola-server',
-      script: './src/server/dist/server.js',
+      script: './src/server/dist/index.js',
       instances: 'max',
       exec_mode: 'cluster',
       env_production: {
