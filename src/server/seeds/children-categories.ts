@@ -91,7 +91,6 @@ export async function seedChildrenCategories() {
         name: category.name,
         slug: category.slug,
         description: category.description,
-        isActive: true,
       },
     });
   }
@@ -139,7 +138,6 @@ export async function seedChildrenCategories() {
         name: ageGroup.name,
         slug: ageGroup.slug,
         description: ageGroup.description,
-        isActive: true,
       },
     });
   }

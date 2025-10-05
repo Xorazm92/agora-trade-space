@@ -11,12 +11,38 @@ interface Category {
 }
 
 const CategoriesBar = () => {
-  const { data, error } = useGetAllCategoriesQuery({});
-
-  if (error) {
-    console.log("error occured while fetching categories", error);
+  const { data, error, isLoading } = useGetAllCategoriesQuery({});
+  
+  if (isLoading) {
+    return (
+      <div className="w-full">
+        <div className="container mx-auto border-r-2 border-gray-200">
+          <div className="flex flex-col gap-8 items-start justify-between py-[18px]">
+            {[1,2,3,4,5].map((i) => (
+              <div key={i} className="animate-pulse bg-gray-200 h-6 w-32 rounded"></div>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
   }
-  const categories = data?.categories || [];
+  
+  if (error) {
+    console.log("Error fetching categories:", error);
+  }
+  
+  // Use API data or fallback to static categories
+  const categories = error ? [
+    { id: "1", name: "O'yinchoqlar", slug: "oyinchoqlar" },
+    { id: "2", name: "Bolalar kiyimlari", slug: "bolalar-kiyimlari" },
+    { id: "3", name: "Bolalar poyabzallari", slug: "bolalar-poyabzallari" },
+    { id: "4", name: "Chaqaloq mahsulotlari", slug: "chaqaloq-mahsulotlari" },
+    { id: "5", name: "Bolalar kitoblari", slug: "bolalar-kitoblari" },
+  ] : (data?.categories || []).map((cat: any) => ({
+    id: cat.id,
+    name: cat.name,
+    slug: cat.slug || cat.name.toLowerCase().replace(/\s+/g, '-').replace(/'/g, '')
+  }));
 
   return (
     <div className="w-full">

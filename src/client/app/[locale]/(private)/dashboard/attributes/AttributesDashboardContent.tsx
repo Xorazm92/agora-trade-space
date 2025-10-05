@@ -8,7 +8,7 @@ import { useGetAllAttributesQuery } from "@/app/store/apis/AttributeApi";
 import AttributesBoardView from "./AttributesBoardView";
 import { withAuth } from "@/app/components/HOC/WithAuth";
 
-const AttributesDashboard: React.FC = () => {
+const AttributesDashboardContent: React.FC = () => {
   const { data, isLoading, error } = useGetAllAttributesQuery(undefined);
   console.log("attributes data => ", data);
 
@@ -23,7 +23,7 @@ const AttributesDashboard: React.FC = () => {
   if (error) {
     return (
       <div className="p-6 text-red-600 bg-red-50 rounded-lg">
-        Error loading attributes: {error.message ?? "Unknown error"}
+        Error loading attributes: {(error as any)?.message || "Unknown error"}
       </div>
     );
   }
@@ -49,4 +49,4 @@ const AttributesDashboard: React.FC = () => {
   );
 };
 
-export default withAuth(AttributesDashboard);
+export default withAuth(AttributesDashboardContent);

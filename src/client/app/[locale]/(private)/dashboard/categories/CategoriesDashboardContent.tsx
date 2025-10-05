@@ -15,7 +15,7 @@ import CategoryForm, { CategoryFormData } from "./CategoryForm";
 import useToast from "@/app/hooks/ui/useToast";
 import { withAuth } from "@/app/components/HOC/WithAuth";
 
-const CategoriesDashboard = () => {
+const CategoriesDashboardContent = () => {
   const { showToast } = useToast();
   const { data, isLoading, error } = useGetAllCategoriesQuery({});
   const [createCategory, { isLoading: isCreating }] =
@@ -92,8 +92,8 @@ const CategoriesDashboard = () => {
     payload.append("name", formData.name || "");
     payload.append("description", formData.description || "");
 
-    if (data.images && Array.isArray(data.images)) {
-      data.images.forEach((file: any) => {
+    if (formData.images && Array.isArray(formData.images)) {
+      formData.images.forEach((file: any) => {
         if (file instanceof File) {
           payload.append("images", file);
         }
@@ -195,4 +195,4 @@ const CategoriesDashboard = () => {
   );
 };
 
-export default withAuth(CategoriesDashboard);
+export default withAuth(CategoriesDashboardContent);

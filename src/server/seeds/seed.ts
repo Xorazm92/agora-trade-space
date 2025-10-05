@@ -161,6 +161,66 @@ async function main() {
     },
   });
 
+  const storageAttribute = await prisma.attribute.upsert({
+    where: { slug: "storage" },
+    update: {},
+    create: {
+      name: "Xotira",
+      slug: "storage",
+    },
+  });
+
+  // Create additional categories for adult products
+  const electronicsCategory = await prisma.category.upsert({
+    where: { slug: "electronics" },
+    update: {},
+    create: {
+      name: "Elektronika",
+      slug: "electronics",
+      description: "Elektronika mahsulotlari",
+    },
+  });
+
+  const clothingCategory = await prisma.category.upsert({
+    where: { slug: "clothing" },
+    update: {},
+    create: {
+      name: "Kiyim",
+      slug: "clothing",
+      description: "Kiyim-kechak",
+    },
+  });
+
+  const footwearCategory = await prisma.category.upsert({
+    where: { slug: "footwear" },
+    update: {},
+    create: {
+      name: "Poyabzal",
+      slug: "footwear",
+      description: "Poyabzal mahsulotlari",
+    },
+  });
+
+  const furnitureCategory = await prisma.category.upsert({
+    where: { slug: "furniture" },
+    update: {},
+    create: {
+      name: "Mebel",
+      slug: "furniture",
+      description: "Mebel mahsulotlari",
+    },
+  });
+
+  const accessoriesCategory = await prisma.category.upsert({
+    where: { slug: "accessories" },
+    update: {},
+    create: {
+      name: "Aksessuarlar",
+      slug: "accessories",
+      description: "Aksessuar mahsulotlari",
+    },
+  });
+
   // 4. Create attribute values
   // Size values
   const sizeXS = await prisma.attributeValue.upsert({
@@ -1010,7 +1070,7 @@ async function main() {
   console.log("\n📋 Created:");
   console.log(`- Users: Superadmin, Admin, User`);
   console.log(
-    `- Categories: ${electronicsCategory.name}, ${clothingCategory.name}, ${footwearCategory.name}, ${furnitureCategory.name}, ${accessoriesCategory.name}`
+    `- Categories: ${toysCategory.name}, ${childrenClothingCategory.name}, ${childrenShoesCategory.name}, ${babyProductsCategory.name}, ${childrenBooksCategory.name}`
   );
   console.log(`- Attributes: Size, Color, Material, Storage, Brand`);
   console.log(`- Products: ${createdProducts.length} products with variants`);
