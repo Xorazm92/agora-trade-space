@@ -1,0 +1,149 @@
+version: '3.8'
+
+services:
+  # Nginx Reverse Proxy
+  nginx:
+    image: nginx:alpine
+    container_name: inbola_nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.production.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/ssl:/etc/nginx/ssl:ro
+      - ./nginx/logs:/var/log/nginx
+    depends_on:
+      - client
+      - server
+    restart: unless-stopped
+    networks:
+      - inbola_network
+
+  # Next.js Client (Frontend)
+  client:
+    build:
+      context: ./src/client
+      dockerfile: Dockerfile
+      target: production
+    container_name: inbola_client
+    environment:
+      - NODE_ENV=production
+      - NEXT_PUBLIC_API_URL=https://inbola.uz/api
+      - NEXT_PUBLIC_GRAPHQL_URL=https://inbola.uz/graphql
+      - NEXT_PUBLIC_SOCKET_URL=https://inbola.uz
+      - NEXT_PUBLIC_DOMAIN=inbola.uz
+    depends_on:
+      - server
+    restart: unless-stopped
+    networks:
+      - inbola_network
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:3000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Node.js Server (Backend)
+  server:
+    build:
+      context: ./src/server
+      dockerfile: Dockerfile
+      target: production
+    container_name: inbola_server
+    environment:
+      - NODE_ENV=production
+      - DATABASE_URL=postgresql://inbola_user:${POSTGRES_PASSWORD}@postgres:5432/inbola_db
+      - REDIS_URL=redis://redis:6379
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    env_file:
+      - ./src/server/.env.production
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    restart: unless-stopped
+    networks:
+      - inbola_network
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:5000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # PostgreSQL Database
+  postgres:
+    image: postgres:15-alpine
+    container_name: inbola_postgres
+    environment:
+      POSTGRES_USER: inbola_user
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: inbola_db
+      POSTGRES_INITDB_ARGS: "--encoding=UTF-8 --locale=C"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./backups:/backups
+      - ./scripts/init-db.sql:/docker-entrypoint-initdb.d/init-db.sql:ro
+    restart: unless-stopped
+    networks:
+      - inbola_network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U inbola_user -d inbola_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  # Redis Cache
+  redis:
+    image: redis:7-alpine
+    container_name: inbola_redis
+    command: redis-server --appendonly yes --requirepass ${REDIS_PASSWORD}
+    volumes:
+      - redis_data:/data
+    restart: unless-stopped
+    networks:
+      - inbola_network
+    healthcheck:
+      test: ["CMD", "redis-cli", "--raw", "incr", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+      start_period: 30s
+
+  # Backup Service
+  backup:
+    image: postgres:15-alpine
+    container_name: inbola_backup
+    environment:
+      POSTGRES_USER: inbola_user
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: inbola_db
+      POSTGRES_HOST: postgres
+    volumes:
+      - ./backups:/backups
+      - ./scripts/backup.sh:/backup.sh:ro
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: "no"
+    networks:
+      - inbola_network
+    profiles:
+      - backup
+
+volumes:
+  postgres_data:
+    driver: local
+  redis_data:
+    driver: local
+
+networks:
+  inbola_network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
