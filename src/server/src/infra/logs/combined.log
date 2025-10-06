@@ -2665,3 +2665,34 @@ The table `public.Category` does not exist in the current database.
 [2025-10-06T07:22:15.882Z] [32MINFO[39M: ::1 - - [06/Oct/2025:07:22:15 +0000] "POST /api/v1/graphql HTTP/1.1" 200 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
 [2025-10-06T07:22:15.972Z] [32MINFO[39M: ::1 - - [06/Oct/2025:07:22:15 +0000] "GET /api/v1/cart/count HTTP/1.1" 200 74 "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
 [2025-10-06T07:22:16.273Z] [32MINFO[39M: ::1 - - [06/Oct/2025:07:22:16 +0000] "GET /api/v1/categories HTTP/1.1" 200 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-06T11:25:39.569Z] [31MERROR[39M: Unauthorized, please log in
+[2025-10-06T11:25:39.582Z] [32MINFO[39M: ::1 - - [06/Oct/2025:11:25:39 +0000] "GET /api/v1/users/me HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-06T11:25:39.635Z] [31MERROR[39M: Refresh token not found
+[2025-10-06T11:25:39.638Z] [32MINFO[39M: ::1 - - [06/Oct/2025:11:25:39 +0000] "POST /api/v1/auth/refresh-token HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-06T11:25:39.750Z] [32MINFO[39M: ::1 - - [06/Oct/2025:11:25:39 +0000] "POST /api/v1/graphql HTTP/1.1" 200 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-06T11:25:39.914Z] [31MERROR[39M: Prisma error: 
+Invalid `prisma.cart.findUnique()` invocation in
+/home/ctrl/ecommerce-main/src/server/src/modules/cart/cart.repository.ts:30:36
+
+  27 console.log("🔍 [CART REPOSITORY] getCartBySessionId called");
+  28 console.log("🔍 [CART REPOSITORY] sessionId:", sessionId);
+  29 
+→ 30 const cart = await prisma.cart.findUnique(
+Authentication failed against database server, the provided database credentials for `inbola_user` are not valid.
+
+Please make sure to provide valid database credentials for the database server at the configured address.
+[2025-10-06T11:25:39.923Z] [32MINFO[39M: ::1 - - [06/Oct/2025:11:25:39 +0000] "GET /api/v1/cart/count HTTP/1.1" 400 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-06T11:25:40.156Z] [31MERROR[39M: Prisma error: 
+Invalid `prisma.category.findMany()` invocation in
+/home/ctrl/ecommerce-main/src/server/src/modules/category/category.repository.ts:12:28
+
+   9   includeProducts?: boolean;
+  10 }) {
+  11   const { where, orderBy, skip, take, includeProducts } = params;
+→ 12   return prisma.category.findMany(
+Authentication failed against database server, the provided database credentials for `inbola_user` are not valid.
+
+Please make sure to provide valid database credentials for the database server at the configured address.
+[2025-10-06T11:25:40.163Z] [32MINFO[39M: ::1 - - [06/Oct/2025:11:25:40 +0000] "GET /api/v1/categories HTTP/1.1" 400 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+[2025-10-06T13:17:18.857Z] [32MINFO[39M: ::1 - - [06/Oct/2025:13:17:18 +0000] "POST /graphql HTTP/1.1" 404 147 "-" "curl/8.5.0"
+[2025-10-06T13:17:58.142Z] [32MINFO[39M: ::1 - - [06/Oct/2025:13:17:58 +0000] "POST /api/v1/graphql HTTP/1.1" 200 992 "-" "curl/8.5.0"

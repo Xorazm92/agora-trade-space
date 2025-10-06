@@ -70,67 +70,69 @@ export default function configurePassport() {
     )
   );
 
-  // Facebook Strategy (unchanged, assuming it works)
-  passport.use(
-    new FacebookStrategy(
-      {
-        clientID: process.env.FACEBOOK_APP_ID!,
-        clientSecret: process.env.FACEBOOK_APP_SECRET!,
-        callbackURL:
-          process.env.NODE_ENV === "production"
-            ? process.env.FACEBOOK_CALLBACK_URL_PROD!
-            : process.env.FACEBOOK_CALLBACK_URL_DEV!,
-        profileFields: ["id", "emails", "name"],
-      },
-      async (
-        accessToken: string,
-        refreshToken: string,
-        profile: any,
-        done: any
-      ) => {
-        console.log("facebook profile: ", profile);
-        try {
-          let user = await prisma.user.findUnique({
-            where: { email: profile.emails?.[0]?.value || "" },
-          });
+  // Facebook Strategy (temporarily disabled - missing env vars)
+  if (process.env.FACEBOOK_APP_ID && process.env.FACEBOOK_APP_SECRET) {
+    passport.use(
+      new FacebookStrategy(
+        {
+          clientID: process.env.FACEBOOK_APP_ID!,
+          clientSecret: process.env.FACEBOOK_APP_SECRET!,
+          callbackURL:
+            process.env.NODE_ENV === "production"
+              ? process.env.FACEBOOK_CALLBACK_URL_PROD!
+              : process.env.FACEBOOK_CALLBACK_URL_DEV!,
+          profileFields: ["id", "emails", "name"],
+        },
+        async (
+          accessToken: string,
+          refreshToken: string,
+          profile: any,
+          done: any
+        ) => {
+          console.log("facebook profile: ", profile);
+          try {
+            let user = await prisma.user.findUnique({
+              where: { email: profile.emails?.[0]?.value || "" },
+            });
 
-          if (user) {
-            if (!user.facebookId) {
-              user = await prisma.user.update({
-                where: { email: profile.emails?.[0]?.value || "" },
+            if (user) {
+              if (!user.facebookId) {
+                user = await prisma.user.update({
+                  where: { email: profile.emails?.[0]?.value || "" },
+                  data: {
+                    facebookId: profile.id,
+                    avatar: profile.photos?.[0]?.value || "",
+                  },
+                });
+              }
+            } else {
+              user = await prisma.user.create({
                 data: {
+                  email: profile.emails?.[0]?.value || "",
+                  name: `${profile.name?.givenName} ${profile.name?.familyName}`,
                   facebookId: profile.id,
                   avatar: profile.photos?.[0]?.value || "",
                 },
               });
             }
-          } else {
-            user = await prisma.user.create({
-              data: {
-                email: profile.emails?.[0]?.value || "",
-                name: `${profile.name?.givenName} ${profile.name?.familyName}`,
-                facebookId: profile.id,
-                avatar: profile.photos?.[0]?.value || "",
-              },
+
+            const id = user.id;
+            const newAccessToken = generateAccessToken(id);
+            const newRefreshToken = generateRefreshToken(id);
+
+            return done(null, {
+              ...user,
+              accessToken: newAccessToken,
+              refreshToken: newRefreshToken,
             });
+          } catch (error) {
+            console.error("Facebook Strategy error:", error);
+            return done(error);
           }
-
-          const id = user.id;
-          const newAccessToken = generateAccessToken(id);
-          const newRefreshToken = generateRefreshToken(id);
-
-          return done(null, {
-            ...user,
-            accessToken: newAccessToken,
-            refreshToken: newRefreshToken,
-          });
-        } catch (error) {
-          console.error("Facebook Strategy error:", error);
-          return done(error);
         }
-      }
-    )
-  );
+      )
+    );
+  }
 
   // Twitter Strategy (temporarily disabled - missing env vars)
   if (process.env.TWITTER_CONSUMER_KEY && process.env.TWITTER_CONSUMER_SECRET) {

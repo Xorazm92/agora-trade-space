@@ -967,3 +967,27 @@ The table `public.Category` does not exist in the current database.
 [2025-10-05T13:27:34.243Z] [31MERROR[39M: Invalid access token, please log in
 [2025-10-06T07:22:15.622Z] [31MERROR[39M: Unauthorized, please log in
 [2025-10-06T07:22:15.671Z] [31MERROR[39M: Refresh token not found
+[2025-10-06T11:25:39.569Z] [31MERROR[39M: Unauthorized, please log in
+[2025-10-06T11:25:39.635Z] [31MERROR[39M: Refresh token not found
+[2025-10-06T11:25:39.914Z] [31MERROR[39M: Prisma error: 
+Invalid `prisma.cart.findUnique()` invocation in
+/home/ctrl/ecommerce-main/src/server/src/modules/cart/cart.repository.ts:30:36
+
+  27 console.log("🔍 [CART REPOSITORY] getCartBySessionId called");
+  28 console.log("🔍 [CART REPOSITORY] sessionId:", sessionId);
+  29 
+→ 30 const cart = await prisma.cart.findUnique(
+Authentication failed against database server, the provided database credentials for `inbola_user` are not valid.
+
+Please make sure to provide valid database credentials for the database server at the configured address.
+[2025-10-06T11:25:40.156Z] [31MERROR[39M: Prisma error: 
+Invalid `prisma.category.findMany()` invocation in
+/home/ctrl/ecommerce-main/src/server/src/modules/category/category.repository.ts:12:28
+
+   9   includeProducts?: boolean;
+  10 }) {
+  11   const { where, orderBy, skip, take, includeProducts } = params;
+→ 12   return prisma.category.findMany(
+Authentication failed against database server, the provided database credentials for `inbola_user` are not valid.
+
+Please make sure to provide valid database credentials for the database server at the configured address.
