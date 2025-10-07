@@ -10,6 +10,9 @@ import ProductCard from "../product/ProductCard";
 import MainLayout from "@/app/components/templates/MainLayout";
 import ProductFilters, { FilterValues } from "./ProductFilters";
 import { useTranslations } from 'next-intl';
+import Breadcrumb from "@/app/components/seo/Breadcrumb";
+import StructuredData from "@/app/components/seo/StructuredData";
+import Head from 'next/head';
 
 const ShopPage: React.FC = () => {
   const t = useTranslations('common');
@@ -133,9 +136,41 @@ const ShopPage: React.FC = () => {
 
   const noProductsFound = displayedProducts.length === 0 && !loading && !error;
 
+  // SEO metadata
+  const pageTitle = filters.search 
+    ? `"${filters.search}" uchun qidiruv natijalari - Inbola`
+    : "Bolalar mahsulotlari do'koni - Inbola";
+  
+  const pageDescription = filters.search
+    ? `"${filters.search}" uchun ${displayedProducts.length} ta mahsulot topildi. Bolalar uchun sifatli va xavfsiz mahsulotlar.`
+    : `Bolalar uchun eng yaxshi mahsulotlar. O'yinchoqlar, kiyimlar, poyabzallar va chaqaloq mahsulotlari. ${displayedProducts.length} ta mahsulot mavjud.`;
+
+  const breadcrumbItems = [
+    { name: "Do'kon", url: "/shop" }
+  ];
+
   return (
     <MainLayout>
+      <Head>
+        <title>{pageTitle}</title>
+        <meta name="description" content={pageDescription} />
+        <meta name="keywords" content="bolalar mahsulotlari, o'yinchoqlar, bolalar kiyimlari, bolalar poyabzallari, chaqaloq mahsulotlari, do'kon, Inbola" />
+        <link rel="canonical" href={`https://inbola.uz/shop${searchParams.toString() ? `?${searchParams.toString()}` : ''}`} />
+      </Head>
+      
+      <StructuredData 
+        type="website" 
+        data={{
+          name: "Inbola Do'kon",
+          description: pageDescription,
+          url: "/shop"
+        }} 
+      />
+      
       <div className="min-h-screen">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4">
+          <Breadcrumb items={breadcrumbItems} />
+        </div>
         {/* Header Section */}
         <div className="sticky top-0 z-30">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4">

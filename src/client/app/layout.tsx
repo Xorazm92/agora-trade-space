@@ -2,6 +2,7 @@ import { Poppins } from "next/font/google";
 import "./globals.css";
 import ClientProviders from "./ClientProviders";
 import StructuredData from "./components/seo/StructuredData";
+import GoogleAnalytics from "./components/seo/GoogleAnalytics";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -78,6 +79,7 @@ export default function RootLayout({
       <head>
         <StructuredData type="website" data={{}} />
         <StructuredData type="organization" data={{}} />
+        <GoogleAnalytics measurementId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || ''} />
       </head>
       <body className={`${poppins.variable} antialiased`}>
         <ClientProviders>

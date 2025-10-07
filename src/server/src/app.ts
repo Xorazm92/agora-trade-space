@@ -87,7 +87,7 @@ export const createApp = async () => {
     cors({
       origin:
         process.env.NODE_ENV === "production"
-          ? ["https://ecommerce-nu-rosy.vercel.app"]
+          ? ["https://inbola.uz", "https://www.inbola.uz", "https://api.inbola.uz"]
           : ["http://localhost:3000", "http://localhost:3001", "http://localhost:5173", "http://127.0.0.1:38899"],
       credentials: true,
       methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
