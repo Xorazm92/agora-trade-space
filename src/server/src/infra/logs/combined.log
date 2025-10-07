@@ -2665,6 +2665,7 @@ The table `public.Category` does not exist in the current database.
 [2025-10-06T07:22:15.882Z] [32MINFO[39M: ::1 - - [06/Oct/2025:07:22:15 +0000] "POST /api/v1/graphql HTTP/1.1" 200 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
 [2025-10-06T07:22:15.972Z] [32MINFO[39M: ::1 - - [06/Oct/2025:07:22:15 +0000] "GET /api/v1/cart/count HTTP/1.1" 200 74 "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
 [2025-10-06T07:22:16.273Z] [32MINFO[39M: ::1 - - [06/Oct/2025:07:22:16 +0000] "GET /api/v1/categories HTTP/1.1" 200 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+<<<<<<< Updated upstream
 [2025-10-06T11:25:39.569Z] [31MERROR[39M: Unauthorized, please log in
 [2025-10-06T11:25:39.582Z] [32MINFO[39M: ::1 - - [06/Oct/2025:11:25:39 +0000] "GET /api/v1/users/me HTTP/1.1" 401 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
 [2025-10-06T11:25:39.635Z] [31MERROR[39M: Refresh token not found
@@ -2696,3 +2697,9 @@ Please make sure to provide valid database credentials for the database server a
 [2025-10-06T11:25:40.163Z] [32MINFO[39M: ::1 - - [06/Oct/2025:11:25:40 +0000] "GET /api/v1/categories HTTP/1.1" 400 - "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
 [2025-10-06T13:17:18.857Z] [32MINFO[39M: ::1 - - [06/Oct/2025:13:17:18 +0000] "POST /graphql HTTP/1.1" 404 147 "-" "curl/8.5.0"
 [2025-10-06T13:17:58.142Z] [32MINFO[39M: ::1 - - [06/Oct/2025:13:17:58 +0000] "POST /api/v1/graphql HTTP/1.1" 200 992 "-" "curl/8.5.0"
+=======
+[2025-10-06T16:02:02.385Z] [32MINFO[39M: ::ffff:172.26.12.158 - - [06/Oct/2025:16:02:02 +0000] "POST /api/v1/graphql HTTP/1.1" 200 992 "-" "curl/7.88.1"
+[2025-10-06T16:07:57.851Z] [32MINFO[39M: ::ffff:127.0.0.1 - - [06/Oct/2025:16:07:57 +0000] "POST /api/v1/graphql HTTP/1.1" 200 992 "-" "curl/7.88.1"
+[2025-10-06T17:00:17.553Z] [32MINFO[39M: 35.94.8.7 - - [06/Oct/2025:17:00:17 +0000] "GET / HTTP/1.1" 404 139 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36 Edge/18.19582"
+[2025-10-06T17:00:28.117Z] [32MINFO[39M: 35.94.8.7 - - [06/Oct/2025:17:00:28 +0000] "GET / HTTP/1.1" 404 139 "-" "Mozilla/5.0 (iPhone; CPU iPhone OS 14_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0.3 Mobile/15E148 Safari/604.1"
+>>>>>>> Stashed changes
