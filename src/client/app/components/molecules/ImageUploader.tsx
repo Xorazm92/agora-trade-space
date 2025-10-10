@@ -1,7 +1,6 @@
 "use client";
 
 import { Trash2, Upload } from "lucide-react";
-import Image from "next/image";
 import {
   Controller,
   Control,
@@ -124,12 +123,11 @@ const ImageUploader = ({
               key={`${preview.url}-${index}`}
               className="relative group aspect-square rounded-lg border-2 border-gray-200 overflow-hidden bg-gray-50 hover:border-gray-300 transition-colors"
             >
-              <Image
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
                 src={preview.url}
                 alt={`Preview ${index + 1}`}
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 16vw"
+                className="w-full h-full object-cover"
               />
 
               {/* Remove Button */}

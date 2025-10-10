@@ -1,4 +1,5 @@
 "use client";
+import { useState } from "react";
 import { Controller, UseFormReturn } from "react-hook-form";
 import { Tag } from "lucide-react";
 import { useTranslations } from "next-intl";
@@ -6,6 +7,7 @@ import Dropdown from "@/app/components/molecules/Dropdown";
 import { ProductFormData } from "./product.types";
 import CheckBox from "@/app/components/atoms/CheckBox";
 import VariantForm from "./VariantForm";
+import { categories } from "@/app/data/categories";
 
 interface ProductFormProps {
   form: UseFormReturn<ProductFormData>;
@@ -25,7 +27,7 @@ interface ProductFormProps {
 const ProductForm: React.FC<ProductFormProps> = ({
   form,
   onSubmit,
-  categories = [],
+  categories: propCategories = [],
   categoryAttributes = [],
   isLoading,
   error,
@@ -38,6 +40,25 @@ const ProductForm: React.FC<ProductFormProps> = ({
     setValue,
     formState: { errors },
   } = form;
+
+  // API'dan kelgan kategoriyalar yoki static kategoriyalar
+  const categoryOptions = propCategories.length > 0 
+    ? propCategories 
+    : categories.map(category => ({
+        label: category.name,
+        value: category.slug,
+        subcategories: category.subcategories
+      }));
+
+  const [selectedCategory, setSelectedCategory] = useState<string>("");
+  const [selectedSubcategory, setSelectedSubcategory] = useState<string>("");
+
+  // Tanlangan kategoriyaga mos subkategoriyalar
+  const selectedCategoryData = categories.find(cat => cat.slug === selectedCategory);
+  const subcategoryOptions = selectedCategoryData?.subcategories.map(sub => ({
+    label: sub.name,
+    value: sub.slug
+  })) || [];
 
   return (
     <form
@@ -85,9 +106,11 @@ const ProductForm: React.FC<ProductFormProps> = ({
               <Dropdown
                 onChange={(value) => {
                   field.onChange(value);
+                  setSelectedCategory(value || "");
+                  setSelectedSubcategory(""); // Reset subcategory when category changes
                   setValue("variants", []); // Reset variants when category changes
                 }}
-                options={categories}
+                options={categoryOptions}
                 value={field.value}
                 label={t("select_category")}
                 className="py-[14px]"
@@ -100,6 +123,27 @@ const ProductForm: React.FC<ProductFormProps> = ({
             </p>
           )}
         </div>
+      </div>
+
+      {/* Subkategoriya dropdown */}
+      {selectedCategory && subcategoryOptions.length > 0 && (
+        <div className="relative">
+          <label className="block text-sm font-medium text-gray-700 mb-1">
+            {t("subcategory")}
+          </label>
+          <Dropdown
+            onChange={(value) => {
+              setSelectedSubcategory(value || "");
+            }}
+            options={subcategoryOptions}
+            value={selectedSubcategory}
+            label={t("select_subcategory")}
+            className="py-[14px]"
+          />
+        </div>
+      )}
+
+      <div className="grid grid-cols-1 gap-4">
       </div>
 
       <div>

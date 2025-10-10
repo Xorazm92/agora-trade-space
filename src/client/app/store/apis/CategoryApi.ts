@@ -3,9 +3,10 @@ import { apiSlice } from "../slices/ApiSlice";
 export const categoriesApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getAllCategories: builder.query({
-      query: () => ({
+      query: (params = {}) => ({
         url: "/categories",
         method: "GET",
+        params: params,
       }),
       providesTags: ["Category"],
     }),
@@ -44,18 +45,25 @@ export const categoriesApi = apiSlice.injectEndpoints({
     }),
 
 getCategoryAttributes: builder.query({
-  query: (categoryId: string) => `/categories/${categoryId}`,
-  transformResponse: (response: any) => ({
-    attributes: response.category.attributes.map((atr: any) => ({
-      id: atr.attribute.id,
-      name: atr.attribute.name,
-      isRequired: atr.isRequired,
-      values: atr.attribute.values.map((v: any) => ({
-        id: v.id,
-        value: v.value,
-        slug: v.slug,
-      })),
-    })),
+  query: (categoryId: string) => `/attributes`,
+  transformResponse: (response: any, meta: any, arg: string) => ({
+    attributes: response.attributes
+      .filter((attr: any) => 
+        attr.categories.some((cat: any) => cat.categoryId === arg)
+      )
+      .map((attr: any) => {
+        const categoryRelation = attr.categories.find((cat: any) => cat.categoryId === arg);
+        return {
+          id: attr.id,
+          name: attr.name,
+          isRequired: categoryRelation?.isRequired || false,
+          values: attr.values.map((v: any) => ({
+            id: v.id,
+            value: v.value,
+            slug: v.slug,
+          })),
+        };
+      }),
   }),
 }),
   }),

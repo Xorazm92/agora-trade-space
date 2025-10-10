@@ -13,10 +13,20 @@ export function withAuth<P extends Record<string, unknown>>(
     const router = useRouter();
 
     useEffect(() => {
+      // Development uchun authentication bypass
+      if (process.env.NODE_ENV === 'development') {
+        return; // Skip authentication check in development
+      }
+      
       if (!isLoading && !isAuthenticated) {
         router.push("/sign-in");
       }
     }, [isLoading, isAuthenticated]);
+
+    // Development uchun loading'ni skip qilish
+    if (process.env.NODE_ENV === 'development') {
+      return <Component {...props} />;
+    }
 
     if (isLoading) return <CustomLoader />;
 

@@ -1,5 +1,5 @@
 "use client";
-import React, { useMemo } from "react";
+import React, { useMemo, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { useRouter, usePathname } from "next/navigation";
@@ -19,9 +19,14 @@ import {
   ClipboardCheck,
   Section,
   ChartArea,
+  Package,
+  MessageSquare,
+  Percent,
+  Heart,
 } from "lucide-react";
 
 const Sidebar = () => {
+  const [isMounted, setIsMounted] = useState(false);
   const [isOpen, setIsOpen] = useStorage<boolean>(
     "sidebarOpen",
     false,
@@ -32,6 +37,7 @@ const Sidebar = () => {
   const [signout] = useSignOutMutation();
   const t = useTranslations("dashboard");
 
+  // Hook'larni conditional render'dan oldin chaqirish
   const sections = useMemo(
     () => [
       {
@@ -44,12 +50,21 @@ const Sidebar = () => {
         title: t("ecommerce"),
         links: [
           { name: t("products"), href: "/products", icon: Layers },
+          { name: "Buyurtmalar", href: "/orders", icon: Package },
           { name: t("inventory"), href: "/inventory", icon: Section },
           { name: t("attributes"), href: "/attributes", icon: Layers },
           { name: t("categories"), href: "/categories", icon: Boxes },
           { name: t("transactions"), href: "/transactions", icon: ShoppingCart },
           { name: t("users"), href: "/users", icon: Users },
           { name: t("chats"), href: "/chats", icon: ChartArea },
+        ],
+      },
+      {
+        title: "Marketing",
+        links: [
+          { name: "Sharhlar", href: "/reviews", icon: MessageSquare },
+          { name: "Kuponlar", href: "/coupons", icon: Percent },
+          { name: "Sevimlilar", href: "/wishlist-analytics", icon: Heart },
         ],
       },
       {
@@ -63,6 +78,10 @@ const Sidebar = () => {
     ],
     [t]
   );
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   const prependDashboard = (href: string) =>
     href.startsWith("/dashboard") ? href : `/dashboard${href}`;
@@ -109,6 +128,21 @@ const Sidebar = () => {
       </Link>
     );
   };
+
+  if (!isMounted) {
+    return (
+      <aside className="bg-white border-r border-gray-200 shadow-lg min-h-fit flex flex-col p-4 space-y-6" style={{ width: "80px" }}>
+        <div className="animate-pulse">
+          <div className="h-8 bg-gray-200 rounded mb-4"></div>
+          <div className="space-y-2">
+            <div className="h-6 bg-gray-200 rounded"></div>
+            <div className="h-6 bg-gray-200 rounded"></div>
+            <div className="h-6 bg-gray-200 rounded"></div>
+          </div>
+        </div>
+      </aside>
+    );
+  }
 
   return (
     <motion.aside

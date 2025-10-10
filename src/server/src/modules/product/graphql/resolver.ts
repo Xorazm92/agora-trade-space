@@ -28,6 +28,7 @@ export const productResolvers = {
           minPrice?: number;
           maxPrice?: number;
           categoryId?: string;
+          categorySlug?: string;
           flags?: string[];
         };
       },
@@ -62,6 +63,17 @@ export const productResolvers = {
       // Category filter
       if (filters.categoryId) {
         where.categoryId = filters.categoryId;
+      }
+
+      // Category slug filter (hierarchical support)
+      if (filters.categorySlug) {
+        where.category = {
+          OR: [
+            { slug: filters.categorySlug },
+            { parent: { slug: filters.categorySlug } },
+            { parent: { parent: { slug: filters.categorySlug } } }
+          ]
+        };
       }
 
       // Price filter (based on variants)
@@ -215,12 +227,28 @@ export const productResolvers = {
     },
     categories: async (_: any, __: any, context: Context) => {
       return context.prisma.category.findMany({
+        where: {
+          parentId: null, // Faqat asosiy kategoriyalarni ol
+        },
         include: {
+          children: {
+            include: {
+              children: true, // 3-darajali kategoriyalar uchun
+              products: {
+                include: {
+                  variants: true,
+                },
+              },
+            },
+          },
           products: {
             include: {
               variants: true,
             },
           },
+        },
+        orderBy: {
+          name: 'asc',
         },
       });
     },

@@ -17,6 +17,11 @@ export class CategoryService {
 
     const { where, orderBy, skip, take } = apiFeatures;
 
+    // parentId filter qo'shish
+    if (queryString.parentId !== undefined) {
+      where.parentId = queryString.parentId === 'null' ? null : queryString.parentId;
+    }
+
     const categories = await this.categoryRepository.findManyCategories({
       where,
       orderBy,
@@ -24,6 +29,13 @@ export class CategoryService {
       take,
       includeProducts: true,
     });
+
+    // Debug: attributes'larni tekshirish
+    console.log("🔍 Categories with attributes:", categories.map(cat => ({
+      name: cat.name,
+      attributesCount: cat.attributes?.length || 0,
+      attributes: cat.attributes?.map(attr => attr.attribute?.name) || []
+    })));
 
     // const categoriesWithCounts = categories.map((category) => ({
     //   ...category,

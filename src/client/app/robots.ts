@@ -2,21 +2,25 @@ import { MetadataRoute } from 'next'
 
 export default function robots(): MetadataRoute.Robots {
   const baseUrl = process.env.NODE_ENV === 'production' ? 'https://inbola.uz' : 'http://localhost:3000'
-  
+
   return {
     rules: [
       {
         userAgent: '*',
-        allow: '/',
-        disallow: [
-          '/api/',
-          '/admin/',
-          '/dashboard/',
-          '/auth/',
-          '/_next/',
-          '/private/',
-          '/temp/',
-          '*.json',
+        allow: [
+          '/',
+          '/uz/',
+          '/en/',
+          '/ru/',
+          '/shop/',
+          '/categories/',
+          '/products/',
+          '/about',
+          '/contact',
+          '/help/',
+          '/blog/',
+          '/sitemap.xml',
+          '/manifest.webmanifest',
           '/search?*',
           '/cart',
           '/checkout',

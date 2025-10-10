@@ -6,6 +6,7 @@ const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
 const nextConfig: NextConfig = {
   // Production output configuration
   output: process.env.NODE_ENV === 'production' ? 'standalone' : undefined,
+  outputFileTracingRoot: process.cwd(),
   
   eslint: {
     ignoreDuringBuilds: true,

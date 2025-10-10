@@ -29,12 +29,15 @@ const ProductModal: React.FC<ProductModalProps> = ({
   error,
 }) => {
   const t = useTranslations("products");
-  const { data: categoriesData } = useGetAllCategoriesQuery({});
+  const { data: categoriesData } = useGetAllCategoriesQuery({ parentId: null });
   const categories =
-    categoriesData?.categories?.map((category) => ({
-      label: category.name,
-      value: category.id,
-    })) || [];
+    categoriesData?.categories
+      ?.filter((category) => category.parentId === null) // Faqat parent kategoriyalar
+      ?.map((category) => ({
+        label: category.name,
+        value: category.id,
+        attributes: category.attributes || [],
+      })) || [];
 
   const form = useForm<ProductFormData>({
     defaultValues: {
@@ -63,13 +66,41 @@ const ProductModal: React.FC<ProductModalProps> = ({
   });
 
   const selectedCategoryId = form.watch("categoryId");
-  const { data: categoryAttributesData } = useGetCategoryAttributesQuery(
-    selectedCategoryId,
-    {
-      skip: !selectedCategoryId,
+  
+  // Tanlangan kategoriyaning attributes'larini olish
+  const selectedCategory = categories.find(cat => cat.value === selectedCategoryId);
+  const categoryAttributes = selectedCategory?.attributes?.map(attr => ({
+    id: attr.attribute?.id || attr.id,
+    name: attr.attribute?.name || attr.name,
+    isRequired: attr.isRequired || false,
+    values: attr.attribute?.values || attr.values || []
+  })) || [];
+
+  // Debug: kategoriya va attributes'larni console'da ko'rsatish
+  console.log("🔍 Selected Category:", selectedCategory?.label);
+  console.log("🔍 Category Attributes:", categoryAttributes);
+
+  // Kategoriya tanlanganida avtomatik variant yaratish
+  useEffect(() => {
+    if (selectedCategoryId && categoryAttributes.length > 0 && !initialData) {
+      const currentVariants = form.getValues("variants");
+      if (currentVariants.length === 0) {
+        form.setValue("variants", [{
+          id: `temp-${Date.now()}`,
+          sku: "",
+          price: 0,
+          stock: 0,
+          lowStockThreshold: 10,
+          barcode: "",
+          warehouseLocation: "",
+          images: [],
+          attributes: categoryAttributes
+            .filter((attr) => attr.isRequired)
+            .map((attr) => ({ attributeId: attr.id, valueId: "" })),
+        }]);
+      }
     }
-  );
-  const categoryAttributes = categoryAttributesData?.attributes || [];
+  }, [selectedCategoryId, categoryAttributes, form, initialData]);
 
   useEffect(() => {
     if (initialData) {

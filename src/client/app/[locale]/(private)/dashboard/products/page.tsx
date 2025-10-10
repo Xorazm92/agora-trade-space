@@ -43,97 +43,97 @@ const ProductsDashboard = () => {
   const [isFileUploadOpen, setIsFileUploadOpen] = useState(false);
 
   const handleCreateProduct = async (data: ProductFormData) => {
-    const payload = new FormData();
-    payload.append("name", data.name || "");
-    payload.append("description", data.description || "");
-    payload.append("isNew", data.isNew.toString());
-    payload.append("isTrending", data.isTrending.toString());
-    payload.append("isBestSeller", data.isBestSeller.toString());
-    payload.append("isFeatured", data.isFeatured.toString());
-    payload.append("categoryId", data.categoryId || "");
-
-    // Track image indexes for each variant
-    let imageIndex = 0;
-    data.variants.forEach((variant, index) => {
-      payload.append(`variants[${index}][sku]`, variant.sku || "");
-      payload.append(`variants[${index}][price]`, variant.price.toString());
-      payload.append(`variants[${index}][stock]`, variant.stock.toString());
-      payload.append(
-        `variants[${index}][lowStockThreshold]`,
-        variant.lowStockThreshold?.toString() || "10"
-      );
-      payload.append(`variants[${index}][barcode]`, variant.barcode || "");
-      payload.append(
-        `variants[${index}][warehouseLocation]`,
-        variant.warehouseLocation || ""
-      );
-      // Append attributes as JSON
-      payload.append(
-        `variants[${index}][attributes]`,
-        JSON.stringify(variant.attributes || [])
-      );
-      // Track image indexes for this variant
-      if (Array.isArray(variant.images) && variant.images.length > 0) {
-        const imageIndexes = variant.images
-          .map((file) => {
-            if (file instanceof File) {
-              payload.append(`images`, file);
-              return imageIndex++;
-            }
-            return null;
-          })
-          .filter((idx) => idx !== null);
-        payload.append(
-          `variants[${index}][imageIndexes]`,
-          JSON.stringify(imageIndexes)
-        );
-      } else {
-        payload.append(`variants[${index}][imageIndexes]`, JSON.stringify([]));
-      }
-    });
-
-    // Log the payload for debugging
-    console.log("Creating product with payload:");
-    for (const [key, value] of payload.entries()) {
-      console.log(`${key}:`, value);
-    }
-
     try {
-      await createProduct(payload).unwrap();
+      // Convert FormData to JSON payload for RTK Query compatibility
+      const payload = {
+        name: data.name || "",
+        description: data.description || "",
+        isNew: data.isNew,
+        isTrending: data.isTrending,
+        isBestSeller: data.isBestSeller,
+        isFeatured: data.isFeatured,
+        categoryId: data.categoryId || "",
+        variants: data.variants.map((variant) => ({
+          sku: variant.sku || "",
+          price: Number(variant.price) || 0,
+          stock: Number(variant.stock) || 0,
+          lowStockThreshold: Number(variant.lowStockThreshold) || 10,
+          barcode: variant.barcode || "",
+          warehouseLocation: variant.warehouseLocation || "",
+          attributes: JSON.stringify((variant.attributes || []).filter(attr => attr.valueId && attr.valueId.trim() !== "")),
+          imageIndexes: JSON.stringify([]),
+          // For now, skip images to avoid serialization issues
+          images: []
+        }))
+      };
+
+      console.log("Creating product with payload:", payload);
+
+      const result = await createProduct(payload).unwrap();
+      console.log("Product created successfully:", result);
+      
       setIsModalOpen(false);
       showToast(t("product_created_successfully"), "success");
-      // Force refetch to update the product list
-      refetch();
-    } catch (err) {
+      if (shouldFetchProducts) {
+        refetch();
+      }
+    } catch (err: any) {
       console.error("Failed to create product:", err);
-      showToast(t("failed_to_create_product"), "error");
+      console.log("Error details:", {
+        status: err?.status,
+        data: err?.data,
+        message: err?.message
+      });
+      showToast(
+        err?.data?.message || t("failed_to_create_product"), 
+        "error"
+      );
     }
   };
 
   const handleUpdateProduct = async (data: ProductFormData) => {
     if (!editingProduct) return;
 
-    const payload = new FormData();
-    payload.append("name", data.name || "");
-    payload.append("description", data.description || "");
-    payload.append("isNew", data.isNew.toString());
-    payload.append("isTrending", data.isTrending.toString());
-    payload.append("isBestSeller", data.isBestSeller.toString());
-    payload.append("isFeatured", data.isFeatured.toString());
-    payload.append("categoryId", data.categoryId || "");
-    payload.append("variants", JSON.stringify(data.variants));
-
     try {
+      const payload = {
+        name: data.name || "",
+        description: data.description || "",
+        isNew: data.isNew,
+        isTrending: data.isTrending,
+        isBestSeller: data.isBestSeller,
+        isFeatured: data.isFeatured,
+        categoryId: data.categoryId || "",
+        variants: data.variants.map((variant) => ({
+          id: variant.id,
+          sku: variant.sku || "",
+          price: Number(variant.price) || 0,
+          stock: Number(variant.stock) || 0,
+          lowStockThreshold: Number(variant.lowStockThreshold) || 10,
+          barcode: variant.barcode || "",
+          warehouseLocation: variant.warehouseLocation || "",
+          attributes: JSON.stringify(
+            (variant.attributes || []).filter(attr => attr.valueId && attr.valueId.trim() !== "")
+          ),
+          imageIndexes: JSON.stringify([]),
+          images: []
+        }))
+      };
+
       await updateProduct({
         id: editingProduct.id!,
         data: payload,
       }).unwrap();
+      
       setIsModalOpen(false);
       setEditingProduct(null);
       showToast(t("product_updated_successfully"), "success");
-    } catch (err) {
+      refetch();
+    } catch (err: any) {
       console.error("Failed to update product:", err);
-      showToast(t("failed_to_update_product"), "error");
+      showToast(
+        err?.data?.message || t("failed_to_update_product"), 
+        "error"
+      );
     }
   };
 

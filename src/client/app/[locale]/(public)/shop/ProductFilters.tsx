@@ -4,11 +4,13 @@ import { useForm, Controller } from "react-hook-form";
 import { X, SlidersHorizontal } from "lucide-react";
 import Dropdown from "@/app/components/molecules/Dropdown";
 import CheckBox from "@/app/components/atoms/CheckBox";
+import CategoryFilter from "@/app/components/molecules/CategoryFilter";
 import { debounce } from "lodash";
 
 export interface FilterValues {
   search: string;
   categoryId?: string;
+  categorySlug?: string;
   minPrice?: number;
   maxPrice?: number;
   isNew?: boolean;
@@ -170,22 +172,13 @@ const ProductFilters: React.FC<ProductFiltersProps> = ({
             />
           </div>
 
-          {/* Category */}
+          {/* Category Filter */}
           <div className="space-y-3">
-            <label className="text-sm font-semibold text-gray-800">
-              Category
-            </label>
-            <Controller
-              name="categoryId"
-              control={control}
-              render={({ field }) => (
-                <Dropdown
-                  options={categoryOptions}
-                  value={field.value || ""}
-                  onChange={(val) => field.onChange(val || undefined)}
-                  className="w-full"
-                />
-              )}
+            <CategoryFilter
+              selectedCategory={formValues.categorySlug}
+              onCategoryChange={(categorySlug) => {
+                onFilterChange({ ...formValues, categorySlug });
+              }}
             />
           </div>
 

@@ -7,7 +7,7 @@ const baseQuery = fetchBaseQuery({
   credentials: "include",
 });
 
-const baseQueryWithReauth = async (args, api, extraOptions) => {
+export const baseQueryWithReauth = async (args, api, extraOptions) => {
   let result = await baseQuery(args, api, extraOptions);
 
   if (result.error?.status === 401) {
@@ -45,6 +45,7 @@ export const apiSlice = createApi({
     "Logs",
     "Attribute",
     "Variant",
+    "Wishlist",
   ],
   endpoints: () => ({}),
 });

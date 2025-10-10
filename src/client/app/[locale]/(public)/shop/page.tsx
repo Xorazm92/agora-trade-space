@@ -34,6 +34,7 @@ const ShopPage: React.FC = () => {
         ? parseFloat(searchParams.get("maxPrice")!)
         : undefined,
       categoryId: searchParams.get("categoryId") || undefined,
+      categorySlug: searchParams.get("category") || undefined,
     }),
     [searchParams]
   );
@@ -126,6 +127,7 @@ const ShopPage: React.FC = () => {
     if (newFilters.maxPrice)
       query.set("maxPrice", newFilters.maxPrice.toString());
     if (newFilters.categoryId) query.set("categoryId", newFilters.categoryId);
+    if (newFilters.categorySlug) query.set("category", newFilters.categorySlug);
 
     router.push(`/shop?${query.toString()}`);
   };

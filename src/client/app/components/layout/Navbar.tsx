@@ -10,6 +10,7 @@ import {
   CircleUserRound,
   Search,
   LogOut,
+  Heart,
 } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 import SearchBar from "../molecules/SearchBar";
@@ -135,6 +136,15 @@ const Navbar = () => {
               >
                 <Search size={20} />
               </button>
+
+              {/* Wishlist */}
+              <Link
+                href="/wishlist"
+                className="relative p-2 text-gray-700 hover:text-pink-600 transition-colors"
+                aria-label="Wishlist"
+              >
+                <Heart className="text-[20px] sm:text-[22px]" />
+              </Link>
 
               {/* Cart */}
               <Link

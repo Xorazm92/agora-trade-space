@@ -7,6 +7,398 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model User {
+  email                       String        @unique
+  password                    String?
+  createdAt                   DateTime      @default(now())
+  updatedAt                   DateTime      @updatedAt
+  avatar                      String?
+  name                        String
+  resetPasswordToken          String?
+  resetPasswordTokenExpiresAt DateTime?
+  role                        ROLE          @default(USER)
+  googleId                    String?
+  facebookId                  String?
+  twitterId                   String?
+  id                          String        @id @default(uuid())
+  addresses                   Address[]
+  carts                       Cart[]
+  cartEvents                  CartEvent[]
+  chats                       Chat[]        @relation("UserChats")
+  messages                    ChatMessage[]
+  interactions                Interaction[]
+  orders                      Order[]
+  payments                    Payment[]
+  reports                     Report[]
+  Restock                     Restock[]
+  reviews                     Review[]
+  wishlists                   Wishlist[]
+
+  @@index([email])
+}
+
+model Product {
+  name          String           @unique
+  description   String?
+  createdAt     DateTime         @default(now())
+  updatedAt     DateTime         @updatedAt
+  salesCount    Int              @default(0)
+  averageRating Float            @default(0)
+  slug          String           @unique
+  reviewCount   Int              @default(0)
+  id            String           @id @default(uuid())
+  categoryId    String?
+  isBestSeller  Boolean          @default(false)
+  isFeatured    Boolean          @default(false)
+  isNew         Boolean          @default(false)
+  isTrending    Boolean          @default(false)
+  interactions  Interaction[]
+  category      Category?        @relation(fields: [categoryId], references: [id])
+  variants      ProductVariant[]
+  reviews       Review[]
+  wishlists     Wishlist[]
+
+  @@index([name, slug])
+}
+
+model ProductVariant {
+  id                String                    @id @default(uuid())
+  productId         String
+  sku               String                    @unique
+  price             Float
+  stock             Int
+  lowStockThreshold Int                       @default(10)
+  barcode           String?
+  warehouseLocation String?
+  createdAt         DateTime                  @default(now())
+  updatedAt         DateTime                  @updatedAt
+  images            String[]                  @default([])
+  cartItems         CartItem[]
+  orderItems        OrderItem[]
+  product           Product                   @relation(fields: [productId], references: [id], onDelete: Cascade)
+  attributes        ProductVariantAttribute[]
+  restocks          Restock[]
+  stockMovements    StockMovement[]
+
+  @@index([productId, sku])
+}
+
+model Attribute {
+  id                String                    @id @default(uuid())
+  name              String                    @unique
+  slug              String                    @unique
+  createdAt         DateTime                  @default(now())
+  updatedAt         DateTime                  @updatedAt
+  values            AttributeValue[]
+  categories        CategoryAttribute[]
+  variantAttributes ProductVariantAttribute[]
+
+  @@index([name, slug])
+}
+
+model AttributeValue {
+  id                String                    @id @default(uuid())
+  attributeId       String
+  value             String
+  slug              String                    @unique
+  createdAt         DateTime                  @default(now())
+  updatedAt         DateTime                  @updatedAt
+  attribute         Attribute                 @relation(fields: [attributeId], references: [id], onDelete: Cascade)
+  variantAttributes ProductVariantAttribute[]
+
+  @@index([attributeId, value])
+}
+
+model ProductVariantAttribute {
+  id          String         @id @default(uuid())
+  variantId   String
+  attributeId String
+  valueId     String
+  createdAt   DateTime       @default(now())
+  attribute   Attribute      @relation(fields: [attributeId], references: [id], onDelete: Cascade)
+  value       AttributeValue @relation(fields: [valueId], references: [id], onDelete: Cascade)
+  variant     ProductVariant @relation(fields: [variantId], references: [id], onDelete: Cascade)
+
+  @@unique([variantId, attributeId, valueId])
+  @@index([variantId, attributeId])
+}
+
+model Category {
+  name        String
+  slug        String              @unique
+  createdAt   DateTime            @default(now())
+  updatedAt   DateTime            @updatedAt
+  description String?
+  id          String              @id @default(uuid())
+  images      String[]
+  icon        String?
+  parentId    String?
+  parent      Category?           @relation("CategoryHierarchy", fields: [parentId], references: [id])
+  children    Category[]          @relation("CategoryHierarchy")
+  attributes  CategoryAttribute[]
+  products    Product[]
+
+  @@index([name, slug])
+  @@index([parentId])
+}
+
+model CategoryAttribute {
+  id          String    @id @default(uuid())
+  categoryId  String
+  attributeId String
+  isRequired  Boolean   @default(false)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  attribute   Attribute @relation(fields: [attributeId], references: [id], onDelete: Cascade)
+  category    Category  @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+
+  @@unique([categoryId, attributeId])
+  @@index([categoryId, attributeId])
+}
+
+model StockMovement {
+  id        String         @id @default(uuid())
+  quantity  Int
+  reason    String
+  userId    String?
+  createdAt DateTime       @default(now())
+  variantId String
+  variant   ProductVariant @relation(fields: [variantId], references: [id], onDelete: Cascade)
+
+  @@index([variantId])
+}
+
+model Restock {
+  id        String         @id @default(uuid())
+  quantity  Int
+  notes     String?
+  userId    String?
+  createdAt DateTime       @default(now())
+  variantId String
+  user      User?          @relation(fields: [userId], references: [id])
+  variant   ProductVariant @relation(fields: [variantId], references: [id], onDelete: Cascade)
+
+  @@index([variantId])
+}
+
+model Review {
+  rating    Int
+  comment   String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  id        String   @id @default(uuid())
+  userId    String
+  productId String
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([productId, userId])
+}
+
+model Order {
+  amount      Float
+  createdAt   DateTime     @default(now())
+  orderDate   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  userId      String
+  id          String       @id @default(uuid())
+  status      String       @default("PENDING")
+  address     Address?     @relation("OrderAddress")
+  user        User         @relation(fields: [userId], references: [id])
+  orderItems  OrderItem[]
+  payment     Payment?     @relation("OrderPayment")
+  shipment    Shipment?    @relation("OrderShipment")
+  transaction Transaction? @relation("OrderTransaction")
+
+  @@index([userId])
+}
+
+model OrderItem {
+  quantity  Int
+  createdAt DateTime       @default(now())
+  updatedAt DateTime       @updatedAt
+  price     Float
+  id        String         @id @default(uuid())
+  orderId   String
+  variantId String
+  order     Order          @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  variant   ProductVariant @relation(fields: [variantId], references: [id])
+
+  @@index([orderId, variantId])
+}
+
+model Payment {
+  method    String
+  amount    Float
+  createdAt DateTime       @default(now())
+  updatedAt DateTime       @updatedAt
+  status    PAYMENT_STATUS @default(PENDING)
+  id        String         @id @default(uuid())
+  userId    String
+  orderId   String?        @unique
+  order     Order?         @relation("OrderPayment", fields: [orderId], references: [id])
+  user      User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, orderId])
+}
+
+model Address {
+  city      String
+  state     String
+  country   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  street    String
+  zip       String
+  id        String   @id @default(uuid())
+  userId    String
+  orderId   String?  @unique
+  order     Order?   @relation("OrderAddress", fields: [orderId], references: [id])
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, orderId])
+}
+
+model Shipment {
+  carrier        String
+  trackingNumber String
+  shippedDate    DateTime
+  deliveryDate   DateTime?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+  id             String    @id @default(uuid())
+  orderId        String    @unique
+  order          Order     @relation("OrderShipment", fields: [orderId], references: [id], onDelete: Cascade)
+
+  @@index([orderId])
+}
+
+model Transaction {
+  transactionDate DateTime           @default(now())
+  createdAt       DateTime           @default(now())
+  updatedAt       DateTime           @updatedAt
+  status          TRANSACTION_STATUS @default(PENDING)
+  id              String             @id @default(uuid())
+  orderId         String             @unique
+  order           Order              @relation("OrderTransaction", fields: [orderId], references: [id], onDelete: Cascade)
+
+  @@index([orderId])
+}
+
+model Cart {
+  createdAt  DateTime    @default(now())
+  updatedAt  DateTime    @updatedAt
+  sessionId  String?     @unique
+  status     CART_STATUS @default(ACTIVE)
+  userId     String?
+  id         String      @id @default(uuid())
+  user       User?       @relation(fields: [userId], references: [id])
+  cartEvents CartEvent[]
+  cartItems  CartItem[]
+
+  @@index([userId, sessionId])
+}
+
+model CartItem {
+  quantity  Int            @default(1)
+  createdAt DateTime       @default(now())
+  updatedAt DateTime       @updatedAt
+  id        String         @id @default(uuid())
+  cartId    String
+  variantId String
+  cart      Cart           @relation(fields: [cartId], references: [id], onDelete: Cascade)
+  variant   ProductVariant @relation(fields: [variantId], references: [id], onDelete: Cascade)
+
+  @@unique([cartId, variantId])
+  @@index([cartId, variantId])
+}
+
+model CartEvent {
+  id        String     @id @default(uuid())
+  userId    String?
+  cartId    String
+  eventType CART_EVENT @default(PENDING)
+  timestamp DateTime   @default(now())
+  sessionId String?
+  createdAt DateTime   @default(now())
+  cart      Cart       @relation(fields: [cartId], references: [id], onDelete: Cascade)
+  user      User?      @relation(fields: [userId], references: [id])
+}
+
+model Interaction {
+  type      String
+  createdAt DateTime @default(now())
+  id        String   @id @default(uuid())
+  userId    String?
+  productId String?
+  sessionId String?
+  product   Product? @relation(fields: [productId], references: [id])
+  user      User?    @relation(fields: [userId], references: [id])
+
+  @@index([userId, sessionId, productId])
+}
+
+model Report {
+  type       String
+  format     String
+  createdAt  DateTime @default(now())
+  parameters Json
+  filePath   String?
+  id         String   @id @default(uuid())
+  userId     String
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model Log {
+  level     String
+  message   String
+  context   Json?
+  createdAt DateTime @default(now())
+  id        String   @id @default(uuid())
+}
+
+model Section {
+  id             Int          @id @unique @default(autoincrement())
+  title          String?
+  description    String?
+  icons          String?
+  link           String?
+  ctaText        String?
+  isVisible      Boolean?     @default(false)
+  primaryColor   String?
+  secondaryColor String?
+  type           SECTION_TYPE @default(HERO)
+  images         String[]     @default([])
+}
+
+model Chat {
+  id        String        @id @default(uuid())
+  status    CHAT_STATUS   @default(OPEN)
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+  userId    String
+  user      User          @relation("UserChats", fields: [userId], references: [id], onDelete: Cascade)
+  messages  ChatMessage[]
+
+  @@index([userId])
+}
+
+model ChatMessage {
+  id        String   @id @default(uuid())
+  chatId    String
+  senderId  String
+  content   String?
+  createdAt DateTime @default(now())
+  type      String   @default("TEXT")
+  url       String?
+  chat      Chat     @relation(fields: [chatId], references: [id], onDelete: Cascade)
+  sender    User     @relation(fields: [senderId], references: [id], onDelete: Cascade)
+
+  @@index([chatId, senderId])
+}
+
 enum ROLE {
   ADMIN
   USER
@@ -44,305 +436,6 @@ enum CHAT_STATUS {
   RESOLVED
 }
 
-model User {
-  id                          String        @id @default(uuid())
-  googleId                    String?
-  twitterId                   String?
-  facebookId                  String?
-  email                       String        @unique
-  password                    String?
-  name                        String
-  avatar                      String?
-  resetPasswordToken          String?
-  resetPasswordTokenExpiresAt DateTime?
-  role                        ROLE          @default(USER)
-  orders                      Order[]
-  payments                    Payment[]
-  addresses                   Address[]
-  interactions                Interaction[]
-  reports                     Report[]
-  reviews                     Review[]
-  carts                       Cart[]
-  cartEvents                  CartEvent[]
-  chats                       Chat[]        @relation("UserChats")
-  messages                    ChatMessage[]
-  createdAt                   DateTime      @default(now())
-  updatedAt                   DateTime      @updatedAt
-  Restock                     Restock[]
-
-  @@index([email])
-}
-
-model Product {
-  id            String           @id @default(uuid())
-  name          String           @unique
-  description   String?
-  slug          String           @unique
-  salesCount    Int              @default(0)
-  isNew         Boolean          @default(false)
-  isFeatured    Boolean          @default(false)
-  isTrending    Boolean          @default(false)
-  isBestSeller  Boolean          @default(false)
-  averageRating Float            @default(0)
-  reviewCount   Int              @default(0)
-  category      Category?        @relation(fields: [categoryId], references: [id], onDelete: SetNull)
-  categoryId    String?
-  variants      ProductVariant[]
-  interactions  Interaction[]
-  reviews       Review[]
-  createdAt     DateTime         @default(now())
-  updatedAt     DateTime         @updatedAt
-
-  @@index([name, slug])
-}
-
-model ProductVariant {
-  id                String                    @id @default(uuid())
-  productId         String
-  product           Product                   @relation(fields: [productId], references: [id], onDelete: Cascade)
-  sku               String                    @unique
-  images            String[]                  @default([])
-  price             Float
-  stock             Int
-  lowStockThreshold Int                       @default(10)
-  barcode           String?
-  warehouseLocation String?
-  attributes        ProductVariantAttribute[]
-  orderItems        OrderItem[]
-  cartItems         CartItem[]
-  stockMovements    StockMovement[]
-  restocks          Restock[]
-  createdAt         DateTime                  @default(now())
-  updatedAt         DateTime                  @updatedAt
-
-  @@index([productId, sku])
-}
-
-model Attribute {
-  id                String                    @id @default(uuid())
-  name              String                    @unique
-  slug              String                    @unique
-  values            AttributeValue[]
-  categories        CategoryAttribute[]
-  variantAttributes ProductVariantAttribute[]
-  createdAt         DateTime                  @default(now())
-  updatedAt         DateTime                  @updatedAt
-
-  @@index([name, slug])
-}
-
-model AttributeValue {
-  id                String                    @id @default(uuid())
-  attributeId       String
-  attribute         Attribute                 @relation(fields: [attributeId], references: [id], onDelete: Cascade)
-  value             String
-  slug              String                    @unique
-  variantAttributes ProductVariantAttribute[]
-  createdAt         DateTime                  @default(now())
-  updatedAt         DateTime                  @updatedAt
-
-  @@index([attributeId, value])
-}
-
-model ProductVariantAttribute {
-  id          String         @id @default(uuid())
-  variantId   String
-  variant     ProductVariant @relation(fields: [variantId], references: [id], onDelete: Cascade)
-  attributeId String
-  attribute   Attribute      @relation(fields: [attributeId], references: [id], onDelete: Cascade)
-  valueId     String
-  value       AttributeValue @relation(fields: [valueId], references: [id], onDelete: Cascade)
-  createdAt   DateTime       @default(now())
-
-  @@unique([variantId, attributeId, valueId])
-  @@index([variantId, attributeId])
-}
-
-model Category {
-  id          String              @id @default(uuid())
-  slug        String              @unique
-  name        String
-  description String?
-  images      String[]
-  products    Product[]
-  attributes  CategoryAttribute[]
-  createdAt   DateTime            @default(now())
-  updatedAt   DateTime            @updatedAt
-
-  @@index([name, slug])
-}
-
-model CategoryAttribute {
-  id          String    @id @default(uuid())
-  categoryId  String
-  category    Category  @relation(fields: [categoryId], references: [id], onDelete: Cascade)
-  attributeId String
-  attribute   Attribute @relation(fields: [attributeId], references: [id], onDelete: Cascade)
-  isRequired  Boolean   @default(false)
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
-
-  @@unique([categoryId, attributeId])
-  @@index([categoryId, attributeId])
-}
-
-model StockMovement {
-  id        String         @id @default(uuid())
-  variantId String
-  variant   ProductVariant @relation(fields: [variantId], references: [id], onDelete: Cascade)
-  quantity  Int
-  reason    String
-  userId    String?
-  createdAt DateTime       @default(now())
-
-  @@index([variantId])
-}
-
-model Restock {
-  id        String         @id @default(uuid())
-  variantId String
-  variant   ProductVariant @relation(fields: [variantId], references: [id], onDelete: Cascade)
-  quantity  Int
-  notes     String?
-  userId    String?
-  user      User?          @relation(fields: [userId], references: [id], onDelete: SetNull)
-  createdAt DateTime       @default(now())
-
-  @@index([variantId])
-}
-
-model Review {
-  id        String   @id @default(uuid())
-  userId    String
-  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  productId String
-  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
-  rating    Int
-  comment   String?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  @@index([productId, userId])
-}
-
-model Order {
-  id          String       @id @default(uuid())
-  userId      String
-  amount      Float
-  orderDate   DateTime     @default(now())
-  status      String       @default("PENDING")
-  user        User         @relation(fields: [userId], references: [id])
-  orderItems  OrderItem[]
-  payment     Payment?     @relation("OrderPayment")
-  address     Address?     @relation("OrderAddress")
-  shipment    Shipment?    @relation("OrderShipment")
-  transaction Transaction? @relation("OrderTransaction")
-  createdAt   DateTime     @default(now())
-  updatedAt   DateTime     @updatedAt
-
-  @@index([userId])
-}
-
-model OrderItem {
-  id        String         @id @default(uuid())
-  orderId   String
-  variantId String
-  quantity  Int
-  price     Float
-  order     Order          @relation(fields: [orderId], references: [id], onDelete: Cascade)
-  variant   ProductVariant @relation(fields: [variantId], references: [id])
-  createdAt DateTime       @default(now())
-  updatedAt DateTime       @updatedAt
-
-  @@index([orderId, variantId])
-}
-
-model Payment {
-  id        String         @id @default(uuid())
-  method    String
-  amount    Float
-  user      User           @relation(fields: [userId], references: [id], onDelete: Cascade)
-  userId    String
-  order     Order?         @relation("OrderPayment", fields: [orderId], references: [id], onDelete: SetNull)
-  orderId   String?        @unique
-  status    PAYMENT_STATUS @default(PENDING)
-  createdAt DateTime       @default(now())
-  updatedAt DateTime       @updatedAt
-
-  @@index([userId, orderId])
-}
-
-model Address {
-  id        String   @id @default(uuid())
-  city      String
-  state     String
-  country   String
-  zip       String
-  street    String
-  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  userId    String
-  order     Order?   @relation("OrderAddress", fields: [orderId], references: [id], onDelete: SetNull)
-  orderId   String?  @unique
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  @@index([userId, orderId])
-}
-
-model Shipment {
-  id             String    @id @default(uuid())
-  carrier        String
-  trackingNumber String
-  shippedDate    DateTime
-  deliveryDate   DateTime?
-  order          Order     @relation("OrderShipment", fields: [orderId], references: [id], onDelete: Cascade)
-  orderId        String    @unique
-  createdAt      DateTime  @default(now())
-  updatedAt      DateTime  @updatedAt
-
-  @@index([orderId])
-}
-
-model Transaction {
-  id              String             @id @default(uuid())
-  order           Order              @relation("OrderTransaction", fields: [orderId], references: [id], onDelete: Cascade)
-  orderId         String             @unique
-  status          TRANSACTION_STATUS @default(PENDING)
-  transactionDate DateTime           @default(now())
-  createdAt       DateTime           @default(now())
-  updatedAt       DateTime           @updatedAt
-
-  @@index([orderId])
-}
-
-model Cart {
-  id         String      @id @default(uuid())
-  user       User?       @relation(fields: [userId], references: [id], onDelete: SetNull)
-  userId     String?
-  sessionId  String?     @unique
-  cartItems  CartItem[]
-  cartEvents CartEvent[]
-  status     CART_STATUS @default(ACTIVE)
-  createdAt  DateTime    @default(now())
-  updatedAt  DateTime    @updatedAt
-
-  @@index([userId, sessionId])
-}
-
-model CartItem {
-  id        String         @id @default(uuid())
-  cart      Cart           @relation(fields: [cartId], references: [id], onDelete: Cascade)
-  cartId    String
-  variantId String
-  variant   ProductVariant @relation(fields: [variantId], references: [id], onDelete: Cascade)
-  quantity  Int            @default(1)
-  createdAt DateTime       @default(now())
-  updatedAt DateTime       @updatedAt
-
-  @@unique([cartId, variantId])
-  @@index([cartId, variantId])
-}
-
 enum CART_EVENT {
   PENDING
   ADD
@@ -350,50 +443,18 @@ enum CART_EVENT {
   CHECKOUT_COMPLETED
 }
 
-model CartEvent {
-  id        String     @id @default(uuid())
-  cartId    String
-  userId    String?
-  sessionId String?
-  eventType CART_EVENT @default(PENDING)
-  timestamp DateTime   @default(now())
-  cart      Cart       @relation(fields: [cartId], references: [id], onDelete: Cascade)
-  user      User?      @relation(fields: [userId], references: [id], onDelete: SetNull)
-  createdAt DateTime   @default(now())
-}
-
-model Interaction {
+model Wishlist {
   id        String   @id @default(uuid())
-  userId    String?
-  user      User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
-  sessionId String?
-  productId String?
-  product   Product? @relation(fields: [productId], references: [id], onDelete: SetNull)
-  type      String
+  userId    String
+  productId String
   createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
 
-  @@index([userId, sessionId, productId])
-}
-
-model Report {
-  id         String   @id @default(uuid())
-  type       String
-  format     String
-  userId     String
-  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  createdAt  DateTime @default(now())
-  parameters Json
-  filePath   String?
-
+  @@unique([userId, productId])
   @@index([userId])
-}
-
-model Log {
-  id        String   @id @default(uuid())
-  level     String
-  message   String
-  context   Json?
-  createdAt DateTime @default(now())
+  @@index([productId])
 }
 
 enum SECTION_TYPE {
@@ -401,44 +462,4 @@ enum SECTION_TYPE {
   PROMOTIONAL
   BENEFITS
   NEW_ARRIVALS
-}
-
-model Section {
-  id             Int          @id @unique @default(autoincrement())
-  type           SECTION_TYPE @default(HERO)
-  title          String?
-  description    String?
-  images         String[]     @default([])
-  icons          String?
-  link           String?
-  ctaText        String?
-  isVisible      Boolean?     @default(false)
-  primaryColor   String?
-  secondaryColor String?
-}
-
-model Chat {
-  id        String        @id @default(uuid())
-  userId    String
-  user      User          @relation("UserChats", fields: [userId], references: [id], onDelete: Cascade)
-  status    CHAT_STATUS   @default(OPEN)
-  messages  ChatMessage[]
-  createdAt DateTime      @default(now())
-  updatedAt DateTime      @updatedAt
-
-  @@index([userId])
-}
-
-model ChatMessage {
-  id        String   @id @default(uuid())
-  chatId    String
-  chat      Chat     @relation(fields: [chatId], references: [id], onDelete: Cascade)
-  senderId  String
-  sender    User     @relation(fields: [senderId], references: [id], onDelete: Cascade)
-  content   String?
-  type      String   @default("TEXT")
-  url       String?
-  createdAt DateTime @default(now())
-
-  @@index([chatId, senderId])
 }

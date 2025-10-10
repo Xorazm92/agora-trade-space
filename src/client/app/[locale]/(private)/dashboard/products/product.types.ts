@@ -17,5 +17,9 @@ export interface ProductFormData {
     barcode?: string;
     warehouseLocation?: string;
     attributes: { attributeId: string; valueId: string }[];
+    sizes?: string[];
+    colors?: string[];
+    materials?: string[];
+    customAttributes?: { [key: string]: string };
   }[];
 }

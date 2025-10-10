@@ -14,8 +14,10 @@ import ConfirmModal from "@/app/components/organisms/ConfirmModal";
 import CategoryForm, { CategoryFormData } from "./CategoryForm";
 import useToast from "@/app/hooks/ui/useToast";
 import { withAuth } from "@/app/components/HOC/WithAuth";
+import { useTranslations } from "next-intl";
 
 const CategoriesDashboardContent = () => {
+  const t = useTranslations("dashboard");
   const { showToast } = useToast();
   const { data, isLoading, error } = useGetAllCategoriesQuery({});
   const [createCategory, { isLoading: isCreating }] =
@@ -34,30 +36,45 @@ const CategoriesDashboardContent = () => {
 
   const columns = [
     {
+      key: "icon",
+      label: t("icon"),
+      render: (row) => (
+        <span className="text-2xl">{row?.icon || "📦"}</span>
+      ),
+    },
+    {
       key: "name",
-      label: "Name",
+      label: t("category_name"),
       sortable: true,
       render: (row) => (
         <span className="font-medium text-gray-800">{row?.name || "N/A"}</span>
+      ),
+    },
+    {
+      key: "slug",
+      label: t("slug"),
+      sortable: true,
+      render: (row) => (
+        <span className="font-mono text-sm text-gray-600">{row?.slug || "N/A"}</span>
       ),
     },
     {
       key: "description",
-      label: "Description",
+      label: t("description"),
       sortable: true,
       render: (row) => (
-        <span className="font-medium text-gray-800">{row?.name || "N/A"}</span>
+        <span className="text-gray-600">{row?.description || "N/A"}</span>
       ),
     },
     {
       key: "actions",
-      label: "Actions",
+      label: t("actions"),
       render: (row) => (
         <div className="flex space-x-2">
           <button
             onClick={() => handleDeletePrompt(row?.id)}
             className="p-1 text-red-500 hover:text-red-600 transition-colors duration-200"
-            aria-label="Delete category"
+            aria-label={t("delete_category")}
             disabled={isDeleting}
           >
             <Trash2 size={18} />
@@ -79,10 +96,10 @@ const CategoriesDashboardContent = () => {
       await deleteCategory(categoryToDelete).unwrap();
       setIsConfirmModalOpen(false);
       setCategoryToDelete(null);
-      showToast("Category deleted successfully", "success");
+      showToast(t("category_deleted_successfully"), "success");
     } catch (err) {
       console.error("Failed to delete category:", err);
-      showToast("Failed to delete category", "error");
+      showToast(t("failed_to_delete_category"), "error");
     }
   };
 
@@ -109,10 +126,10 @@ const CategoriesDashboardContent = () => {
       await createCategory(payload).unwrap();
       setIsCreateModalOpen(false);
       form.reset({ name: "" });
-      showToast("Category created successfully", "success");
+      showToast(t("category_created_successfully"), "success");
     } catch (err) {
       console.error("Failed to create category:", err);
-      showToast("Failed to create category", "error");
+      showToast(t("failed_to_create_category"), "error");
     }
   };
 
@@ -128,7 +145,7 @@ const CategoriesDashboardContent = () => {
         <div className="flex items-center space-x-3">
           <Tag size={24} className="text-indigo-500" />
           <h1 className="text-2xl font-bold text-gray-800">
-            Categories Dashboard
+            {t("categories_dashboard")}
           </h1>
         </div>
         <button
@@ -136,7 +153,7 @@ const CategoriesDashboardContent = () => {
           className="bg-indigo-500 text-white px-4 py-2 rounded-lg hover:bg-indigo-600 transition-colors duration-300 flex items-center space-x-2"
         >
           <Plus size={18} />
-          <span>Add Category</span>
+          <span>{t("add_category")}</span>
         </button>
       </motion.div>
 
@@ -144,19 +161,19 @@ const CategoriesDashboardContent = () => {
       {isLoading ? (
         <div className="text-center py-12">
           <Tag size={48} className="mx-auto text-gray-400 mb-4 animate-pulse" />
-          <p className="text-lg text-gray-600">Loading categories...</p>
+          <p className="text-lg text-gray-600">{t("loading_categories")}</p>
         </div>
       ) : error ? (
         <div className="text-center py-12">
           <p className="text-lg text-red-500">
-            Error loading categories:{" "}
-            {(error as any)?.message || "Unknown error"}
+            {t("error_loading_categories")}{" "}
+            {(error as any)?.message || t("unknown_error")}
           </p>
         </div>
       ) : categories.length === 0 ? (
         <div className="text-center py-12">
           <Tag size={48} className="mx-auto text-gray-400 mb-4" />
-          <p className="text-lg text-gray-600">No categories available</p>
+          <p className="text-lg text-gray-600">{t("no_categories_available")}</p>
         </div>
       ) : (
         <Table
@@ -173,22 +190,22 @@ const CategoriesDashboardContent = () => {
         onClose={() => setIsCreateModalOpen(false)}
       >
         <h2 className="text-xl font-bold text-gray-800 mb-6">
-          Create Category
+          {t("create_category")}
         </h2>
         <CategoryForm
           form={form}
           onSubmit={onSubmit}
           isLoading={isCreating}
-          submitLabel="Create"
+          submitLabel={t("create")}
         />
       </Modal>
 
       <ConfirmModal
         isOpen={isConfirmModalOpen}
-        message="Are you sure you want to delete this category? This action cannot be undone."
+        message={t("confirm_delete_category")}
         onConfirm={handleDelete}
         onCancel={() => setIsConfirmModalOpen(false)}
-        title="Delete Category"
+        title={t("delete_category")}
         type="danger"
       />
     </div>

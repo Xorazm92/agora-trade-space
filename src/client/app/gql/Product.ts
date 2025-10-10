@@ -127,6 +127,21 @@ export const GET_CATEGORIES = gql`
       slug
       name
       description
+      parentId
+      children {
+        id
+        slug
+        name
+        description
+        parentId
+        children {
+          id
+          slug
+          name
+          description
+          parentId
+        }
+      }
     }
   }
 `;

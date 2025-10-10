@@ -9,6 +9,7 @@ import useTrackInteraction from "@/app/hooks/miscellaneous/useTrackInteraction";
 import { useRouter } from "next/navigation";
 import { generateProductPlaceholder } from "@/app/utils/placeholderImage";
 import useFormatPrice from "@/app/hooks/ui/useFormatPrice";
+import WishlistButton from "@/app/components/molecules/WishlistButton";
 
 interface ProductCardProps {
   product: Product;
@@ -61,6 +62,11 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             }}
           />
         </Link>
+
+        {/* Wishlist Button */}
+        <div className="absolute top-2 right-2">
+          <WishlistButton productId={product.id} size="sm" />
+        </div>
 
         {/* Product Flags */}
         <div className="absolute top-2 left-2 flex flex-col gap-1">

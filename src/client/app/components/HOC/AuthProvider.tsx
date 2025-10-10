@@ -12,6 +12,12 @@ export default function AuthProvider({
   const [triggerGetMe] = useLazyGetMeQuery();
 
   useEffect(() => {
+    // Development uchun authentication'ni skip qilish
+    if (process.env.NODE_ENV === 'development') {
+      console.log("Development mode: Skipping authentication");
+      return;
+    }
+
     (async () => {
       try {
         const response = await triggerGetMe().unwrap();

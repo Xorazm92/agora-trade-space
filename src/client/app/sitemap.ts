@@ -2,20 +2,20 @@ import { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = process.env.NODE_ENV === 'production' ? 'https://inbola.uz' : 'http://localhost:3000'
-  
+
   // Asosiy sahifalar
   const staticPages = [
     {
       url: baseUrl,
       lastModified: new Date(),
       changeFrequency: 'daily' as const,
-      priority: 1,
+      priority: 1.0,
     },
     {
       url: `${baseUrl}/uz`,
       lastModified: new Date(),
       changeFrequency: 'daily' as const,
-      priority: 1,
+      priority: 1.0,
     },
     {
       url: `${baseUrl}/en`,
@@ -33,45 +33,76 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: `${baseUrl}/uz/shop`,
       lastModified: new Date(),
-      changeFrequency: 'daily' as const,
+      changeFrequency: 'hourly' as const,
       priority: 0.9,
     },
     {
       url: `${baseUrl}/en/shop`,
       lastModified: new Date(),
-      changeFrequency: 'daily' as const,
+      changeFrequency: 'hourly' as const,
       priority: 0.8,
     },
     {
       url: `${baseUrl}/ru/shop`,
       lastModified: new Date(),
-      changeFrequency: 'daily' as const,
+      changeFrequency: 'hourly' as const,
       priority: 0.8,
     },
     // Kategoriyalar
     {
-      url: `${baseUrl}/uz/categories/toys`,
+      url: `${baseUrl}/uz/categories/oyinchoqlar`,
       lastModified: new Date(),
-      changeFrequency: 'weekly' as const,
+      changeFrequency: 'daily' as const,
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/uz/categories/clothing`,
+      url: `${baseUrl}/uz/categories/bolalar-kiyimlari`,
       lastModified: new Date(),
-      changeFrequency: 'weekly' as const,
+      changeFrequency: 'daily' as const,
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/uz/categories/shoes`,
+      url: `${baseUrl}/uz/categories/bolalar-poyabzallari`,
       lastModified: new Date(),
-      changeFrequency: 'weekly' as const,
+      changeFrequency: 'daily' as const,
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/uz/categories/baby-products`,
+      url: `${baseUrl}/uz/categories/bolalar-kitoblari`,
       lastModified: new Date(),
-      changeFrequency: 'weekly' as const,
+      changeFrequency: 'daily' as const,
       priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/uz/categories/chaqaloq-mahsulotlari`,
+      lastModified: new Date(),
+      changeFrequency: 'daily' as const,
+      priority: 0.8,
+    },
+    // Yosh guruhlari
+    {
+      url: `${baseUrl}/uz/categories/0-2-yosh`,
+      lastModified: new Date(),
+      changeFrequency: 'daily' as const,
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/uz/categories/3-5-yosh`,
+      lastModified: new Date(),
+      changeFrequency: 'daily' as const,
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/uz/categories/6-8-yosh`,
+      lastModified: new Date(),
+      changeFrequency: 'daily' as const,
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/uz/categories/9-12-yosh`,
+      lastModified: new Date(),
+      changeFrequency: 'daily' as const,
+      priority: 0.7,
     },
     // Statik sahifalar
     {
@@ -87,58 +118,91 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.6,
     },
     {
-      url: `${baseUrl}/uz/privacy`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.5,
-    },
-    {
-      url: `${baseUrl}/uz/terms`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.5,
-    },
-    {
       url: `${baseUrl}/uz/help`,
       lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: 0.5,
     },
     {
-      url: `${baseUrl}/uz/shipping`,
+      url: `${baseUrl}/uz/help/shipping`,
       lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: 0.5,
     },
     {
-      url: `${baseUrl}/uz/returns`,
+      url: `${baseUrl}/uz/help/returns`,
       lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: 0.5,
     },
-    // Auth sahifalari (SEO uchun kam priority)
     {
-      url: `${baseUrl}/uz/auth/signin`,
+      url: `${baseUrl}/uz/help/size-guide`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.4,
+    },
+    {
+      url: `${baseUrl}/uz/help/track-order`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.4,
+    },
+    // Legal sahifalar
+    {
+      url: `${baseUrl}/uz/privacy`,
       lastModified: new Date(),
       changeFrequency: 'yearly' as const,
       priority: 0.3,
     },
     {
-      url: `${baseUrl}/uz/auth/signup`,
+      url: `${baseUrl}/uz/terms`,
       lastModified: new Date(),
       changeFrequency: 'yearly' as const,
       priority: 0.3,
+    },
+    // Blog va yangiliklar
+    {
+      url: `${baseUrl}/uz/blog`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/uz/careers`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.4,
+    },
+    {
+      url: `${baseUrl}/uz/press`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.4,
     },
   ]
 
-  // TODO: Kelajakda database'dan mahsulotlar va kategoriyalarni olish
-  // const products = await getProducts()
-  // const productPages = products.map(product => ({
-  //   url: `${baseUrl}/uz/products/${product.slug}`,
-  //   lastModified: product.updatedAt,
-  //   changeFrequency: 'weekly' as const,
-  //   priority: 0.7,
-  // }))
+  // Mahsulotlar uchun dinamik URL'lar (namunaviy)
+  const productPages = [
+    // Bu yerda real mahsulotlar bo'lishi kerak, hozircha namunaviy
+    {
+      url: `${baseUrl}/uz/products/oyinchoq-mashina`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/uz/products/bolalar-kiyimi`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/uz/products/chaqaloq-mahsuloti`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.7,
+    },
+  ]
 
-  return staticPages
+  return [...staticPages, ...productPages]
 }

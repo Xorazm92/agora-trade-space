@@ -10,10 +10,12 @@ interface User {
 
 interface AuthState {
   user: User | undefined | null;
+  isAuthenticated: boolean;
 }
 
 const initialState: AuthState = {
   user: undefined,
+  isAuthenticated: false,
 };
 
 const authSlice = createSlice({
@@ -22,9 +24,11 @@ const authSlice = createSlice({
   reducers: {
     setUser: (state, action: PayloadAction<{ user: User }>) => {
       state.user = action.payload.user;
+      state.isAuthenticated = true;
     },
     logout: (state) => {
       state.user = undefined;
+      state.isAuthenticated = false;
     },
   },
 });

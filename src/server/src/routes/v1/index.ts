@@ -19,6 +19,7 @@ import sectionRoutes from "@/modules/section/section.routes";
 import { configureChatRoutes } from "@/modules/chat/chat.routes";
 import attributesRoutes from "@/modules/attribute/attribute.routes";
 import variantsRoutes from '@/modules/variant/variant.routes';
+import wishlistRoutes from "@/modules/wishlist/wishlist.routes";
 // import uzbekistanPaymentRoutes from "@/modules/payment/uzbekistan/uzbekistan-payment.routes";
 
 export const configureV1Routes = (io: SocketIOServer) => {
@@ -43,6 +44,7 @@ export const configureV1Routes = (io: SocketIOServer) => {
   router.use("/attributes", attributesRoutes);
   router.use("/chat", configureChatRoutes(io));
   router.use('/variants', variantsRoutes);
+  router.use("/wishlist", wishlistRoutes);
   // router.use("/uzbekistan-payments", uzbekistanPaymentRoutes);
 
   return router;
