@@ -1,79 +1,22 @@
 "use client";
-import dynamic from "next/dynamic";
-import { useQuery } from "@apollo/client";
-import { GET_PRODUCTS_SUMMARY } from "./gql/Product";
-import { useMemo } from "react";
-import groupProductsByFlag from "./utils/groupProductsByFlag";
-import SkeletonLoader from "./components/feedback/SkeletonLoader";
-
-const HeroSection = dynamic(() => import("./(public)/(home)/HeroSection"), {
-  ssr: false,
-});
-const CategoryBar = dynamic(() => import("./(public)/(home)/CategoryBar"), {
-  ssr: false,
-});
-const ProductSection = dynamic(
-  () => import("./(public)/product/ProductSection"),
-  { ssr: false }
-);
-const MainLayout = dynamic(() => import("./components/templates/MainLayout"), {
-  ssr: false,
-});
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 const Home = () => {
-  const { data, loading, error } = useQuery(GET_PRODUCTS_SUMMARY, {
-    variables: { first: 100 },
-    fetchPolicy: "no-cache",
-  });
+  const router = useRouter();
 
-  const { featured, trending, newArrivals, bestSellers } = useMemo(() => {
-    if (!data?.products?.products)
-      return { featured: [], trending: [], newArrivals: [], bestSellers: [] };
-    return groupProductsByFlag(data.products.products);
-  }, [data]);
-
-  if (loading) {
-    return (
-      <MainLayout>
-        <HeroSection />
-        <SkeletonLoader />
-      </MainLayout>
-    );
-  }
+  useEffect(() => {
+    // Default tilga (o'zbek tiliga) redirect qilish
+    router.replace('/uz');
+  }, [router]);
 
   return (
-    <MainLayout>
-      <HeroSection />
-      <CategoryBar />
-      <ProductSection
-        title="Featured"
-        products={featured}
-        loading={false}
-        error={error}
-        showTitle={true}
-      />
-      <ProductSection
-        title="Trending"
-        products={trending}
-        loading={false}
-        error={error}
-        showTitle={true}
-      />
-      <ProductSection
-        title="New Arrivals"
-        products={newArrivals}
-        loading={false}
-        error={error}
-        showTitle={true}
-      />
-      <ProductSection
-        title="Best Sellers"
-        products={bestSellers}
-        loading={false}
-        error={error}
-        showTitle={true}
-      />
-    </MainLayout>
+    <div className="flex items-center justify-center min-h-screen">
+      <div className="text-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-pink-500 mx-auto mb-4"></div>
+        <p className="text-gray-600">Inbola'ga yo'naltirilmoqda...</p>
+      </div>
+    </div>
   );
 };
 

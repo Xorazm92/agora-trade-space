@@ -168,7 +168,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="uz">
       <head>
         <SearchEngineVerification 
           googleVerification="xEtFwOWDRWm55IWGXiAiSHiV_gCF6UobhhaMN6kgreQ"
