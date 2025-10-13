@@ -26,6 +26,25 @@ export const reviewApi = apiSlice.injectEndpoints({
       }),
       invalidatesTags: ["Review"],
     }),
+
+    getAllReviews: builder.query({
+      query: () => ({
+        url: "/reviews",
+        method: "GET",
+        credentials: "include",
+      }),
+      providesTags: ["Review"],
+    }),
+
+    updateReviewStatus: builder.mutation({
+      query: ({ reviewId, status }) => ({
+        url: `/reviews/${reviewId}/status`,
+        method: "PATCH",
+        body: { status },
+        credentials: "include",
+      }),
+      invalidatesTags: ["Review"],
+    }),
   }),
 });
 
@@ -33,4 +52,6 @@ export const {
   useGetReviewsByProductIdQuery,
   useCreateReviewMutation,
   useDeleteReviewMutation,
+  useGetAllReviewsQuery,
+  useUpdateReviewStatusMutation,
 } = reviewApi;
